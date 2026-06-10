@@ -1,0 +1,4006 @@
+{
+  "metadata": {
+    "transaction_key": "deprecated",
+    "request_id": "019eb27d-9940-7ed3-a1ab-3c087740b39d",
+    "sha256": "2387d58c5ef476a0cc875ad13fd79f3d4f60734ab72df46059c759551ab95f55",
+    "created": "2026-06-10T17:03:56.909Z",
+    "duration": 224.02612,
+    "channels": 1,
+    "models": [
+      "4f82af92-7749-4465-92ad-3db204bc8e03"
+    ],
+    "model_info": {
+      "4f82af92-7749-4465-92ad-3db204bc8e03": {
+        "name": "2-general-nova",
+        "version": "2023-12-14.34983",
+        "arch": "nova-2"
+      }
+    }
+  },
+  "results": {
+    "channels": [
+      {
+        "alternatives": [
+          {
+            "transcript": "del diseño a la ejecución procesos de venta que multiplican tus resultados talento humano inteligencia artificial y automatización para convertir tu estrategia comercial en ventas reales y sostenibles somos un ecosistema que acompaña tu operación talento humano especializado tecnología y procesos con más de veinticinco años de experiencia un ecosistema digital tres sesenta de soluciones de experiencia más del cuarenta por ciento de resolución en autogestión y trazabilidad del cien por ciento en cada interacción en acertis usamos todos los dominios de la transformación digital para apoyar tu operación acompañamos a tus clientes optimizamos tus procesos y aplicamos la tecnología donde es estratégica y convertimos la data en decisiones con acertis tres sesenta el portal omnicanal donde centralizamos toda la operación nuestro punto de partida es siempre el mismo entender las preocupaciones y necesidades de cada cliente mapeamos de forma consistente no solo su necesidad sino todo su proceso de punta a punta esa forma de trabajar y más de veinticinco años de experiencia nos han llevado a múltiples sectores en salud cuidamos cada interacción como se cuida a un paciente con precisión clínica y calidez humana en construcción gestionamos relaciones tan sólidas como una obra bien hecha plano a plano sin grietas en servicios donde el producto es invisible la experiencia lo es todo cada contacto es una promesa cumplida con las cajas de compensación atendemos a millones de afiliados sin perder nunca el toque personal y en retail acompañamos al comprador del mostrador al whatsapp para que siempre vuelva hoy queremos mostrárselo en acción con un caso de uso real ventas recorreremos el journey comercial completo del primer interés al cierre de la venta combinando agentes de inteligencia artificial y talento humano ivr whatsapp chat web correo sms y voz todos los canales convergen en un solo portal la conversación nunca pierde el hilo sin importar por dónde llegue el cliente veámoslo un cliente vio nuestro plan de celular y nos escribe por whatsapp un bot lo atiende al instante y mientras conversan por detrás de te ejecuta todo un proceso identificamos al lead y calificamos su intención de compra analizamos su consumo para armar la oferta ideal creamos la oportunidad y agendamos la llamada comercial y todo queda atrasado al cien por ciento en un solo lugar cada gestión vive en nuestro pipeline comercial el cliente avanza de estado en estado jorge ya es una oportunidad calificada y todo el equipo ve su avance en tiempo real horas después la campaña comercial entra en acción llamamos al cliente para ofrecerle el plan pero quien llama no es una persona es nuestro agente de inteligencia artificial escuchemos el inicio de la llamada real les voy a explicar lo que está pasando en esta llamada valida al titular y consulta su perfil sabe que jorge usa recargas semanales calcula el ahorro y arma la oferta un plan pospago por lo mismo que gasta hoy presenta los beneficios resuelve las dudas y detecta el interés del cliente registra todo y crea una tarea para que un asesor humano especializado cierre la venta todo esto ocurre en una sola llamada sin intervención humana el cliente quedó interesado y escribe de nuevo por whatsapp pero esta vez no responde un bot detrás hay un asesor humano especializado el asesor conoce todo el historial la conversación nunca empieza de cero cierra la venta el tablero pasa a venta cerrada y el cliente recibe su confirmación por sms al instante pero el journey no termina con la venta seguimos acompañando al cliente analizamos su uso y comportamiento y lanzamos campañas de fidelización y upsell en el momento justo la venta deja de ser una transacción y se convierte en una relación esto es acertis un ecosistema que combina talento tecnología y procesos para acompañar tu operación en cualquier sector nuestro diferencial no es solo la tecnología que usamos es el talento humano y el conocimiento de los procesos lo que nos permite generar soluciones reales conversemos",
+            "confidence": 1,
+            "words": [
+              {
+                "word": "del",
+                "start": 0,
+                "end": 0.24,
+                "confidence": 0.9951172
+              },
+              {
+                "word": "diseño",
+                "start": 0.24,
+                "end": 0.48,
+                "confidence": 1
+              },
+              {
+                "word": "a",
+                "start": 0.48,
+                "end": 0.68,
+                "confidence": 0.95410156
+              },
+              {
+                "word": "la",
+                "start": 0.68,
+                "end": 0.88,
+                "confidence": 1
+              },
+              {
+                "word": "ejecución",
+                "start": 0.88,
+                "end": 1.38,
+                "confidence": 0.7734375
+              },
+              {
+                "word": "procesos",
+                "start": 1.8399999,
+                "end": 2.24,
+                "confidence": 0.9995117
+              },
+              {
+                "word": "de",
+                "start": 2.24,
+                "end": 2.3999999,
+                "confidence": 1
+              },
+              {
+                "word": "venta",
+                "start": 2.3999999,
+                "end": 2.6399999,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "que",
+                "start": 2.6399999,
+                "end": 2.8,
+                "confidence": 0.9941406
+              },
+              {
+                "word": "multiplican",
+                "start": 2.8,
+                "end": 3.3,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "tus",
+                "start": 3.4399998,
+                "end": 3.6,
+                "confidence": 1
+              },
+              {
+                "word": "resultados",
+                "start": 3.6,
+                "end": 4.1,
+                "confidence": 0.77124023
+              },
+              {
+                "word": "talento",
+                "start": 4.56,
+                "end": 4.96,
+                "confidence": 1
+              },
+              {
+                "word": "humano",
+                "start": 4.96,
+                "end": 5.46,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "inteligencia",
+                "start": 5.48,
+                "end": 5.98,
+                "confidence": 1
+              },
+              {
+                "word": "artificial",
+                "start": 6,
+                "end": 6.4399996,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 6.4399996,
+                "end": 6.8799996,
+                "confidence": 0.97314453
+              },
+              {
+                "word": "automatización",
+                "start": 6.8799996,
+                "end": 7.3799996,
+                "confidence": 0.8017578
+              },
+              {
+                "word": "para",
+                "start": 7.8399997,
+                "end": 8,
+                "confidence": 1
+              },
+              {
+                "word": "convertir",
+                "start": 8,
+                "end": 8.48,
+                "confidence": 1
+              },
+              {
+                "word": "tu",
+                "start": 8.48,
+                "end": 8.639999,
+                "confidence": 1
+              },
+              {
+                "word": "estrategia",
+                "start": 8.639999,
+                "end": 9.139999,
+                "confidence": 1
+              },
+              {
+                "word": "comercial",
+                "start": 9.2,
+                "end": 9.599999,
+                "confidence": 1
+              },
+              {
+                "word": "en",
+                "start": 9.599999,
+                "end": 9.76,
+                "confidence": 1
+              },
+              {
+                "word": "ventas",
+                "start": 9.76,
+                "end": 10.08,
+                "confidence": 1
+              },
+              {
+                "word": "reales",
+                "start": 10.08,
+                "end": 10.4,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 10.4,
+                "end": 10.559999,
+                "confidence": 1
+              },
+              {
+                "word": "sostenibles",
+                "start": 10.559999,
+                "end": 11.059999,
+                "confidence": 0.9995117
+              },
+              {
+                "word": "somos",
+                "start": 11.2,
+                "end": 11.7,
+                "confidence": 1
+              },
+              {
+                "word": "un",
+                "start": 11.84,
+                "end": 12.08,
+                "confidence": 1
+              },
+              {
+                "word": "ecosistema",
+                "start": 12.08,
+                "end": 12.58,
+                "confidence": 1
+              },
+              {
+                "word": "que",
+                "start": 13.04,
+                "end": 13.28,
+                "confidence": 1
+              },
+              {
+                "word": "acompaña",
+                "start": 13.28,
+                "end": 13.5199995,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "tu",
+                "start": 13.5199995,
+                "end": 13.6825,
+                "confidence": 0.85498047
+              },
+              {
+                "word": "operación",
+                "start": 13.6825,
+                "end": 13.845,
+                "confidence": 0.7919922
+              },
+              {
+                "word": "talento",
+                "start": 14.325,
+                "end": 14.825,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "humano",
+                "start": 14.965,
+                "end": 15.465,
+                "confidence": 1
+              },
+              {
+                "word": "especializado",
+                "start": 15.6050005,
+                "end": 15.685,
+                "confidence": 0.97631836
+              },
+              {
+                "word": "tecnología",
+                "start": 15.685,
+                "end": 16.085001,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 16.085001,
+                "end": 16.325,
+                "confidence": 1
+              },
+              {
+                "word": "procesos",
+                "start": 16.325,
+                "end": 16.825,
+                "confidence": 0.9421387
+              },
+              {
+                "word": "con",
+                "start": 17.045,
+                "end": 17.205,
+                "confidence": 1
+              },
+              {
+                "word": "más",
+                "start": 17.205,
+                "end": 17.365,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 17.365,
+                "end": 17.525,
+                "confidence": 1
+              },
+              {
+                "word": "veinticinco",
+                "start": 17.525,
+                "end": 18.005001,
+                "confidence": 1
+              },
+              {
+                "word": "años",
+                "start": 18.005001,
+                "end": 18.245,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 18.245,
+                "end": 18.405,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "experiencia",
+                "start": 18.405,
+                "end": 18.905,
+                "confidence": 0.8937988
+              },
+              {
+                "word": "un",
+                "start": 19.205,
+                "end": 19.365,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "ecosistema",
+                "start": 19.365,
+                "end": 19.865,
+                "confidence": 1
+              },
+              {
+                "word": "digital",
+                "start": 19.925,
+                "end": 20.325,
+                "confidence": 0.79663086
+              },
+              {
+                "word": "tres",
+                "start": 20.325,
+                "end": 20.565,
+                "confidence": 1
+              },
+              {
+                "word": "sesenta",
+                "start": 20.565,
+                "end": 20.805,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "de",
+                "start": 20.805,
+                "end": 20.965,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "soluciones",
+                "start": 20.965,
+                "end": 21.285,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 21.285,
+                "end": 21.445,
+                "confidence": 1
+              },
+              {
+                "word": "experiencia",
+                "start": 21.445,
+                "end": 21.945,
+                "confidence": 0.9838867
+              },
+              {
+                "word": "más",
+                "start": 22.325,
+                "end": 22.485,
+                "confidence": 1
+              },
+              {
+                "word": "del",
+                "start": 22.485,
+                "end": 22.725,
+                "confidence": 1
+              },
+              {
+                "word": "cuarenta",
+                "start": 22.725,
+                "end": 22.965,
+                "confidence": 1
+              },
+              {
+                "word": "por",
+                "start": 22.965,
+                "end": 23.125,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "ciento",
+                "start": 23.125,
+                "end": 23.285,
+                "confidence": 0.9863281
+              },
+              {
+                "word": "de",
+                "start": 23.285,
+                "end": 23.525,
+                "confidence": 1
+              },
+              {
+                "word": "resolución",
+                "start": 23.525,
+                "end": 23.925,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "en",
+                "start": 23.925,
+                "end": 24.085,
+                "confidence": 1
+              },
+              {
+                "word": "autogestión",
+                "start": 24.085,
+                "end": 24.585,
+                "confidence": 0.9970703
+              },
+              {
+                "word": "y",
+                "start": 25.045,
+                "end": 25.125,
+                "confidence": 0.5185547
+              },
+              {
+                "word": "trazabilidad",
+                "start": 25.125,
+                "end": 25.605,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "del",
+                "start": 25.605,
+                "end": 25.845001,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "cien",
+                "start": 25.845001,
+                "end": 26.005001,
+                "confidence": 1
+              },
+              {
+                "word": "por",
+                "start": 26.005001,
+                "end": 26.085,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "ciento",
+                "start": 26.085,
+                "end": 26.244999,
+                "confidence": 0.9951172
+              },
+              {
+                "word": "en",
+                "start": 26.244999,
+                "end": 26.744999,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "cada",
+                "start": 26.885,
+                "end": 27.365,
+                "confidence": 1
+              },
+              {
+                "word": "interacción",
+                "start": 27.365,
+                "end": 27.57,
+                "confidence": 1
+              },
+              {
+                "word": "en",
+                "start": 27.57,
+                "end": 27.81,
+                "confidence": 1
+              },
+              {
+                "word": "acertis",
+                "start": 27.81,
+                "end": 28.289999,
+                "confidence": 0.87809247
+              },
+              {
+                "word": "usamos",
+                "start": 28.289999,
+                "end": 28.77,
+                "confidence": 0.64208984
+              },
+              {
+                "word": "todos",
+                "start": 28.77,
+                "end": 29.01,
+                "confidence": 1
+              },
+              {
+                "word": "los",
+                "start": 29.01,
+                "end": 29.33,
+                "confidence": 1
+              },
+              {
+                "word": "dominios",
+                "start": 29.33,
+                "end": 29.49,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 29.49,
+                "end": 29.65,
+                "confidence": 1
+              },
+              {
+                "word": "la",
+                "start": 29.65,
+                "end": 29.97,
+                "confidence": 1
+              },
+              {
+                "word": "transformación",
+                "start": 29.97,
+                "end": 30.289999,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "digital",
+                "start": 30.289999,
+                "end": 30.689999,
+                "confidence": 1
+              },
+              {
+                "word": "para",
+                "start": 30.689999,
+                "end": 30.93,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "apoyar",
+                "start": 30.93,
+                "end": 31.17,
+                "confidence": 1
+              },
+              {
+                "word": "tu",
+                "start": 31.17,
+                "end": 31.33,
+                "confidence": 1
+              },
+              {
+                "word": "operación",
+                "start": 31.33,
+                "end": 31.83,
+                "confidence": 0.99316406
+              },
+              {
+                "word": "acompañamos",
+                "start": 32.37,
+                "end": 32.53,
+                "confidence": 0.9995117
+              },
+              {
+                "word": "a",
+                "start": 32.53,
+                "end": 32.69,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "tus",
+                "start": 32.69,
+                "end": 32.77,
+                "confidence": 1
+              },
+              {
+                "word": "clientes",
+                "start": 32.77,
+                "end": 33.27,
+                "confidence": 1
+              },
+              {
+                "word": "optimizamos",
+                "start": 33.57,
+                "end": 34.07,
+                "confidence": 1
+              },
+              {
+                "word": "tus",
+                "start": 34.21,
+                "end": 34.45,
+                "confidence": 0.9951172
+              },
+              {
+                "word": "procesos",
+                "start": 34.45,
+                "end": 34.93,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 34.93,
+                "end": 35.17,
+                "confidence": 0.95166016
+              },
+              {
+                "word": "aplicamos",
+                "start": 35.17,
+                "end": 35.65,
+                "confidence": 1
+              },
+              {
+                "word": "la",
+                "start": 35.65,
+                "end": 35.809998,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "tecnología",
+                "start": 35.809998,
+                "end": 36.29,
+                "confidence": 1
+              },
+              {
+                "word": "donde",
+                "start": 36.29,
+                "end": 36.77,
+                "confidence": 0.9741211
+              },
+              {
+                "word": "es",
+                "start": 36.77,
+                "end": 37.01,
+                "confidence": 1
+              },
+              {
+                "word": "estratégica",
+                "start": 37.01,
+                "end": 37.51,
+                "confidence": 0.77246094
+              },
+              {
+                "word": "y",
+                "start": 37.89,
+                "end": 37.97,
+                "confidence": 1
+              },
+              {
+                "word": "convertimos",
+                "start": 37.97,
+                "end": 38.45,
+                "confidence": 1
+              },
+              {
+                "word": "la",
+                "start": 38.45,
+                "end": 38.61,
+                "confidence": 1
+              },
+              {
+                "word": "data",
+                "start": 38.61,
+                "end": 38.77,
+                "confidence": 1
+              },
+              {
+                "word": "en",
+                "start": 38.77,
+                "end": 38.93,
+                "confidence": 1
+              },
+              {
+                "word": "decisiones",
+                "start": 38.93,
+                "end": 39.43,
+                "confidence": 1
+              },
+              {
+                "word": "con",
+                "start": 39.585,
+                "end": 39.745,
+                "confidence": 1
+              },
+              {
+                "word": "acertis",
+                "start": 39.745,
+                "end": 40.144997,
+                "confidence": 0.82177734
+              },
+              {
+                "word": "tres",
+                "start": 40.144997,
+                "end": 40.545,
+                "confidence": 0.98291016
+              },
+              {
+                "word": "sesenta",
+                "start": 40.545,
+                "end": 41.045,
+                "confidence": 0.9707031
+              },
+              {
+                "word": "el",
+                "start": 41.105,
+                "end": 41.265,
+                "confidence": 1
+              },
+              {
+                "word": "portal",
+                "start": 41.265,
+                "end": 41.585,
+                "confidence": 1
+              },
+              {
+                "word": "omnicanal",
+                "start": 41.585,
+                "end": 42.085,
+                "confidence": 0.9366455
+              },
+              {
+                "word": "donde",
+                "start": 42.225,
+                "end": 42.465,
+                "confidence": 0.9086914
+              },
+              {
+                "word": "centralizamos",
+                "start": 42.465,
+                "end": 42.965,
+                "confidence": 0.9995117
+              },
+              {
+                "word": "toda",
+                "start": 43.184998,
+                "end": 43.344997,
+                "confidence": 1
+              },
+              {
+                "word": "la",
+                "start": 43.344997,
+                "end": 43.585,
+                "confidence": 1
+              },
+              {
+                "word": "operación",
+                "start": 43.585,
+                "end": 44.085,
+                "confidence": 0.9995117
+              },
+              {
+                "word": "nuestro",
+                "start": 44.305,
+                "end": 44.545,
+                "confidence": 1
+              },
+              {
+                "word": "punto",
+                "start": 44.545,
+                "end": 44.785,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 44.785,
+                "end": 44.864998,
+                "confidence": 1
+              },
+              {
+                "word": "partida",
+                "start": 44.864998,
+                "end": 45.105,
+                "confidence": 1
+              },
+              {
+                "word": "es",
+                "start": 45.105,
+                "end": 45.265,
+                "confidence": 0.9951172
+              },
+              {
+                "word": "siempre",
+                "start": 45.265,
+                "end": 45.504997,
+                "confidence": 1
+              },
+              {
+                "word": "el",
+                "start": 45.504997,
+                "end": 45.665,
+                "confidence": 1
+              },
+              {
+                "word": "mismo",
+                "start": 45.665,
+                "end": 46.165,
+                "confidence": 0.9807129
+              },
+              {
+                "word": "entender",
+                "start": 46.225,
+                "end": 46.625,
+                "confidence": 1
+              },
+              {
+                "word": "las",
+                "start": 46.625,
+                "end": 46.785,
+                "confidence": 1
+              },
+              {
+                "word": "preocupaciones",
+                "start": 46.785,
+                "end": 47.265,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 47.265,
+                "end": 47.504997,
+                "confidence": 1
+              },
+              {
+                "word": "necesidades",
+                "start": 47.504997,
+                "end": 47.824997,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 47.824997,
+                "end": 47.985,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "cada",
+                "start": 47.985,
+                "end": 48.225,
+                "confidence": 1
+              },
+              {
+                "word": "cliente",
+                "start": 48.225,
+                "end": 48.725,
+                "confidence": 0.9995117
+              },
+              {
+                "word": "mapeamos",
+                "start": 48.785,
+                "end": 49.265,
+                "confidence": 0.9864909
+              },
+              {
+                "word": "de",
+                "start": 49.265,
+                "end": 49.425,
+                "confidence": 0.9863281
+              },
+              {
+                "word": "forma",
+                "start": 49.425,
+                "end": 49.745,
+                "confidence": 1
+              },
+              {
+                "word": "consistente",
+                "start": 49.745,
+                "end": 50.144997,
+                "confidence": 1
+              },
+              {
+                "word": "no",
+                "start": 50.144997,
+                "end": 50.225,
+                "confidence": 0.78222656
+              },
+              {
+                "word": "solo",
+                "start": 50.225,
+                "end": 50.545,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "su",
+                "start": 50.545,
+                "end": 50.704998,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "necesidad",
+                "start": 50.704998,
+                "end": 51.204998,
+                "confidence": 0.9926758
+              },
+              {
+                "word": "sino",
+                "start": 51.265,
+                "end": 51.504997,
+                "confidence": 1
+              },
+              {
+                "word": "todo",
+                "start": 51.504997,
+                "end": 51.745,
+                "confidence": 1
+              },
+              {
+                "word": "su",
+                "start": 51.745,
+                "end": 51.985,
+                "confidence": 1
+              },
+              {
+                "word": "proceso",
+                "start": 51.985,
+                "end": 52.26,
+                "confidence": 0.88842773
+              },
+              {
+                "word": "de",
+                "start": 52.5,
+                "end": 52.739998,
+                "confidence": 1
+              },
+              {
+                "word": "punta",
+                "start": 52.739998,
+                "end": 53.14,
+                "confidence": 1
+              },
+              {
+                "word": "a",
+                "start": 53.14,
+                "end": 53.3,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "punta",
+                "start": 53.3,
+                "end": 53.78,
+                "confidence": 0.9890137
+              },
+              {
+                "word": "esa",
+                "start": 53.78,
+                "end": 54.019997,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "forma",
+                "start": 54.019997,
+                "end": 54.26,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 54.26,
+                "end": 54.5,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "trabajar",
+                "start": 54.5,
+                "end": 54.98,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 54.98,
+                "end": 55.059998,
+                "confidence": 0.8496094
+              },
+              {
+                "word": "más",
+                "start": 55.059998,
+                "end": 55.219997,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "de",
+                "start": 55.219997,
+                "end": 55.379997,
+                "confidence": 1
+              },
+              {
+                "word": "veinticinco",
+                "start": 55.379997,
+                "end": 55.859997,
+                "confidence": 1
+              },
+              {
+                "word": "años",
+                "start": 55.859997,
+                "end": 56.019997,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 56.019997,
+                "end": 56.26,
+                "confidence": 1
+              },
+              {
+                "word": "experiencia",
+                "start": 56.26,
+                "end": 56.76,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "nos",
+                "start": 57.059998,
+                "end": 57.14,
+                "confidence": 0.85839844
+              },
+              {
+                "word": "han",
+                "start": 57.14,
+                "end": 57.3,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "llevado",
+                "start": 57.3,
+                "end": 57.62,
+                "confidence": 1
+              },
+              {
+                "word": "a",
+                "start": 57.62,
+                "end": 57.78,
+                "confidence": 1
+              },
+              {
+                "word": "múltiples",
+                "start": 57.78,
+                "end": 58.26,
+                "confidence": 1
+              },
+              {
+                "word": "sectores",
+                "start": 58.26,
+                "end": 58.76,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "en",
+                "start": 58.82,
+                "end": 58.98,
+                "confidence": 1
+              },
+              {
+                "word": "salud",
+                "start": 58.98,
+                "end": 59.3,
+                "confidence": 0.9375
+              },
+              {
+                "word": "cuidamos",
+                "start": 59.3,
+                "end": 59.78,
+                "confidence": 1
+              },
+              {
+                "word": "cada",
+                "start": 59.78,
+                "end": 60.1,
+                "confidence": 1
+              },
+              {
+                "word": "interacción",
+                "start": 60.1,
+                "end": 60.339996,
+                "confidence": 1
+              },
+              {
+                "word": "como",
+                "start": 60.339996,
+                "end": 60.5,
+                "confidence": 0.9614258
+              },
+              {
+                "word": "se",
+                "start": 60.5,
+                "end": 60.739998,
+                "confidence": 0.99609375
+              },
+              {
+                "word": "cuida",
+                "start": 60.739998,
+                "end": 61.14,
+                "confidence": 0.97314453
+              },
+              {
+                "word": "a",
+                "start": 61.14,
+                "end": 61.219997,
+                "confidence": 0.98535156
+              },
+              {
+                "word": "un",
+                "start": 61.219997,
+                "end": 61.46,
+                "confidence": 1
+              },
+              {
+                "word": "paciente",
+                "start": 61.46,
+                "end": 61.96,
+                "confidence": 0.93530273
+              },
+              {
+                "word": "con",
+                "start": 62.019997,
+                "end": 62.26,
+                "confidence": 1
+              },
+              {
+                "word": "precisión",
+                "start": 62.26,
+                "end": 62.659996,
+                "confidence": 1
+              },
+              {
+                "word": "clínica",
+                "start": 62.659996,
+                "end": 63.059998,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 63.059998,
+                "end": 63.219997,
+                "confidence": 1
+              },
+              {
+                "word": "calidez",
+                "start": 63.219997,
+                "end": 63.62,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "humana",
+                "start": 63.62,
+                "end": 64.119995,
+                "confidence": 1
+              },
+              {
+                "word": "en",
+                "start": 64.18,
+                "end": 64.42,
+                "confidence": 1
+              },
+              {
+                "word": "construcción",
+                "start": 64.42,
+                "end": 64.92,
+                "confidence": 1
+              },
+              {
+                "word": "gestionamos",
+                "start": 65.22,
+                "end": 65.38,
+                "confidence": 0.7949219
+              },
+              {
+                "word": "relaciones",
+                "start": 65.38,
+                "end": 65.7,
+                "confidence": 1
+              },
+              {
+                "word": "tan",
+                "start": 65.7,
+                "end": 66.1,
+                "confidence": 1
+              },
+              {
+                "word": "sólidas",
+                "start": 66.1,
+                "end": 66.31333,
+                "confidence": 1
+              },
+              {
+                "word": "como",
+                "start": 66.31333,
+                "end": 66.526665,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "una",
+                "start": 66.526665,
+                "end": 66.74,
+                "confidence": 1
+              },
+              {
+                "word": "obra",
+                "start": 66.74,
+                "end": 66.899994,
+                "confidence": 1
+              },
+              {
+                "word": "bien",
+                "start": 66.899994,
+                "end": 67.06,
+                "confidence": 1
+              },
+              {
+                "word": "hecha",
+                "start": 67.06,
+                "end": 67.485,
+                "confidence": 0.97631836
+              },
+              {
+                "word": "plano",
+                "start": 67.805,
+                "end": 67.965004,
+                "confidence": 1
+              },
+              {
+                "word": "a",
+                "start": 67.965004,
+                "end": 68.205,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "plano",
+                "start": 68.205,
+                "end": 68.685,
+                "confidence": 0.99316406
+              },
+              {
+                "word": "sin",
+                "start": 68.685,
+                "end": 69.185,
+                "confidence": 1
+              },
+              {
+                "word": "grietas",
+                "start": 69.565,
+                "end": 69.725,
+                "confidence": 0.9909668
+              },
+              {
+                "word": "en",
+                "start": 69.725,
+                "end": 69.965004,
+                "confidence": 1
+              },
+              {
+                "word": "servicios",
+                "start": 69.965004,
+                "end": 70.465004,
+                "confidence": 0.99316406
+              },
+              {
+                "word": "donde",
+                "start": 70.605,
+                "end": 70.925,
+                "confidence": 1
+              },
+              {
+                "word": "el",
+                "start": 70.925,
+                "end": 71.005,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "producto",
+                "start": 71.005,
+                "end": 71.165,
+                "confidence": 1
+              },
+              {
+                "word": "es",
+                "start": 71.165,
+                "end": 71.405,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "invisible",
+                "start": 71.405,
+                "end": 71.905,
+                "confidence": 0.99609375
+              },
+              {
+                "word": "la",
+                "start": 71.965004,
+                "end": 72.205,
+                "confidence": 1
+              },
+              {
+                "word": "experiencia",
+                "start": 72.205,
+                "end": 72.525,
+                "confidence": 1
+              },
+              {
+                "word": "lo",
+                "start": 72.525,
+                "end": 72.685,
+                "confidence": 1
+              },
+              {
+                "word": "es",
+                "start": 72.685,
+                "end": 72.845,
+                "confidence": 1
+              },
+              {
+                "word": "todo",
+                "start": 72.845,
+                "end": 73.325,
+                "confidence": 0.9428711
+              },
+              {
+                "word": "cada",
+                "start": 73.325,
+                "end": 73.725,
+                "confidence": 1
+              },
+              {
+                "word": "contacto",
+                "start": 73.725,
+                "end": 74.125,
+                "confidence": 1
+              },
+              {
+                "word": "es",
+                "start": 74.125,
+                "end": 74.285,
+                "confidence": 1
+              },
+              {
+                "word": "una",
+                "start": 74.285,
+                "end": 74.445,
+                "confidence": 1
+              },
+              {
+                "word": "promesa",
+                "start": 74.445,
+                "end": 74.845,
+                "confidence": 1
+              },
+              {
+                "word": "cumplida",
+                "start": 74.845,
+                "end": 75.345,
+                "confidence": 0.99853516
+              },
+              {
+                "word": "con",
+                "start": 75.405,
+                "end": 75.565,
+                "confidence": 1
+              },
+              {
+                "word": "las",
+                "start": 75.565,
+                "end": 75.725,
+                "confidence": 1
+              },
+              {
+                "word": "cajas",
+                "start": 75.725,
+                "end": 76.045,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 76.045,
+                "end": 76.205,
+                "confidence": 1
+              },
+              {
+                "word": "compensación",
+                "start": 76.205,
+                "end": 76.705,
+                "confidence": 1
+              },
+              {
+                "word": "atendemos",
+                "start": 76.765,
+                "end": 77.245,
+                "confidence": 0.78759766
+              },
+              {
+                "word": "a",
+                "start": 77.245,
+                "end": 77.485,
+                "confidence": 1
+              },
+              {
+                "word": "millones",
+                "start": 77.485,
+                "end": 77.805,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 77.805,
+                "end": 78.305,
+                "confidence": 1
+              },
+              {
+                "word": "afiliados",
+                "start": 78.605,
+                "end": 78.845,
+                "confidence": 0.8413086
+              },
+              {
+                "word": "sin",
+                "start": 78.845,
+                "end": 79.165,
+                "confidence": 1
+              },
+              {
+                "word": "perder",
+                "start": 79.165,
+                "end": 79.665,
+                "confidence": 1
+              },
+              {
+                "word": "nunca",
+                "start": 79.725,
+                "end": 79.965,
+                "confidence": 1
+              },
+              {
+                "word": "el",
+                "start": 79.965,
+                "end": 80.205,
+                "confidence": 1
+              },
+              {
+                "word": "toque",
+                "start": 80.205,
+                "end": 80.445,
+                "confidence": 1
+              },
+              {
+                "word": "personal",
+                "start": 80.445,
+                "end": 80.945,
+                "confidence": 0.8496094
+              },
+              {
+                "word": "y",
+                "start": 80.97,
+                "end": 81.130005,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "en",
+                "start": 81.130005,
+                "end": 81.29,
+                "confidence": 0.9350586
+              },
+              {
+                "word": "retail",
+                "start": 81.29,
+                "end": 81.79,
+                "confidence": 0.9316406
+              },
+              {
+                "word": "acompañamos",
+                "start": 81.93,
+                "end": 82.41,
+                "confidence": 1
+              },
+              {
+                "word": "al",
+                "start": 82.41,
+                "end": 82.57,
+                "confidence": 1
+              },
+              {
+                "word": "comprador",
+                "start": 82.57,
+                "end": 82.89,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "del",
+                "start": 82.89,
+                "end": 83.21,
+                "confidence": 1
+              },
+              {
+                "word": "mostrador",
+                "start": 83.21,
+                "end": 83.450005,
+                "confidence": 1
+              },
+              {
+                "word": "al",
+                "start": 83.450005,
+                "end": 83.61,
+                "confidence": 0.9921875
+              },
+              {
+                "word": "whatsapp",
+                "start": 83.61,
+                "end": 84.11,
+                "confidence": 0.9819336
+              },
+              {
+                "word": "para",
+                "start": 84.49,
+                "end": 84.65,
+                "confidence": 0.875
+              },
+              {
+                "word": "que",
+                "start": 84.65,
+                "end": 84.81,
+                "confidence": 1
+              },
+              {
+                "word": "siempre",
+                "start": 84.81,
+                "end": 85.130005,
+                "confidence": 1
+              },
+              {
+                "word": "vuelva",
+                "start": 85.130005,
+                "end": 85.61,
+                "confidence": 0.99853516
+              },
+              {
+                "word": "hoy",
+                "start": 85.61,
+                "end": 85.85,
+                "confidence": 1
+              },
+              {
+                "word": "queremos",
+                "start": 85.85,
+                "end": 86.25,
+                "confidence": 0.97802734
+              },
+              {
+                "word": "mostrárselo",
+                "start": 86.25,
+                "end": 86.73,
+                "confidence": 0.99853516
+              },
+              {
+                "word": "en",
+                "start": 86.73,
+                "end": 86.89,
+                "confidence": 1
+              },
+              {
+                "word": "acción",
+                "start": 86.89,
+                "end": 87.39,
+                "confidence": 1
+              },
+              {
+                "word": "con",
+                "start": 87.61,
+                "end": 87.85,
+                "confidence": 0.48120117
+              },
+              {
+                "word": "un",
+                "start": 87.85,
+                "end": 88.01,
+                "confidence": 1
+              },
+              {
+                "word": "caso",
+                "start": 88.01,
+                "end": 88.25,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 88.25,
+                "end": 88.41,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "uso",
+                "start": 88.41,
+                "end": 88.57,
+                "confidence": 1
+              },
+              {
+                "word": "real",
+                "start": 88.57,
+                "end": 89.07,
+                "confidence": 0.9421387
+              },
+              {
+                "word": "ventas",
+                "start": 89.21,
+                "end": 89.71,
+                "confidence": 0.98779297
+              },
+              {
+                "word": "recorreremos",
+                "start": 90.25,
+                "end": 90.75,
+                "confidence": 1
+              },
+              {
+                "word": "el",
+                "start": 90.89,
+                "end": 91.05,
+                "confidence": 1
+              },
+              {
+                "word": "journey",
+                "start": 91.05,
+                "end": 91.45,
+                "confidence": 0.99609375
+              },
+              {
+                "word": "comercial",
+                "start": 91.45,
+                "end": 91.95,
+                "confidence": 1
+              },
+              {
+                "word": "completo",
+                "start": 92.25,
+                "end": 92.490005,
+                "confidence": 0.90063477
+              },
+              {
+                "word": "del",
+                "start": 92.490005,
+                "end": 92.73,
+                "confidence": 1
+              },
+              {
+                "word": "primer",
+                "start": 92.73,
+                "end": 93.130005,
+                "confidence": 1
+              },
+              {
+                "word": "interés",
+                "start": 93.130005,
+                "end": 93.490005,
+                "confidence": 1
+              },
+              {
+                "word": "al",
+                "start": 93.490005,
+                "end": 93.85,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "cierre",
+                "start": 93.85,
+                "end": 94.090004,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 94.090004,
+                "end": 94.17,
+                "confidence": 1
+              },
+              {
+                "word": "la",
+                "start": 94.17,
+                "end": 94.33,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "venta",
+                "start": 94.33,
+                "end": 94.81,
+                "confidence": 0.9812012
+              },
+              {
+                "word": "combinando",
+                "start": 94.81,
+                "end": 95.31,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "agentes",
+                "start": 95.37,
+                "end": 95.61,
+                "confidence": 0.99609375
+              },
+              {
+                "word": "de",
+                "start": 95.61,
+                "end": 96.045,
+                "confidence": 0.9970703
+              },
+              {
+                "word": "inteligencia",
+                "start": 96.284996,
+                "end": 96.784996,
+                "confidence": 1
+              },
+              {
+                "word": "artificial",
+                "start": 96.845,
+                "end": 97.345,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 97.405,
+                "end": 97.564995,
+                "confidence": 1
+              },
+              {
+                "word": "talento",
+                "start": 97.564995,
+                "end": 97.884995,
+                "confidence": 1
+              },
+              {
+                "word": "humano",
+                "start": 97.884995,
+                "end": 98.384995,
+                "confidence": 0.99609375
+              },
+              {
+                "word": "ivr",
+                "start": 99.005,
+                "end": 99.505,
+                "confidence": 0.8357747
+              },
+              {
+                "word": "whatsapp",
+                "start": 99.725,
+                "end": 100.225,
+                "confidence": 0.99560547
+              },
+              {
+                "word": "chat",
+                "start": 100.604996,
+                "end": 101.085,
+                "confidence": 0.99609375
+              },
+              {
+                "word": "web",
+                "start": 101.085,
+                "end": 101.405,
+                "confidence": 0.9946289
+              },
+              {
+                "word": "correo",
+                "start": 101.405,
+                "end": 101.905,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "sms",
+                "start": 102.284996,
+                "end": 102.784996,
+                "confidence": 0.9328613
+              },
+              {
+                "word": "y",
+                "start": 103.405,
+                "end": 103.564995,
+                "confidence": 0.8276367
+              },
+              {
+                "word": "voz",
+                "start": 103.564995,
+                "end": 104.064995,
+                "confidence": 0.7246094
+              },
+              {
+                "word": "todos",
+                "start": 104.205,
+                "end": 104.445,
+                "confidence": 1
+              },
+              {
+                "word": "los",
+                "start": 104.445,
+                "end": 104.685,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "canales",
+                "start": 104.685,
+                "end": 105.085,
+                "confidence": 1
+              },
+              {
+                "word": "convergen",
+                "start": 105.085,
+                "end": 105.405,
+                "confidence": 0.9941406
+              },
+              {
+                "word": "en",
+                "start": 105.405,
+                "end": 105.645,
+                "confidence": 1
+              },
+              {
+                "word": "un",
+                "start": 105.645,
+                "end": 105.725,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "solo",
+                "start": 105.725,
+                "end": 106.045,
+                "confidence": 1
+              },
+              {
+                "word": "portal",
+                "start": 106.045,
+                "end": 106.545,
+                "confidence": 0.9921875
+              },
+              {
+                "word": "la",
+                "start": 106.685,
+                "end": 106.845,
+                "confidence": 1
+              },
+              {
+                "word": "conversación",
+                "start": 106.845,
+                "end": 107.325,
+                "confidence": 1
+              },
+              {
+                "word": "nunca",
+                "start": 107.325,
+                "end": 107.485,
+                "confidence": 1
+              },
+              {
+                "word": "pierde",
+                "start": 107.485,
+                "end": 107.805,
+                "confidence": 1
+              },
+              {
+                "word": "el",
+                "start": 107.805,
+                "end": 107.884995,
+                "confidence": 1
+              },
+              {
+                "word": "hilo",
+                "start": 107.884995,
+                "end": 108.365,
+                "confidence": 1
+              },
+              {
+                "word": "sin",
+                "start": 108.365,
+                "end": 108.685,
+                "confidence": 0.5810547
+              },
+              {
+                "word": "importar",
+                "start": 108.685,
+                "end": 108.965,
+                "confidence": 1
+              },
+              {
+                "word": "por",
+                "start": 108.965,
+                "end": 109.244995,
+                "confidence": 1
+              },
+              {
+                "word": "dónde",
+                "start": 109.244995,
+                "end": 109.485,
+                "confidence": 0.95703125
+              },
+              {
+                "word": "llegue",
+                "start": 109.485,
+                "end": 109.725,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "el",
+                "start": 109.725,
+                "end": 109.965,
+                "confidence": 0.9970703
+              },
+              {
+                "word": "cliente",
+                "start": 109.965,
+                "end": 110.43,
+                "confidence": 0.9741211
+              },
+              {
+                "word": "veámoslo",
+                "start": 110.590004,
+                "end": 111.090004,
+                "confidence": 0.97591144
+              },
+              {
+                "word": "un",
+                "start": 111.47,
+                "end": 111.63,
+                "confidence": 1
+              },
+              {
+                "word": "cliente",
+                "start": 111.63,
+                "end": 111.95,
+                "confidence": 1
+              },
+              {
+                "word": "vio",
+                "start": 111.95,
+                "end": 112.19,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "nuestro",
+                "start": 112.19,
+                "end": 112.43,
+                "confidence": 1
+              },
+              {
+                "word": "plan",
+                "start": 112.43,
+                "end": 112.59,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 112.59,
+                "end": 112.75,
+                "confidence": 0.9970703
+              },
+              {
+                "word": "celular",
+                "start": 112.75,
+                "end": 113.15,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 113.15,
+                "end": 113.23,
+                "confidence": 0.99609375
+              },
+              {
+                "word": "nos",
+                "start": 113.23,
+                "end": 113.39,
+                "confidence": 1
+              },
+              {
+                "word": "escribe",
+                "start": 113.39,
+                "end": 113.71,
+                "confidence": 1
+              },
+              {
+                "word": "por",
+                "start": 113.71,
+                "end": 113.87,
+                "confidence": 1
+              },
+              {
+                "word": "whatsapp",
+                "start": 113.87,
+                "end": 114.350006,
+                "confidence": 0.8967285
+              },
+              {
+                "word": "un",
+                "start": 114.350006,
+                "end": 114.83,
+                "confidence": 1
+              },
+              {
+                "word": "bot",
+                "start": 114.83,
+                "end": 114.99,
+                "confidence": 1
+              },
+              {
+                "word": "lo",
+                "start": 114.99,
+                "end": 115.47,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "atiende",
+                "start": 115.47,
+                "end": 115.71,
+                "confidence": 1
+              },
+              {
+                "word": "al",
+                "start": 115.71,
+                "end": 115.95,
+                "confidence": 1
+              },
+              {
+                "word": "instante",
+                "start": 115.95,
+                "end": 116.43,
+                "confidence": 0.7390137
+              },
+              {
+                "word": "y",
+                "start": 116.43,
+                "end": 116.51,
+                "confidence": 1
+              },
+              {
+                "word": "mientras",
+                "start": 116.51,
+                "end": 116.91,
+                "confidence": 0.91748047
+              },
+              {
+                "word": "conversan",
+                "start": 116.91,
+                "end": 117.39,
+                "confidence": 0.97802734
+              },
+              {
+                "word": "por",
+                "start": 117.39,
+                "end": 117.55,
+                "confidence": 1
+              },
+              {
+                "word": "detrás",
+                "start": 117.55,
+                "end": 117.87,
+                "confidence": 0.9970703
+              },
+              {
+                "word": "de",
+                "start": 117.87,
+                "end": 117.95,
+                "confidence": 0.62646484
+              },
+              {
+                "word": "te",
+                "start": 117.95,
+                "end": 118.27,
+                "confidence": 0.50341797
+              },
+              {
+                "word": "ejecuta",
+                "start": 118.27,
+                "end": 118.59,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "todo",
+                "start": 118.59,
+                "end": 118.91,
+                "confidence": 1
+              },
+              {
+                "word": "un",
+                "start": 118.91,
+                "end": 118.99,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "proceso",
+                "start": 118.99,
+                "end": 119.49,
+                "confidence": 0.99658203
+              },
+              {
+                "word": "identificamos",
+                "start": 119.63,
+                "end": 120.13,
+                "confidence": 0.99934894
+              },
+              {
+                "word": "al",
+                "start": 120.19,
+                "end": 120.43,
+                "confidence": 0.99121094
+              },
+              {
+                "word": "lead",
+                "start": 120.43,
+                "end": 120.59,
+                "confidence": 0.9941406
+              },
+              {
+                "word": "y",
+                "start": 120.59,
+                "end": 120.75,
+                "confidence": 0.9941406
+              },
+              {
+                "word": "calificamos",
+                "start": 120.75,
+                "end": 121.25,
+                "confidence": 0.9951172
+              },
+              {
+                "word": "su",
+                "start": 121.39,
+                "end": 121.55,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "intención",
+                "start": 121.55,
+                "end": 121.87,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 121.87,
+                "end": 122.03,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "compra",
+                "start": 122.03,
+                "end": 122.51,
+                "confidence": 0.94018555
+              },
+              {
+                "word": "analizamos",
+                "start": 122.51,
+                "end": 123.01,
+                "confidence": 1
+              },
+              {
+                "word": "su",
+                "start": 123.07,
+                "end": 123.57,
+                "confidence": 0.9819336
+              },
+              {
+                "word": "consumo",
+                "start": 123.79,
+                "end": 123.869995,
+                "confidence": 1
+              },
+              {
+                "word": "para",
+                "start": 123.869995,
+                "end": 123.95,
+                "confidence": 1
+              },
+              {
+                "word": "armar",
+                "start": 123.95,
+                "end": 124.19,
+                "confidence": 1
+              },
+              {
+                "word": "la",
+                "start": 124.19,
+                "end": 124.35,
+                "confidence": 1
+              },
+              {
+                "word": "oferta",
+                "start": 124.35,
+                "end": 124.67,
+                "confidence": 1
+              },
+              {
+                "word": "ideal",
+                "start": 124.67,
+                "end": 125.17,
+                "confidence": 0.98339844
+              },
+              {
+                "word": "creamos",
+                "start": 125.415,
+                "end": 125.65501,
+                "confidence": 1
+              },
+              {
+                "word": "la",
+                "start": 125.65501,
+                "end": 126.05501,
+                "confidence": 1
+              },
+              {
+                "word": "oportunidad",
+                "start": 126.05501,
+                "end": 126.455,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 126.455,
+                "end": 126.695,
+                "confidence": 0.98291016
+              },
+              {
+                "word": "agendamos",
+                "start": 126.695,
+                "end": 127.095,
+                "confidence": 1
+              },
+              {
+                "word": "la",
+                "start": 127.095,
+                "end": 127.255005,
+                "confidence": 0.99609375
+              },
+              {
+                "word": "llamada",
+                "start": 127.255005,
+                "end": 127.735,
+                "confidence": 1
+              },
+              {
+                "word": "comercial",
+                "start": 127.735,
+                "end": 128.215,
+                "confidence": 0.9194336
+              },
+              {
+                "word": "y",
+                "start": 128.215,
+                "end": 128.375,
+                "confidence": 1
+              },
+              {
+                "word": "todo",
+                "start": 128.375,
+                "end": 128.615,
+                "confidence": 1
+              },
+              {
+                "word": "queda",
+                "start": 128.615,
+                "end": 128.935,
+                "confidence": 0.9863281
+              },
+              {
+                "word": "atrasado",
+                "start": 128.935,
+                "end": 129.255,
+                "confidence": 0.9863281
+              },
+              {
+                "word": "al",
+                "start": 129.255,
+                "end": 129.41501,
+                "confidence": 1
+              },
+              {
+                "word": "cien",
+                "start": 129.41501,
+                "end": 129.575,
+                "confidence": 1
+              },
+              {
+                "word": "por",
+                "start": 129.575,
+                "end": 129.655,
+                "confidence": 1
+              },
+              {
+                "word": "ciento",
+                "start": 129.655,
+                "end": 130.05501,
+                "confidence": 0.99316406
+              },
+              {
+                "word": "en",
+                "start": 130.05501,
+                "end": 130.295,
+                "confidence": 0.7451172
+              },
+              {
+                "word": "un",
+                "start": 130.295,
+                "end": 130.375,
+                "confidence": 1
+              },
+              {
+                "word": "solo",
+                "start": 130.375,
+                "end": 130.695,
+                "confidence": 1
+              },
+              {
+                "word": "lugar",
+                "start": 130.695,
+                "end": 131.195,
+                "confidence": 0.9970703
+              },
+              {
+                "word": "cada",
+                "start": 131.255,
+                "end": 131.655,
+                "confidence": 1
+              },
+              {
+                "word": "gestión",
+                "start": 131.655,
+                "end": 131.815,
+                "confidence": 1
+              },
+              {
+                "word": "vive",
+                "start": 131.815,
+                "end": 132.05501,
+                "confidence": 1
+              },
+              {
+                "word": "en",
+                "start": 132.05501,
+                "end": 132.215,
+                "confidence": 0.9790039
+              },
+              {
+                "word": "nuestro",
+                "start": 132.215,
+                "end": 132.455,
+                "confidence": 1
+              },
+              {
+                "word": "pipeline",
+                "start": 132.455,
+                "end": 132.935,
+                "confidence": 0.9348958
+              },
+              {
+                "word": "comercial",
+                "start": 132.935,
+                "end": 133.435,
+                "confidence": 0.8112793
+              },
+              {
+                "word": "el",
+                "start": 133.495,
+                "end": 133.655,
+                "confidence": 1
+              },
+              {
+                "word": "cliente",
+                "start": 133.655,
+                "end": 134.05501,
+                "confidence": 1
+              },
+              {
+                "word": "avanza",
+                "start": 134.05501,
+                "end": 134.295,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "de",
+                "start": 134.295,
+                "end": 134.455,
+                "confidence": 0.89501953
+              },
+              {
+                "word": "estado",
+                "start": 134.455,
+                "end": 134.77501,
+                "confidence": 0.95410156
+              },
+              {
+                "word": "en",
+                "start": 134.77501,
+                "end": 134.935,
+                "confidence": 0.9902344
+              },
+              {
+                "word": "estado",
+                "start": 134.935,
+                "end": 135.435,
+                "confidence": 0.8701172
+              },
+              {
+                "word": "jorge",
+                "start": 135.575,
+                "end": 135.655,
+                "confidence": 1
+              },
+              {
+                "word": "ya",
+                "start": 135.655,
+                "end": 135.815,
+                "confidence": 0.86865234
+              },
+              {
+                "word": "es",
+                "start": 135.815,
+                "end": 135.975,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "una",
+                "start": 135.975,
+                "end": 136.215,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "oportunidad",
+                "start": 136.215,
+                "end": 136.715,
+                "confidence": 1
+              },
+              {
+                "word": "calificada",
+                "start": 136.77501,
+                "end": 137.13501,
+                "confidence": 0.8010254
+              },
+              {
+                "word": "y",
+                "start": 137.13501,
+                "end": 137.495,
+                "confidence": 1
+              },
+              {
+                "word": "todo",
+                "start": 137.495,
+                "end": 137.69499,
+                "confidence": 1
+              },
+              {
+                "word": "el",
+                "start": 137.69499,
+                "end": 137.895,
+                "confidence": 1
+              },
+              {
+                "word": "equipo",
+                "start": 137.895,
+                "end": 138.095,
+                "confidence": 1
+              },
+              {
+                "word": "ve",
+                "start": 138.095,
+                "end": 138.295,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "su",
+                "start": 138.295,
+                "end": 138.49501,
+                "confidence": 1
+              },
+              {
+                "word": "avance",
+                "start": 138.49501,
+                "end": 138.695,
+                "confidence": 1
+              },
+              {
+                "word": "en",
+                "start": 138.695,
+                "end": 138.855,
+                "confidence": 1
+              },
+              {
+                "word": "tiempo",
+                "start": 138.855,
+                "end": 139.015,
+                "confidence": 1
+              },
+              {
+                "word": "real",
+                "start": 139.015,
+                "end": 139.44,
+                "confidence": 0.9975586
+              },
+              {
+                "word": "horas",
+                "start": 139.52,
+                "end": 139.92,
+                "confidence": 1
+              },
+              {
+                "word": "después",
+                "start": 139.92,
+                "end": 140.40001,
+                "confidence": 0.9970703
+              },
+              {
+                "word": "la",
+                "start": 140.40001,
+                "end": 140.56,
+                "confidence": 1
+              },
+              {
+                "word": "campaña",
+                "start": 140.56,
+                "end": 140.88,
+                "confidence": 1
+              },
+              {
+                "word": "comercial",
+                "start": 140.88,
+                "end": 141.36,
+                "confidence": 1
+              },
+              {
+                "word": "entra",
+                "start": 141.36,
+                "end": 141.6,
+                "confidence": 1
+              },
+              {
+                "word": "en",
+                "start": 141.6,
+                "end": 141.84,
+                "confidence": 1
+              },
+              {
+                "word": "acción",
+                "start": 141.84,
+                "end": 142.34,
+                "confidence": 0.87597656
+              },
+              {
+                "word": "llamamos",
+                "start": 142.48,
+                "end": 142.8,
+                "confidence": 0.9995117
+              },
+              {
+                "word": "al",
+                "start": 142.8,
+                "end": 142.96,
+                "confidence": 1
+              },
+              {
+                "word": "cliente",
+                "start": 142.96,
+                "end": 143.2,
+                "confidence": 1
+              },
+              {
+                "word": "para",
+                "start": 143.2,
+                "end": 143.36,
+                "confidence": 1
+              },
+              {
+                "word": "ofrecerle",
+                "start": 143.36,
+                "end": 143.6,
+                "confidence": 1
+              },
+              {
+                "word": "el",
+                "start": 143.6,
+                "end": 143.84,
+                "confidence": 1
+              },
+              {
+                "word": "plan",
+                "start": 143.84,
+                "end": 144.32,
+                "confidence": 0.79248047
+              },
+              {
+                "word": "pero",
+                "start": 144.32,
+                "end": 144.48,
+                "confidence": 1
+              },
+              {
+                "word": "quien",
+                "start": 144.48,
+                "end": 144.72,
+                "confidence": 0.97802734
+              },
+              {
+                "word": "llama",
+                "start": 144.72,
+                "end": 144.96,
+                "confidence": 0.99316406
+              },
+              {
+                "word": "no",
+                "start": 144.96,
+                "end": 145.12,
+                "confidence": 0.9863281
+              },
+              {
+                "word": "es",
+                "start": 145.12,
+                "end": 145.2,
+                "confidence": 1
+              },
+              {
+                "word": "una",
+                "start": 145.2,
+                "end": 145.52,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "persona",
+                "start": 145.52,
+                "end": 146,
+                "confidence": 0.97021484
+              },
+              {
+                "word": "es",
+                "start": 146,
+                "end": 146.16,
+                "confidence": 1
+              },
+              {
+                "word": "nuestro",
+                "start": 146.16,
+                "end": 146.48,
+                "confidence": 1
+              },
+              {
+                "word": "agente",
+                "start": 146.48,
+                "end": 146.88,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 146.88,
+                "end": 147.04001,
+                "confidence": 1
+              },
+              {
+                "word": "inteligencia",
+                "start": 147.04001,
+                "end": 147.54001,
+                "confidence": 1
+              },
+              {
+                "word": "artificial",
+                "start": 147.92,
+                "end": 148.42,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "escuchemos",
+                "start": 148.64,
+                "end": 149.12,
+                "confidence": 1
+              },
+              {
+                "word": "el",
+                "start": 149.12,
+                "end": 149.28,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "inicio",
+                "start": 149.28,
+                "end": 149.52,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 149.52,
+                "end": 149.6,
+                "confidence": 1
+              },
+              {
+                "word": "la",
+                "start": 149.6,
+                "end": 149.76001,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "llamada",
+                "start": 149.76001,
+                "end": 150.08,
+                "confidence": 1
+              },
+              {
+                "word": "real",
+                "start": 150.08,
+                "end": 150.48,
+                "confidence": 0.9536133
+              },
+              {
+                "word": "les",
+                "start": 150.48,
+                "end": 150.72,
+                "confidence": 1
+              },
+              {
+                "word": "voy",
+                "start": 150.72,
+                "end": 150.92,
+                "confidence": 1
+              },
+              {
+                "word": "a",
+                "start": 150.92,
+                "end": 151.12,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "explicar",
+                "start": 151.12,
+                "end": 151.52,
+                "confidence": 1
+              },
+              {
+                "word": "lo",
+                "start": 151.52,
+                "end": 151.68001,
+                "confidence": 1
+              },
+              {
+                "word": "que",
+                "start": 151.68001,
+                "end": 151.84,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "está",
+                "start": 151.84,
+                "end": 152,
+                "confidence": 1
+              },
+              {
+                "word": "pasando",
+                "start": 152,
+                "end": 152.32,
+                "confidence": 1
+              },
+              {
+                "word": "en",
+                "start": 152.32,
+                "end": 152.48,
+                "confidence": 1
+              },
+              {
+                "word": "esta",
+                "start": 152.48,
+                "end": 152.72,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "llamada",
+                "start": 152.72,
+                "end": 153.135,
+                "confidence": 0.97265625
+              },
+              {
+                "word": "valida",
+                "start": 153.295,
+                "end": 153.655,
+                "confidence": 0.99560547
+              },
+              {
+                "word": "al",
+                "start": 153.655,
+                "end": 154.015,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "titular",
+                "start": 154.015,
+                "end": 154.415,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 154.415,
+                "end": 154.655,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "consulta",
+                "start": 154.655,
+                "end": 154.97499,
+                "confidence": 1
+              },
+              {
+                "word": "su",
+                "start": 154.97499,
+                "end": 155.135,
+                "confidence": 0.99609375
+              },
+              {
+                "word": "perfil",
+                "start": 155.135,
+                "end": 155.635,
+                "confidence": 0.9995117
+              },
+              {
+                "word": "sabe",
+                "start": 156.015,
+                "end": 156.17499,
+                "confidence": 1
+              },
+              {
+                "word": "que",
+                "start": 156.17499,
+                "end": 156.33499,
+                "confidence": 1
+              },
+              {
+                "word": "jorge",
+                "start": 156.33499,
+                "end": 156.575,
+                "confidence": 1
+              },
+              {
+                "word": "usa",
+                "start": 156.575,
+                "end": 156.81499,
+                "confidence": 1
+              },
+              {
+                "word": "recargas",
+                "start": 156.81499,
+                "end": 157.295,
+                "confidence": 1
+              },
+              {
+                "word": "semanales",
+                "start": 157.295,
+                "end": 157.795,
+                "confidence": 0.7714844
+              },
+              {
+                "word": "calcula",
+                "start": 158.25499,
+                "end": 158.655,
+                "confidence": 1
+              },
+              {
+                "word": "el",
+                "start": 158.655,
+                "end": 158.89499,
+                "confidence": 0.99316406
+              },
+              {
+                "word": "ahorro",
+                "start": 158.89499,
+                "end": 159.215,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 159.215,
+                "end": 159.295,
+                "confidence": 0.9970703
+              },
+              {
+                "word": "arma",
+                "start": 159.295,
+                "end": 159.61499,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "la",
+                "start": 159.61499,
+                "end": 159.69499,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "oferta",
+                "start": 159.69499,
+                "end": 160.19499,
+                "confidence": 0.78466797
+              },
+              {
+                "word": "un",
+                "start": 160.415,
+                "end": 160.495,
+                "confidence": 1
+              },
+              {
+                "word": "plan",
+                "start": 160.495,
+                "end": 160.735,
+                "confidence": 1
+              },
+              {
+                "word": "pospago",
+                "start": 160.735,
+                "end": 161.215,
+                "confidence": 0.94873047
+              },
+              {
+                "word": "por",
+                "start": 161.215,
+                "end": 161.295,
+                "confidence": 0.98535156
+              },
+              {
+                "word": "lo",
+                "start": 161.295,
+                "end": 161.45499,
+                "confidence": 1
+              },
+              {
+                "word": "mismo",
+                "start": 161.45499,
+                "end": 161.69499,
+                "confidence": 1
+              },
+              {
+                "word": "que",
+                "start": 161.69499,
+                "end": 162.015,
+                "confidence": 1
+              },
+              {
+                "word": "gasta",
+                "start": 162.015,
+                "end": 162.17499,
+                "confidence": 1
+              },
+              {
+                "word": "hoy",
+                "start": 162.17499,
+                "end": 162.67499,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "presenta",
+                "start": 162.735,
+                "end": 163.135,
+                "confidence": 1
+              },
+              {
+                "word": "los",
+                "start": 163.135,
+                "end": 163.375,
+                "confidence": 1
+              },
+              {
+                "word": "beneficios",
+                "start": 163.375,
+                "end": 163.875,
+                "confidence": 1
+              },
+              {
+                "word": "resuelve",
+                "start": 164.095,
+                "end": 164.415,
+                "confidence": 1
+              },
+              {
+                "word": "las",
+                "start": 164.415,
+                "end": 164.575,
+                "confidence": 1
+              },
+              {
+                "word": "dudas",
+                "start": 164.575,
+                "end": 165.075,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 165.23,
+                "end": 165.54999,
+                "confidence": 1
+              },
+              {
+                "word": "detecta",
+                "start": 165.54999,
+                "end": 165.87,
+                "confidence": 1
+              },
+              {
+                "word": "el",
+                "start": 165.87,
+                "end": 166.11,
+                "confidence": 1
+              },
+              {
+                "word": "interés",
+                "start": 166.11,
+                "end": 166.51,
+                "confidence": 1
+              },
+              {
+                "word": "del",
+                "start": 166.51,
+                "end": 166.67,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "cliente",
+                "start": 166.67,
+                "end": 167.17,
+                "confidence": 0.95874023
+              },
+              {
+                "word": "registra",
+                "start": 167.23,
+                "end": 167.73,
+                "confidence": 0.9995117
+              },
+              {
+                "word": "todo",
+                "start": 167.87,
+                "end": 168.11,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 168.11,
+                "end": 168.18999,
+                "confidence": 0.98291016
+              },
+              {
+                "word": "crea",
+                "start": 168.18999,
+                "end": 168.43,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "una",
+                "start": 168.43,
+                "end": 168.59,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "tarea",
+                "start": 168.59,
+                "end": 168.82999,
+                "confidence": 1
+              },
+              {
+                "word": "para",
+                "start": 168.82999,
+                "end": 168.98999,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "que",
+                "start": 168.98999,
+                "end": 169.15,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "un",
+                "start": 169.15,
+                "end": 169.31,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "asesor",
+                "start": 169.31,
+                "end": 169.70999,
+                "confidence": 1
+              },
+              {
+                "word": "humano",
+                "start": 169.70999,
+                "end": 170.20999,
+                "confidence": 1
+              },
+              {
+                "word": "especializado",
+                "start": 170.51,
+                "end": 170.75,
+                "confidence": 1
+              },
+              {
+                "word": "cierre",
+                "start": 170.75,
+                "end": 170.98999,
+                "confidence": 1
+              },
+              {
+                "word": "la",
+                "start": 170.98999,
+                "end": 171.15,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "venta",
+                "start": 171.15,
+                "end": 171.65,
+                "confidence": 0.99853516
+              },
+              {
+                "word": "todo",
+                "start": 171.70999,
+                "end": 171.95,
+                "confidence": 1
+              },
+              {
+                "word": "esto",
+                "start": 171.95,
+                "end": 172.34999,
+                "confidence": 0.99121094
+              },
+              {
+                "word": "ocurre",
+                "start": 172.34999,
+                "end": 172.59,
+                "confidence": 1
+              },
+              {
+                "word": "en",
+                "start": 172.59,
+                "end": 172.67,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "una",
+                "start": 172.67,
+                "end": 172.90999,
+                "confidence": 1
+              },
+              {
+                "word": "sola",
+                "start": 172.90999,
+                "end": 173.06999,
+                "confidence": 1
+              },
+              {
+                "word": "llamada",
+                "start": 173.06999,
+                "end": 173.56999,
+                "confidence": 0.96875
+              },
+              {
+                "word": "sin",
+                "start": 174.18999,
+                "end": 174.43,
+                "confidence": 1
+              },
+              {
+                "word": "intervención",
+                "start": 174.43,
+                "end": 174.93,
+                "confidence": 1
+              },
+              {
+                "word": "humana",
+                "start": 175.06999,
+                "end": 175.56999,
+                "confidence": 0.9995117
+              },
+              {
+                "word": "el",
+                "start": 176.03,
+                "end": 176.18999,
+                "confidence": 1
+              },
+              {
+                "word": "cliente",
+                "start": 176.18999,
+                "end": 176.51,
+                "confidence": 1
+              },
+              {
+                "word": "quedó",
+                "start": 176.51,
+                "end": 176.90999,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "interesado",
+                "start": 176.90999,
+                "end": 177.39,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 177.39,
+                "end": 177.47,
+                "confidence": 0.9526367
+              },
+              {
+                "word": "escribe",
+                "start": 177.47,
+                "end": 177.87,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 177.87,
+                "end": 178.03,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "nuevo",
+                "start": 178.03,
+                "end": 178.26999,
+                "confidence": 1
+              },
+              {
+                "word": "por",
+                "start": 178.26999,
+                "end": 178.43,
+                "confidence": 1
+              },
+              {
+                "word": "whatsapp",
+                "start": 178.43,
+                "end": 178.93,
+                "confidence": 0.7348633
+              },
+              {
+                "word": "pero",
+                "start": 179.175,
+                "end": 179.33499,
+                "confidence": 1
+              },
+              {
+                "word": "esta",
+                "start": 179.33499,
+                "end": 179.415,
+                "confidence": 0.9819336
+              },
+              {
+                "word": "vez",
+                "start": 179.415,
+                "end": 179.735,
+                "confidence": 1
+              },
+              {
+                "word": "no",
+                "start": 179.735,
+                "end": 179.97499,
+                "confidence": 0.9921875
+              },
+              {
+                "word": "responde",
+                "start": 179.97499,
+                "end": 180.295,
+                "confidence": 1
+              },
+              {
+                "word": "un",
+                "start": 180.295,
+                "end": 180.375,
+                "confidence": 0.8989258
+              },
+              {
+                "word": "bot",
+                "start": 180.375,
+                "end": 180.855,
+                "confidence": 0.84765625
+              },
+              {
+                "word": "detrás",
+                "start": 180.855,
+                "end": 181.33499,
+                "confidence": 1
+              },
+              {
+                "word": "hay",
+                "start": 181.33499,
+                "end": 181.495,
+                "confidence": 0.98535156
+              },
+              {
+                "word": "un",
+                "start": 181.495,
+                "end": 181.655,
+                "confidence": 0.99609375
+              },
+              {
+                "word": "asesor",
+                "start": 181.655,
+                "end": 181.97499,
+                "confidence": 1
+              },
+              {
+                "word": "humano",
+                "start": 181.97499,
+                "end": 182.47499,
+                "confidence": 1
+              },
+              {
+                "word": "especializado",
+                "start": 182.775,
+                "end": 183.015,
+                "confidence": 0.9941406
+              },
+              {
+                "word": "el",
+                "start": 183.015,
+                "end": 183.255,
+                "confidence": 1
+              },
+              {
+                "word": "asesor",
+                "start": 183.255,
+                "end": 183.495,
+                "confidence": 1
+              },
+              {
+                "word": "conoce",
+                "start": 183.495,
+                "end": 183.895,
+                "confidence": 1
+              },
+              {
+                "word": "todo",
+                "start": 183.895,
+                "end": 184.055,
+                "confidence": 1
+              },
+              {
+                "word": "el",
+                "start": 184.055,
+                "end": 184.215,
+                "confidence": 1
+              },
+              {
+                "word": "historial",
+                "start": 184.215,
+                "end": 184.715,
+                "confidence": 0.859375
+              },
+              {
+                "word": "la",
+                "start": 184.775,
+                "end": 185.015,
+                "confidence": 1
+              },
+              {
+                "word": "conversación",
+                "start": 185.015,
+                "end": 185.495,
+                "confidence": 1
+              },
+              {
+                "word": "nunca",
+                "start": 185.495,
+                "end": 185.815,
+                "confidence": 1
+              },
+              {
+                "word": "empieza",
+                "start": 185.815,
+                "end": 186.055,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 186.055,
+                "end": 186.375,
+                "confidence": 0.99316406
+              },
+              {
+                "word": "cero",
+                "start": 186.375,
+                "end": 186.855,
+                "confidence": 0.8803711
+              },
+              {
+                "word": "cierra",
+                "start": 186.855,
+                "end": 187.095,
+                "confidence": 1
+              },
+              {
+                "word": "la",
+                "start": 187.095,
+                "end": 187.255,
+                "confidence": 0.9941406
+              },
+              {
+                "word": "venta",
+                "start": 187.255,
+                "end": 187.575,
+                "confidence": 0.9506836
+              },
+              {
+                "word": "el",
+                "start": 187.575,
+                "end": 187.815,
+                "confidence": 1
+              },
+              {
+                "word": "tablero",
+                "start": 187.815,
+                "end": 188.135,
+                "confidence": 1
+              },
+              {
+                "word": "pasa",
+                "start": 188.135,
+                "end": 188.295,
+                "confidence": 0.98828125
+              },
+              {
+                "word": "a",
+                "start": 188.295,
+                "end": 188.61499,
+                "confidence": 0.9277344
+              },
+              {
+                "word": "venta",
+                "start": 188.61499,
+                "end": 188.935,
+                "confidence": 0.96875
+              },
+              {
+                "word": "cerrada",
+                "start": 188.935,
+                "end": 189.255,
+                "confidence": 0.98828125
+              },
+              {
+                "word": "y",
+                "start": 189.255,
+                "end": 189.33499,
+                "confidence": 0.64404297
+              },
+              {
+                "word": "el",
+                "start": 189.33499,
+                "end": 189.495,
+                "confidence": 1
+              },
+              {
+                "word": "cliente",
+                "start": 189.495,
+                "end": 189.895,
+                "confidence": 1
+              },
+              {
+                "word": "recibe",
+                "start": 189.895,
+                "end": 190.215,
+                "confidence": 1
+              },
+              {
+                "word": "su",
+                "start": 190.215,
+                "end": 190.295,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "confirmación",
+                "start": 190.295,
+                "end": 190.775,
+                "confidence": 1
+              },
+              {
+                "word": "por",
+                "start": 190.775,
+                "end": 191.015,
+                "confidence": 1
+              },
+              {
+                "word": "sms",
+                "start": 191.015,
+                "end": 191.515,
+                "confidence": 0.96875
+              },
+              {
+                "word": "al",
+                "start": 192.375,
+                "end": 192.69499,
+                "confidence": 0.8989258
+              },
+              {
+                "word": "instante",
+                "start": 192.69499,
+                "end": 193.11,
+                "confidence": 0.9238281
+              },
+              {
+                "word": "pero",
+                "start": 193.19,
+                "end": 193.27,
+                "confidence": 1
+              },
+              {
+                "word": "el",
+                "start": 193.27,
+                "end": 193.51,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "journey",
+                "start": 193.51,
+                "end": 193.83,
+                "confidence": 0.9995117
+              },
+              {
+                "word": "no",
+                "start": 193.83,
+                "end": 193.99,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "termina",
+                "start": 193.99,
+                "end": 194.31,
+                "confidence": 1
+              },
+              {
+                "word": "con",
+                "start": 194.31,
+                "end": 194.47,
+                "confidence": 1
+              },
+              {
+                "word": "la",
+                "start": 194.47,
+                "end": 194.55,
+                "confidence": 1
+              },
+              {
+                "word": "venta",
+                "start": 194.55,
+                "end": 195.05,
+                "confidence": 0.7963867
+              },
+              {
+                "word": "seguimos",
+                "start": 195.19,
+                "end": 195.63,
+                "confidence": 1
+              },
+              {
+                "word": "acompañando",
+                "start": 195.63,
+                "end": 196.07,
+                "confidence": 1
+              },
+              {
+                "word": "al",
+                "start": 196.07,
+                "end": 196.31,
+                "confidence": 1
+              },
+              {
+                "word": "cliente",
+                "start": 196.31,
+                "end": 196.81,
+                "confidence": 0.9016113
+              },
+              {
+                "word": "analizamos",
+                "start": 196.95,
+                "end": 197.45,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "su",
+                "start": 197.51,
+                "end": 197.75,
+                "confidence": 1
+              },
+              {
+                "word": "uso",
+                "start": 197.75,
+                "end": 197.99,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 197.99,
+                "end": 198.23,
+                "confidence": 1
+              },
+              {
+                "word": "comportamiento",
+                "start": 198.23,
+                "end": 198.73,
+                "confidence": 0.8129883
+              },
+              {
+                "word": "y",
+                "start": 198.95,
+                "end": 199.19,
+                "confidence": 1
+              },
+              {
+                "word": "lanzamos",
+                "start": 199.19,
+                "end": 199.67,
+                "confidence": 1
+              },
+              {
+                "word": "campañas",
+                "start": 199.67,
+                "end": 200.15,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 200.15,
+                "end": 200.31,
+                "confidence": 1
+              },
+              {
+                "word": "fidelización",
+                "start": 200.31,
+                "end": 200.81,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 201.11,
+                "end": 201.35,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "upsell",
+                "start": 201.35,
+                "end": 201.85,
+                "confidence": 0.96484375
+              },
+              {
+                "word": "en",
+                "start": 201.99,
+                "end": 202.15,
+                "confidence": 0.85546875
+              },
+              {
+                "word": "el",
+                "start": 202.15,
+                "end": 202.39,
+                "confidence": 1
+              },
+              {
+                "word": "momento",
+                "start": 202.39,
+                "end": 202.63,
+                "confidence": 1
+              },
+              {
+                "word": "justo",
+                "start": 202.63,
+                "end": 203.13,
+                "confidence": 0.9995117
+              },
+              {
+                "word": "la",
+                "start": 203.19,
+                "end": 203.35,
+                "confidence": 1
+              },
+              {
+                "word": "venta",
+                "start": 203.35,
+                "end": 203.59,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "deja",
+                "start": 203.59,
+                "end": 203.83,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 203.83,
+                "end": 203.99,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "ser",
+                "start": 203.99,
+                "end": 204.15,
+                "confidence": 1
+              },
+              {
+                "word": "una",
+                "start": 204.15,
+                "end": 204.39,
+                "confidence": 1
+              },
+              {
+                "word": "transacción",
+                "start": 204.39,
+                "end": 204.89,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 205.11,
+                "end": 205.19,
+                "confidence": 0.90625
+              },
+              {
+                "word": "se",
+                "start": 205.19,
+                "end": 205.43,
+                "confidence": 1
+              },
+              {
+                "word": "convierte",
+                "start": 205.43,
+                "end": 205.75,
+                "confidence": 1
+              },
+              {
+                "word": "en",
+                "start": 205.75,
+                "end": 205.99,
+                "confidence": 1
+              },
+              {
+                "word": "una",
+                "start": 205.99,
+                "end": 206.15,
+                "confidence": 1
+              },
+              {
+                "word": "relación",
+                "start": 206.15,
+                "end": 206.65,
+                "confidence": 0.97753906
+              },
+              {
+                "word": "esto",
+                "start": 206.87,
+                "end": 207.11,
+                "confidence": 0.9892578
+              },
+              {
+                "word": "es",
+                "start": 207.11,
+                "end": 207.35,
+                "confidence": 1
+              },
+              {
+                "word": "acertis",
+                "start": 207.35,
+                "end": 207.85,
+                "confidence": 0.89534503
+              },
+              {
+                "word": "un",
+                "start": 208.365,
+                "end": 208.525,
+                "confidence": 0.9165039
+              },
+              {
+                "word": "ecosistema",
+                "start": 208.525,
+                "end": 209.025,
+                "confidence": 1
+              },
+              {
+                "word": "que",
+                "start": 209.085,
+                "end": 209.325,
+                "confidence": 1
+              },
+              {
+                "word": "combina",
+                "start": 209.325,
+                "end": 209.725,
+                "confidence": 1
+              },
+              {
+                "word": "talento",
+                "start": 209.725,
+                "end": 210.225,
+                "confidence": 0.9946289
+              },
+              {
+                "word": "tecnología",
+                "start": 210.765,
+                "end": 211.265,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 211.325,
+                "end": 211.825,
+                "confidence": 0.97509766
+              },
+              {
+                "word": "procesos",
+                "start": 211.885,
+                "end": 212.045,
+                "confidence": 1
+              },
+              {
+                "word": "para",
+                "start": 212.045,
+                "end": 212.205,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "acompañar",
+                "start": 212.205,
+                "end": 212.525,
+                "confidence": 1
+              },
+              {
+                "word": "tu",
+                "start": 212.525,
+                "end": 212.685,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "operación",
+                "start": 212.685,
+                "end": 213.185,
+                "confidence": 1
+              },
+              {
+                "word": "en",
+                "start": 213.485,
+                "end": 213.645,
+                "confidence": 0.5444336
+              },
+              {
+                "word": "cualquier",
+                "start": 213.645,
+                "end": 214.125,
+                "confidence": 1
+              },
+              {
+                "word": "sector",
+                "start": 214.125,
+                "end": 214.625,
+                "confidence": 1
+              },
+              {
+                "word": "nuestro",
+                "start": 214.765,
+                "end": 215.165,
+                "confidence": 1
+              },
+              {
+                "word": "diferencial",
+                "start": 215.165,
+                "end": 215.645,
+                "confidence": 1
+              },
+              {
+                "word": "no",
+                "start": 215.645,
+                "end": 215.965,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "es",
+                "start": 215.965,
+                "end": 216.045,
+                "confidence": 1
+              },
+              {
+                "word": "solo",
+                "start": 216.045,
+                "end": 216.285,
+                "confidence": 0.9951172
+              },
+              {
+                "word": "la",
+                "start": 216.285,
+                "end": 216.445,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "tecnología",
+                "start": 216.445,
+                "end": 216.945,
+                "confidence": 1
+              },
+              {
+                "word": "que",
+                "start": 217.005,
+                "end": 217.085,
+                "confidence": 1
+              },
+              {
+                "word": "usamos",
+                "start": 217.085,
+                "end": 217.585,
+                "confidence": 0.9921875
+              },
+              {
+                "word": "es",
+                "start": 217.725,
+                "end": 217.885,
+                "confidence": 1
+              },
+              {
+                "word": "el",
+                "start": 217.885,
+                "end": 218.205,
+                "confidence": 1
+              },
+              {
+                "word": "talento",
+                "start": 218.205,
+                "end": 218.705,
+                "confidence": 1
+              },
+              {
+                "word": "humano",
+                "start": 218.765,
+                "end": 219.165,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 219.165,
+                "end": 219.245,
+                "confidence": 0.97802734
+              },
+              {
+                "word": "el",
+                "start": 219.245,
+                "end": 219.485,
+                "confidence": 1
+              },
+              {
+                "word": "conocimiento",
+                "start": 219.485,
+                "end": 219.885,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 219.885,
+                "end": 219.965,
+                "confidence": 1
+              },
+              {
+                "word": "los",
+                "start": 219.965,
+                "end": 220.205,
+                "confidence": 1
+              },
+              {
+                "word": "procesos",
+                "start": 220.205,
+                "end": 220.685,
+                "confidence": 1
+              },
+              {
+                "word": "lo",
+                "start": 220.685,
+                "end": 220.925,
+                "confidence": 0.5732422
+              },
+              {
+                "word": "que",
+                "start": 220.925,
+                "end": 221.085,
+                "confidence": 1
+              },
+              {
+                "word": "nos",
+                "start": 221.085,
+                "end": 221.245,
+                "confidence": 1
+              },
+              {
+                "word": "permite",
+                "start": 221.245,
+                "end": 221.645,
+                "confidence": 1
+              },
+              {
+                "word": "generar",
+                "start": 221.645,
+                "end": 221.965,
+                "confidence": 1
+              },
+              {
+                "word": "soluciones",
+                "start": 221.965,
+                "end": 222.445,
+                "confidence": 1
+              },
+              {
+                "word": "reales",
+                "start": 222.445,
+                "end": 222.945,
+                "confidence": 0.9975586
+              },
+              {
+                "word": "conversemos",
+                "start": 223.005,
+                "end": 223.505,
+                "confidence": 0.9995117
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

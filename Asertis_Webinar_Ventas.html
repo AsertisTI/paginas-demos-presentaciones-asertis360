@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asertis BPS · Ventas con Agente IA + talento humano</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@0.263.0/dist/umd/lucide.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      brand:  '#FF6B35',
+      brand2: '#FF8A5C',
+      ink:    '#1E293B',
+      ink2:   '#475569',
+      navy:   '#1B3A5C',
+      navyd:  '#0D253F',
+      pine:   '#1B3A5C',
+      grn:    '#00BFA6',
+      cream:  '#F8FAFC',
+      wa:     '#008069',
+      waout:  '#D9FDD3'
+    },
+    fontFamily: { sans: ['Inter','-apple-system','"Segoe UI"','sans-serif'] }
+  }}
+}
+</script>
+<style>
+  html,body{height:100%;overflow:hidden;background:#F8FAFC}
+  *{-webkit-font-smoothing:antialiased}
+  #stage{position:fixed;inset:0;overflow:hidden}
+
+  /* ---------- scene transitions ---------- */
+  .scene{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .65s ease;display:flex;flex-direction:column}
+  .scene.active{opacity:1;pointer-events:auto}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+  .scene.active .reveal{opacity:1;transform:none}
+  .scene.active .d1{transition-delay:.15s}.scene.active .d2{transition-delay:.3s}.scene.active .d3{transition-delay:.45s}
+  .scene.active .d4{transition-delay:.6s}.scene.active .d5{transition-delay:.75s}.scene.active .d6{transition-delay:.9s}
+  .scene.active .d7{transition-delay:1.05s}.scene.active .d8{transition-delay:1.2s}
+
+  /* ---------- decorations ---------- */
+  .dots{background-image:radial-gradient(rgba(255,107,53,.14) 1.5px,transparent 1.5px);background-size:22px 22px}
+  .dotsg{background-image:radial-gradient(rgba(0,191,166,.14) 1.5px,transparent 1.5px);background-size:22px 22px}
+  .navygrad{background:linear-gradient(135deg,#1B3A5C 0%,#0D253F 100%)}
+  .blob{position:absolute;border-radius:50%;pointer-events:none;animation:blobfloat 18s ease-in-out infinite}
+  @keyframes blobfloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-30px) scale(1.05)}}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  .floaty{animation:floaty 5s ease-in-out infinite}
+  @keyframes spinSlow{to{transform:rotate(360deg)}}
+  .spin-slow{animation:spinSlow 40s linear infinite}
+  @keyframes ringPulse{0%{transform:scale(.85);opacity:.9}100%{transform:scale(1.7);opacity:0}}
+  .ring-pulse{animation:ringPulse 1.8s ease-out infinite}
+  @keyframes glowPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,107,53,.45)}50%{box-shadow:0 0 0 14px rgba(255,107,53,0)}}
+  .glow-pulse{animation:glowPulse 2s ease-in-out infinite}
+
+  /* ---------- subtitle ---------- */
+  #subwrap{position:fixed;left:50%;transform:translateX(-50%);bottom:86px;z-index:60;width:min(900px,92vw);pointer-events:none;display:none}
+  body.subs-on #subwrap{display:block}
+  #sub{background:rgba(13,37,63,.92);backdrop-filter:blur(10px);border-left:4px solid #FF6B35;color:#fff;
+       border-radius:12px;padding:14px 22px;font-size:clamp(15px,1.6vw,20px);line-height:1.45;font-weight:600;
+       box-shadow:0 12px 40px rgba(13,26,36,.35);opacity:0;transition:opacity .3s}
+  #sub.show{opacity:1}
+  @keyframes subIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  #sub.pop{animation:subIn .45s cubic-bezier(.22,1,.36,1)}
+
+  /* ---------- control bar ---------- */
+  #bar{position:fixed;right:18px;bottom:18px;z-index:70;display:flex;align-items:center;gap:14px;
+       background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border:1px solid rgba(33,51,67,.12);
+       border-radius:18px;padding:8px 18px;box-shadow:0 10px 36px rgba(13,26,36,.18);
+       transition:all .5s cubic-bezier(.22,1,.36,1)}
+  /* modo compacto durante la reproducción: se contrae y se ancla a la izquierda */
+  #bar.mini{bottom:14px;padding:5px 9px;gap:7px;opacity:.55}
+  #bar.mini:hover{opacity:1}
+  #bar.mini #btnPlay{width:2.3rem;height:2.3rem}
+  #bar.mini #btnPrev,#bar.mini #btnNext{width:1.8rem;height:1.8rem}
+  #bar.mini #dots,#bar.mini #btnCC{display:none}
+  #bar.mini:hover #dots{display:flex}
+  #bar.mini:hover #btnCC{display:block}
+  .dot{width:9px;height:9px;border-radius:99px;background:#D8DEE4;cursor:pointer;transition:all .35s}
+  .dot.on{background:#FF6B35;width:26px}
+  #prog{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,#FF6B35,#FF8A5C);z-index:80;width:0%;transition:width .25s linear;border-radius:0 4px 4px 0}
+
+  /* ---------- whatsapp ---------- */
+  .phone{width:min(330px,30vw);border-radius:38px;background:#0b141a;padding:10px;box-shadow:0 30px 80px rgba(13,26,36,.4),0 0 0 1px rgba(255,255,255,.08) inset}
+  .phone-scr{border-radius:30px;overflow:hidden;display:flex;flex-direction:column;height:100%;background:#ECE5DD}
+  .wa-bg{background-color:#EFE7DE;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cg fill='%23d8cfc4' fill-opacity='.35'%3E%3Ccircle cx='14' cy='14' r='2'/%3E%3Ccircle cx='54' cy='34' r='2'/%3E%3Ccircle cx='30' cy='62' r='2'/%3E%3Cpath d='M60 8l4 4-4 4-4-4z'/%3E%3C/g%3E%3C/svg%3E")}
+  .bub{max-width:82%;padding:7px 10px 5px;border-radius:10px;font-size:12.5px;line-height:1.4;color:#111B21;
+       box-shadow:0 1px 1px rgba(0,0,0,.12);position:relative;animation:msgpop .45s cubic-bezier(.22,1,.36,1)}
+  .bub.in{background:#fff;border-top-left-radius:2px;align-self:flex-start}
+  .bub.out{background:#D9FDD3;border-top-right-radius:2px;align-self:flex-end}
+  .bub .meta{display:flex;justify-content:flex-end;gap:3px;align-items:center;font-size:9.5px;color:#667781;margin-top:2px}
+  @keyframes msgpop{from{opacity:0;transform:translateY(14px) scale(.92)}to{opacity:1;transform:none}}
+  .typing{display:inline-flex;gap:4px;padding:10px 14px;background:#fff;border-radius:10px;border-top-left-radius:2px;align-self:flex-start;animation:msgpop .3s}
+  .typing i{width:7px;height:7px;border-radius:99px;background:#9AA8B2;animation:tp 1.1s infinite}
+  .typing i:nth-child(2){animation-delay:.18s}.typing i:nth-child(3){animation-delay:.36s}
+  @keyframes tp{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-5px);opacity:1}}
+  .ticks{color:#53BDEB;font-weight:700}
+
+  /* receipt + scan */
+  .receipt{background:#fff;border-radius:10px;overflow:hidden;width:200px;box-shadow:0 1px 2px rgba(0,0,0,.15);animation:msgpop .45s}
+  .scanline{position:absolute;left:0;right:0;height:36px;background:linear-gradient(180deg,transparent,rgba(0,191,166,.35),transparent);
+            animation:scan 1.4s ease-in-out infinite;border-radius:6px}
+  @keyframes scan{0%{top:-10%}50%{top:80%}100%{top:-10%}}
+
+  /* ---------- backstage feed ---------- */
+  .ev{display:flex;gap:12px;align-items:flex-start;opacity:.22;transition:all .6s;transform:translateX(8px)}
+  .ev.on{opacity:1;transform:none}
+  .ev.on .evdot{background:#00BFA6;box-shadow:0 0 0 5px rgba(0,191,166,.18)}
+  .evdot{width:12px;height:12px;border-radius:99px;background:#C7D0D8;margin-top:4px;flex:none;transition:all .5s}
+  .evline{position:absolute;left:5px;top:14px;bottom:-12px;width:2px;background:rgba(33,51,67,.12)}
+
+  /* ---------- kanban ---------- */
+  .kcol{background:#F1F5F9;border-radius:12px;display:flex;flex-direction:column;min-width:0}
+  .kcard{background:#fff;border-radius:10px;padding:10px 12px;box-shadow:0 2px 6px rgba(13,26,36,.08);border:1px solid #e2e8f0;cursor:default;transition:all .25s}
+  .kcard:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(13,37,63,.12)}
+  .kcard.hero{border:2px solid #FF6B35;box-shadow:0 10px 26px rgba(255,107,53,.22)}
+
+  /* ---------- waveform ---------- */
+  .wv{display:flex;align-items:center;gap:3px;height:54px}
+  .wv i{width:4px;border-radius:99px;background:linear-gradient(180deg,#FF8A5C,#FF6B35);height:16%;animation:wvb 1s ease-in-out infinite;animation-play-state:paused}
+  .wv.live i{animation-play-state:running}
+  @keyframes wvb{0%,100%{height:14%}50%{height:92%}}
+
+  /* sms toast */
+  @keyframes smsIn{0%{transform:translateY(-120%);opacity:0}12%{transform:none;opacity:1}88%{transform:none;opacity:1}100%{transform:translateY(-120%);opacity:0}}
+  .sms-in{animation:smsIn 6s cubic-bezier(.22,1,.36,1) forwards}
+
+  /* svg draws */
+  .drawpath{stroke-dasharray:1400;stroke-dashoffset:1400;transition:stroke-dashoffset 2.6s ease}
+  .scene.active .drawpath{stroke-dashoffset:0}
+  @keyframes dashmove{to{stroke-dashoffset:-40}}
+  .flowline{stroke-dasharray:8 8;animation:dashmove 1.2s linear infinite}
+
+  .chip{display:inline-flex;align-items:center;gap:8px;border-radius:20px;font-weight:600}
+  .glass{background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border:1px solid #e2e8f0;box-shadow:0 14px 40px rgba(13,37,63,.10)}
+  .grad-text{background:linear-gradient(90deg,#FF6B35,#00BFA6);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* ---------- estilo Asertis 360 (rounded) ---------- */
+  .card360{background:#fff;border:1px solid #e2e8f0;border-radius:12px;transition:all .25s}
+  .card360:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(13,37,63,.12);border-color:rgba(255,107,53,.35)}
+  .icon360{width:42px;height:42px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+    animation:dataReceive 4s ease-in-out infinite}
+  @keyframes dataReceive{0%,80%,100%{box-shadow:0 0 0 0 transparent;transform:scale(1)}40%{box-shadow:0 0 12px 4px rgba(255,107,53,.35);transform:scale(1.08)}}
+  .tunder{position:relative}
+  .tunder::after{content:'';display:block;width:60px;height:3px;border-radius:2px;margin-top:12px;
+    background:linear-gradient(90deg,#FF6B35,#00BFA6)}
+  .tunder.tc::after{margin-left:auto;margin-right:auto}
+  .badge360{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:600;
+    color:#FF8A5C;border:1px solid rgba(255,107,53,.35);
+    background:linear-gradient(90deg,rgba(255,107,53,.15),rgba(0,191,166,.15));background-size:200% 100%;
+    animation:shimmer 4s linear infinite}
+  @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+  .pulse360{animation:pulse360 3s ease-in-out infinite}
+  @keyframes pulse360{0%,100%{box-shadow:0 0 0 8px rgba(255,107,53,.2),0 0 0 16px rgba(255,107,53,.08)}
+    50%{box-shadow:0 0 0 12px rgba(255,107,53,.3),0 0 0 24px rgba(255,107,53,.12)}}
+  .kb{overflow:hidden;border-radius:16px}
+  .kb img{transform:scale(1.0);transition:transform 7s ease}
+  .scene.active .kb img{transform:scale(1.08)}
+  .glowwrap{position:relative}
+  .glowwrap::before{content:'';position:absolute;width:85%;height:85%;top:8%;left:8%;border-radius:50%;z-index:0;
+    background:radial-gradient(circle,rgba(255,107,53,.25) 0%,rgba(0,191,166,.15) 50%,transparent 70%);
+    filter:blur(40px);animation:blobfloat 15s ease-in-out infinite}
+
+  /* ---------- hub orbital ---------- */
+  .hub{position:relative;width:480px;height:480px}
+  .hub-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:130px;height:130px;border-radius:50%;
+    background:linear-gradient(135deg,#FF6B35,#00BFA6);color:#fff;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;z-index:2;animation:pulse360 3s ease-in-out infinite}
+  .hub-ring{position:absolute;top:50%;left:50%;border-radius:50%;pointer-events:none}
+  .hub-ring--1{width:220px;height:220px;border:2px dashed rgba(255,107,53,.25);animation:hubOrbit 15s linear infinite}
+  .hub-ring--2{width:330px;height:330px;border:1.5px dashed rgba(0,191,166,.2);animation:hubOrbit 20s linear infinite reverse}
+  @keyframes hubOrbit{from{transform:translate(-50%,-50%) rotate(0)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+  .spoke{position:absolute;transform:translate(-50%,-50%);width:128px;padding:13px 10px;text-align:center;z-index:1;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);border-radius:10px;transition:all .25s;
+    display:flex;flex-direction:column;align-items:center;gap:5px}
+  .spoke:hover{background:rgba(255,255,255,.16);border-color:rgba(255,107,53,.4);transform:translate(-50%,-50%) scale(1.06)}
+  .spoke .icon360{width:38px;height:38px;background:rgba(255,107,53,.18);color:#FF8A5C}
+  .spoke:nth-child(even) .icon360{background:rgba(0,191,166,.18);color:#00BFA6}
+  .hub-conns{position:absolute;top:50%;left:50%;width:0;height:0;z-index:0;pointer-events:none}
+  .conn{position:absolute;top:0;left:0;width:120px;height:2px;transform-origin:0 50%;transform:rotate(var(--a,0deg))}
+  .conn-line{position:absolute;inset:0;border-top:2px dashed rgba(255,107,53,.3)}
+  .conn i{position:absolute;top:-2px;width:6px;height:6px;border-radius:50%}
+  .conn i.out{background:#FF6B35;box-shadow:0 0 8px rgba(255,107,53,.6);animation:connOut 2.5s ease-in-out infinite;animation-delay:var(--d,0s)}
+  .conn i.in{background:#00BFA6;box-shadow:0 0 8px rgba(0,191,166,.6);animation:connIn 2.5s ease-in-out infinite;animation-delay:var(--d,0s)}
+  @keyframes connOut{0%{left:0;opacity:0}10%{opacity:1}90%{opacity:1}100%{left:calc(100% - 6px);opacity:0}}
+  @keyframes connIn{0%{left:calc(100% - 6px);opacity:0}10%{opacity:1}90%{opacity:1}100%{left:0;opacity:0}}
+
+  /* marcador resaltado animado */
+  .hl-marker{position:relative;display:inline-block;z-index:1}
+  .hl-marker::after{content:'';position:absolute;left:-3%;right:-3%;bottom:8%;height:38%;border-radius:4px;z-index:-1;
+    background:linear-gradient(90deg,rgba(255,107,53,.55),rgba(0,191,166,.45));
+    transform:scaleX(0);transform-origin:left;transition:transform .9s 1.7s cubic-bezier(.22,1,.36,1)}
+  .scene.active .hl-marker::after{transform:scaleX(1)}
+
+  /* barras KPI crecientes */
+  .grow .gbar{transform:scaleY(0);transform-origin:bottom}
+  .scene.active .grow .gbar{animation:barGrow .9s cubic-bezier(.22,1,.36,1) forwards;animation-delay:var(--d,0s)}
+  @keyframes barGrow{to{transform:scaleY(1)}}
+  .growx .gbarx{transform:scaleX(0);transform-origin:left}
+  .scene.active .growx .gbarx{animation:barGrowX 1s cubic-bezier(.22,1,.36,1) forwards;animation-delay:var(--d,0s)}
+  @keyframes barGrowX{to{transform:scaleX(1)}}
+</style>
+</head>
+<body class="font-sans text-ink">
+
+<div id="prog"></div>
+
+<!-- brand overlay -->
+<div class="fixed top-5 left-7 z-[65] select-none bg-white border border-[#e2e8f0] shadow-lg shadow-navy/10 px-3.5 py-1.5 rounded-2xl">
+  <img src="LOGO-ASERTIS.webp" alt="Asertis BPS" class="h-11 w-auto" draggable="false">
+</div>
+<div id="sceneTag" class="fixed top-5 right-7 z-[65] chip glass px-4 py-1.5 text-[11px] tracking-widest uppercase text-ink/70"></div>
+
+<div id="stage">
+<!-- ============ SI · APERTURA LOGO ============ -->
+<section class="scene" id="si">
+  <div class="absolute inset-0 bg-white"></div>
+  <div class="absolute inset-0 dots opacity-40"></div>
+  <div class="blob bg-grn" style="width:420px;height:420px;top:-160px;right:-100px;opacity:.06"></div>
+  <div class="blob bg-brand" style="width:340px;height:340px;bottom:-120px;left:-80px;opacity:.05;animation-direction:reverse"></div>
+  <div class="relative flex-1 flex flex-col items-center justify-center text-center px-6">
+    <img src="logo_grande_asertis.png" alt="Asertis BPS" class="reveal w-[30rem] max-w-[80vw]" draggable="false">
+    <div class="reveal d2 mt-1 h-1 w-28 rounded-full" style="background:linear-gradient(90deg,#FF6B35,#00BFA6)"></div>
+    <div class="reveal d3 mt-5 text-ink2 font-bold tracking-[.35em] uppercase" style="font-size:clamp(13px,1.5vw,19px)">Comunicaciones&nbsp;Empresariales</div>
+    <button id="bigPlay" class="reveal d5 mt-12 relative grid place-items-center w-[4.6rem] h-[4.6rem] rounded-full text-white pulse360 hover:scale-105 transition" style="background:linear-gradient(135deg,#FF6B35,#FF8A5C)">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" class="relative ml-1"><path d="M8 5v14l11-7z"/></svg>
+    </button>
+    <div class="reveal d6 mt-4 text-sm text-ink2/70 font-semibold">Iniciar experiencia</div>
+  </div>
+</section>
+
+<!-- ============ SW · INTRO WEBINAR ============ -->
+<section class="scene" id="sw">
+  <div class="absolute inset-0 bg-cream"></div>
+  <div class="absolute inset-0 dots opacity-50"></div>
+  <div class="blob bg-grn" style="width:420px;height:420px;top:-150px;right:-100px;opacity:.06"></div>
+  <div class="blob bg-brand" style="width:340px;height:340px;bottom:-120px;left:-80px;opacity:.05;animation-direction:reverse"></div>
+  <div class="relative flex-1 flex flex-col items-center justify-center text-center px-[6vw]">
+    <div class="reveal badge360 mb-6" style="color:#FF6B35"><i data-lucide="sparkles" data-fb="✨" class="w-3.5 h-3.5"></i> WEBINAR · ASERTIS BPS</div>
+    <p class="reveal d1 text-ink2 font-bold tracking-wide" style="font-size:clamp(17px,1.9vw,24px)">Del diseño a la ejecución:</p>
+    <h2 class="reveal d2 font-black text-navy mt-2" style="font-size:clamp(34px,4.4vw,62px);letter-spacing:-1.5px;line-height:1.1">
+      procesos de venta que<br><span style="background:linear-gradient(90deg,#FF6B35,#E8541A);-webkit-background-clip:text;background-clip:text;color:transparent">multiplican tus resultados</span>
+    </h2>
+    <p class="reveal d3 mt-5 text-ink2 font-medium max-w-2xl leading-relaxed" style="font-size:clamp(15px,1.7vw,21px)">
+      Talento humano <b class="text-brand">+</b> IA <b class="text-grn">+</b> automatización para convertir tu estrategia comercial en <b class="text-ink">ventas reales y sostenibles</b>.
+    </p>
+    <div class="reveal d5 mt-10 flex items-center gap-0 flex-wrap justify-center">
+      <div class="text-center w-44">
+        <div class="chip bg-navy text-white px-5 py-2.5 text-sm mx-auto"><i data-lucide="ruler" data-fb="📐" class="w-4 h-4"></i> Diseño</div>
+        <div class="text-[11.5px] text-ink2/70 font-semibold mt-1.5">estrategia comercial:<br>etapas, mensajes y metas</div>
+      </div>
+      <svg width="34" height="12" viewBox="0 0 34 12" class="mx-1 text-brand -mt-8"><path d="M0 6h28M22 1l8 5-8 5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      <div class="text-center w-44">
+        <div class="chip bg-brand text-white px-5 py-2.5 text-sm mx-auto shadow-lg shadow-brand/30"><i data-lucide="settings" data-fb="⚙️" class="w-4 h-4"></i> Ejecución</div>
+        <div class="text-[11.5px] text-ink2/70 font-semibold mt-1.5">Asertis la opera:<br>talento + IA + automatización</div>
+      </div>
+      <svg width="34" height="12" viewBox="0 0 34 12" class="mx-1 text-brand -mt-8"><path d="M0 6h28M22 1l8 5-8 5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      <div class="text-center w-44">
+        <div class="chip bg-grn text-white px-5 py-2.5 text-sm mx-auto shadow-lg shadow-grn/30"><i data-lucide="bar-chart-3" data-fb="📊" class="w-4 h-4"></i> Resultados</div>
+        <div class="text-[11.5px] text-ink2/70 font-semibold mt-1.5">más conversión, recompra<br>y menos fuga</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ S0 · PORTADA ============ -->
+<section class="scene" id="s0">
+  <div class="absolute inset-0 navygrad"></div>
+  <div class="blob bg-grn" style="width:500px;height:500px;top:-200px;right:-100px;opacity:.06"></div>
+  <div class="blob bg-grn" style="width:300px;height:300px;bottom:-100px;left:-50px;opacity:.06;animation-duration:15s;animation-direction:reverse"></div>
+  <div class="blob bg-brand" style="width:350px;height:350px;top:10%;left:-80px;opacity:.05;animation-duration:22s"></div>
+  <div class="blob bg-brand" style="width:250px;height:250px;bottom:10%;right:-60px;opacity:.07;animation-duration:25s;animation-direction:reverse"></div>
+
+  <div class="relative flex-1 grid grid-cols-1 lg:grid-cols-2 items-center gap-10 px-[7vw]">
+    <div>
+      <div class="reveal badge360 mb-6"><i data-lucide="sparkles" data-fb="✨" class="w-3.5 h-3.5"></i> WEBINAR · EXPERIENCIA EN VIVO</div>
+      <h1 class="reveal d1 font-extrabold leading-[1.1] text-white" style="font-size:clamp(36px,4.4vw,58px);letter-spacing:-1px">
+        Un <span class="grad-text">ecosistema</span> que<br>acompaña tu operación
+      </h1>
+      <p class="reveal d2 mt-6 text-white/75 text-lg max-w-xl font-medium leading-relaxed">
+        Talento humano <b class="text-brand2">especializado</b> <span class="text-brand font-bold">+</span> tecnología <span class="text-grn font-bold">+</span> procesos mapeados de forma constante. Así apoyamos las operaciones de empresas en todos los sectores.
+      </p>
+      <div class="reveal d3 mt-9 chip px-5 py-2.5 text-sm text-white" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18)"><i data-lucide="bot" data-fb="🤖" class="w-4 h-4 text-brand2"></i> Caso de uso real · Ventas con Agente IA</div>
+      <div class="reveal d5 mt-10 flex gap-9 flex-wrap">
+        <div class="stat transition-all duration-500" data-s="0"><div class="text-brand text-[17px]"><i data-lucide="award" data-fb="★" class="w-5 h-5"></i></div><div class="text-white font-extrabold text-2xl" style="letter-spacing:-1px">25+</div><div class="text-[11px] text-white/55 uppercase tracking-wider font-semibold">Años en BPO</div></div>
+        <div class="stat transition-all duration-500" data-s="1"><div class="text-grn text-[17px]"><i data-lucide="layers" data-fb="◎" class="w-5 h-5"></i></div><div class="text-white font-extrabold text-2xl" style="letter-spacing:-1px">360°</div><div class="text-[11px] text-white/55 uppercase tracking-wider font-semibold">Soluciones CX</div></div>
+        <div class="stat transition-all duration-500" data-s="2"><div class="text-brand text-[17px]"><i data-lucide="zap" data-fb="⚡" class="w-5 h-5"></i></div><div class="text-white font-extrabold text-2xl" style="letter-spacing:-1px">≥40%</div><div class="text-[11px] text-white/55 uppercase tracking-wider font-semibold">Autogestión</div></div>
+        <div class="stat transition-all duration-500" data-s="3"><div class="text-grn text-[17px]"><i data-lucide="shield-check" data-fb="✓" class="w-5 h-5"></i></div><div class="text-white font-extrabold text-2xl" style="letter-spacing:-1px">100%</div><div class="text-[11px] text-white/55 uppercase tracking-wider font-semibold">Trazabilidad</div></div>
+      </div>
+    </div>
+    <div class="relative hidden lg:flex justify-center">
+      <div class="relative w-[26rem] glowwrap">
+        <div class="kb relative z-[1]" style="box-shadow:0 20px 40px rgba(0,0,0,.3)">
+          <img src="CALL-CENTER_6.webp" alt="Asertis" class="w-full h-[24rem] object-cover object-top">
+        </div>
+        <div class="reveal d4 absolute -right-10 top-8 z-[2] glass rounded-2xl px-5 py-3 floaty">
+          <div class="text-[10px] font-bold tracking-[.15em] text-ink/45 uppercase">Experiencia</div>
+          <div class="font-extrabold text-brand text-2xl leading-tight">25+ años</div>
+        </div>
+        <div class="reveal d5 absolute -left-12 bottom-10 z-[2] glass rounded-2xl px-5 py-3 floaty" style="animation-delay:1.2s">
+          <div class="text-[10px] font-bold tracking-[.15em] text-ink/45 uppercase">Plataforma</div>
+          <div class="font-extrabold text-grn text-2xl leading-tight">Asertis 360°</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="relative pb-8 text-center text-xs text-white/40 font-semibold tracking-wide">www.asertis.com.co · comercial@asertis.com.co</div>
+</section>
+
+<!-- ============ S1 · QUIÉNES SOMOS ============ -->
+<section class="scene" id="s1">
+  <div class="absolute inset-0 bg-cream"></div>
+  <div class="absolute inset-0 dotsg opacity-50"></div>
+  <div class="relative flex-1 grid lg:grid-cols-[1fr_1.05fr] items-center gap-12 px-[6vw] py-16">
+    <div>
+      <div class="reveal chip text-grn px-4 py-1.5 text-xs uppercase tracking-wider mb-5" style="background:rgba(0,191,166,.1)">Transformación digital aplicada</div>
+      <h2 class="reveal d1 tunder font-extrabold leading-tight" style="font-size:clamp(26px,3.1vw,42px);letter-spacing:-.5px">
+        Todos los dominios de la transformación digital, <span class="grad-text">al servicio de tu operación.</span>
+      </h2>
+      <p class="reveal d4 mt-5 text-ink2 text-[17px] max-w-xl font-medium leading-relaxed">Un solo ecosistema que conecta clientes, procesos, tecnología estratégica y data — operado por especialistas, con calidad y analítica al cien por ciento.</p>
+      <div class="reveal d5 mt-7 kb shadow-xl max-w-xl">
+        <img src="quienes-somos.webp" alt="Quiénes somos · Asertis" class="w-full h-36 object-cover">
+      </div>
+      <div class="reveal d6 mt-6 flex flex-wrap gap-x-8 gap-y-2 text-sm font-bold text-ink/70">
+        <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-brand"></span>25+ años de experiencia</span>
+        <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-grn"></span>Calidad &amp; analítica al 100%</span>
+        <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-navy"></span>Respaldo Fenalco Valle</span>
+      </div>
+    </div>
+    <div class="hidden lg:grid grid-cols-2 gap-5">
+      <div class="reveal d2 card360 dom transition-all duration-500 p-6" data-d="0">
+        <div class="flex items-start justify-between">
+          <div class="icon360 text-brand" style="background:rgba(255,107,53,.12)"><i data-lucide="users" data-fb="👥" class="w-6 h-6"></i></div>
+          <span class="text-[11px] font-extrabold tracking-[.18em] text-ink/30">01</span>
+        </div>
+        <div class="font-extrabold mt-4 text-[16px]">Clientes &amp; experiencia</div>
+        <p class="text-[13px] text-ink2/80 mt-1.5 leading-relaxed">Cada interacción diseñada para fidelizar: CX medida de punta a punta.</p>
+      </div>
+      <div class="reveal d3 card360 dom transition-all duration-500 p-6" data-d="1">
+        <div class="flex items-start justify-between">
+          <div class="icon360 text-grn" style="background:rgba(0,191,166,.12);animation-delay:.7s"><i data-lucide="network" data-fb="🔗" class="w-6 h-6"></i></div>
+          <span class="text-[11px] font-extrabold tracking-[.18em] text-ink/30">02</span>
+        </div>
+        <div class="font-extrabold mt-4 text-[16px]">Procesos mapeados</div>
+        <p class="text-[13px] text-ink2/80 mt-1.5 leading-relaxed">Mapeo constante de tu operación: nada queda fuera del flujo.</p>
+      </div>
+      <div class="reveal d4 card360 dom transition-all duration-500 p-6" data-d="2">
+        <div class="flex items-start justify-between">
+          <div class="icon360 text-navy" style="background:rgba(27,58,92,.1);animation-delay:1.4s"><i data-lucide="cpu" data-fb="⚙️" class="w-6 h-6"></i></div>
+          <span class="text-[11px] font-extrabold tracking-[.18em] text-ink/30">03</span>
+        </div>
+        <div class="font-extrabold mt-4 text-[16px]">Tecnología estratégica</div>
+        <p class="text-[13px] text-ink2/80 mt-1.5 leading-relaxed">IA y automatización donde generan valor, con Asertis 360° al centro.</p>
+      </div>
+      <div class="reveal d5 card360 dom transition-all duration-500 p-6" data-d="3">
+        <div class="flex items-start justify-between">
+          <div class="icon360 text-brand" style="background:rgba(255,107,53,.12);animation-delay:2.1s"><i data-lucide="database" data-fb="📊" class="w-6 h-6"></i></div>
+          <span class="text-[11px] font-extrabold tracking-[.18em] text-ink/30">04</span>
+        </div>
+        <div class="font-extrabold mt-4 text-[16px]">Uso de la data</div>
+        <p class="text-[13px] text-ink2/80 mt-1.5 leading-relaxed">Analítica y speech analytics: decisiones con evidencia, no intuición.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ S2 · PUNTO DE PARTIDA ============ -->
+<section class="scene" id="s2">
+  <div class="absolute inset-0 navygrad"></div>
+  <div class="absolute inset-0" style="background:radial-gradient(60% 80% at 70% 20%, rgba(0,191,166,.18), transparent)"></div>
+  <div class="blob bg-grn" style="width:350px;height:350px;top:-120px;right:-60px;opacity:.06"></div>
+  <div class="blob bg-brand" style="width:280px;height:280px;bottom:-90px;left:-50px;opacity:.05;animation-direction:reverse"></div>
+  <div class="relative flex-1 flex flex-col items-center justify-center px-[6vw] text-white">
+    <div class="reveal chip bg-white/10 text-white/90 px-4 py-1.5 text-xs tracking-[.2em] uppercase mb-5">El punto de partida</div>
+    <h2 class="reveal d1 tunder tc font-extrabold text-center leading-tight" style="font-size:clamp(30px,3.8vw,52px);letter-spacing:-.5px">
+      Todo empieza por <span class="text-brand2">entenderte</span>
+    </h2>
+    <p class="reveal d2 text-white/70 mt-4 text-center max-w-2xl text-lg font-medium">Escuchamos tus preocupaciones y mapeamos tu proceso completo, no solo tu necesidad.</p>
+
+    <div class="relative w-full max-w-5xl mt-12">
+      <svg class="w-full" viewBox="0 0 1000 120" fill="none">
+        <path class="drawpath" d="M40 60 C 180 10, 300 110, 460 60 S 760 10, 960 60" stroke="#FF8A5C" stroke-width="3" stroke-linecap="round" stroke-dasharray="1400"/>
+      </svg>
+      <div class="absolute inset-0 flex justify-between items-center px-2">
+        <div class="reveal d2 text-center w-36"><div class="w-14 h-14 mx-auto rounded-xl bg-white/10 backdrop-blur grid place-items-center border border-white/15 text-white"><i data-lucide="ear" data-fb="👂" class="w-7 h-7"></i></div><div class="mt-2 text-sm font-bold">Escuchar</div><div class="text-[11px] text-white/55">preocupaciones reales</div></div>
+        <div class="reveal d3 text-center w-36"><div class="w-14 h-14 mx-auto rounded-xl bg-white/10 backdrop-blur grid place-items-center border border-white/15 text-white"><i data-lucide="search" data-fb="🔍" class="w-7 h-7"></i></div><div class="mt-2 text-sm font-bold">Entender</div><div class="text-[11px] text-white/55">necesidad y contexto</div></div>
+        <div class="reveal d4 text-center w-36"><div class="w-14 h-14 mx-auto rounded-xl bg-brand grid place-items-center shadow-lg shadow-brand/40 text-white"><i data-lucide="map" data-fb="🗺️" class="w-7 h-7"></i></div><div class="mt-2 text-sm font-bold text-brand2">Mapear el proceso</div><div class="text-[11px] text-white/55">de punta a punta</div></div>
+        <div class="reveal d5 text-center w-36"><div class="w-14 h-14 mx-auto rounded-xl bg-white/10 backdrop-blur grid place-items-center border border-white/15 text-white"><i data-lucide="ruler" data-fb="📐" class="w-7 h-7"></i></div><div class="mt-2 text-sm font-bold">Diseñar</div><div class="text-[11px] text-white/55">la solución a medida</div></div>
+        <div class="reveal d6 text-center w-36"><div class="w-14 h-14 mx-auto rounded-xl bg-grn grid place-items-center shadow-lg shadow-grn/40 text-white"><i data-lucide="settings" data-fb="⚙️" class="w-7 h-7"></i></div><div class="mt-2 text-sm font-bold" style="color:#4ED8C3">Operar &amp; optimizar</div><div class="text-[11px] text-white/55">mejora constante</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ S3 · SECTORES ============ -->
+<section class="scene" id="s3">
+  <div class="absolute inset-0 bg-cream"></div>
+  <div class="absolute inset-0 dots opacity-50"></div>
+  <div class="relative flex-1 flex flex-col justify-center px-[5vw]">
+    <div class="text-center mb-10">
+      <div class="reveal chip bg-grn/10 text-grn px-4 py-1.5 text-xs tracking-[.2em] uppercase mb-4">Experiencia multisectorial</div>
+      <h2 class="reveal d1 tunder tc font-extrabold inline-block" style="font-size:clamp(28px,3.4vw,46px);letter-spacing:-.5px">Hablamos el idioma de <span class="grad-text">tu sector</span></h2>
+    </div>
+    <div class="grid grid-cols-5 gap-4 max-w-7xl mx-auto w-full" id="sectors">
+      <div class="sector reveal d2 rounded-xl bg-white border border-ink/5 overflow-hidden shadow-sm transition-all duration-500" data-k="0">
+        <div class="relative h-24">
+          <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=640&auto=format&fit=crop" class="w-full h-full object-cover" alt="Salud" loading="lazy" onerror="this.parentElement.classList.add('hidden')">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent"></div>
+          <div class="absolute -bottom-4 left-4 w-9 h-9 rounded-xl bg-white shadow-md grid place-items-center text-rose-500"><i data-lucide="stethoscope" data-fb="🩺" class="w-5 h-5"></i></div>
+        </div>
+        <div class="p-4 pt-6">
+          <div class="font-extrabold text-[15px]">Salud</div>
+          <p class="text-[12.5px] text-ink/60 mt-1.5 leading-relaxed">Cada interacción se cuida como a un paciente: citas, autorizaciones y seguimiento con <b class="text-ink">precisión clínica y calidez humana</b>.</p>
+        </div>
+      </div>
+      <div class="sector reveal d3 rounded-xl bg-white border border-ink/5 overflow-hidden shadow-sm transition-all duration-500" data-k="1">
+        <div class="relative h-24">
+          <img src="https://images.unsplash.com/photo-1599707254554-027aeb4deacd?q=80&w=640&auto=format&fit=crop" class="w-full h-full object-cover" alt="Construcción" loading="lazy" onerror="this.parentElement.classList.add('hidden')">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent"></div>
+          <div class="absolute -bottom-4 left-4 w-9 h-9 rounded-xl bg-white shadow-md grid place-items-center text-amber-600"><i data-lucide="hard-hat" data-fb="🏗️" class="w-5 h-5"></i></div>
+        </div>
+        <div class="p-4 pt-6">
+          <div class="font-extrabold text-[15px]">Construcción</div>
+          <p class="text-[12.5px] text-ink/60 mt-1.5 leading-relaxed">Relaciones tan sólidas como una obra bien hecha: preventa, posventa y cartera, <b class="text-ink">plano a plano, sin grietas</b>.</p>
+        </div>
+      </div>
+      <div class="sector reveal d4 rounded-xl bg-white border border-ink/5 overflow-hidden shadow-sm transition-all duration-500" data-k="2">
+        <div class="relative h-24">
+          <img src="https://images.unsplash.com/photo-1553775282-20af80779df7?q=80&w=640&auto=format&fit=crop" class="w-full h-full object-cover" alt="Servicios" loading="lazy" onerror="this.parentElement.classList.add('hidden')">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent"></div>
+          <div class="absolute -bottom-4 left-4 w-9 h-9 rounded-xl bg-white shadow-md grid place-items-center text-sky-600"><i data-lucide="heart-handshake" data-fb="🤝" class="w-5 h-5"></i></div>
+        </div>
+        <div class="p-4 pt-6">
+          <div class="font-extrabold text-[15px]">Servicios</div>
+          <p class="text-[12.5px] text-ink/60 mt-1.5 leading-relaxed">Donde el producto es invisible, la experiencia lo es todo: cada contacto, <b class="text-ink">una promesa cumplida</b>.</p>
+        </div>
+      </div>
+      <div class="sector reveal d5 rounded-xl bg-white border border-ink/5 overflow-hidden shadow-sm transition-all duration-500" data-k="3">
+        <div class="relative h-24">
+          <img src="https://images.unsplash.com/photo-1681311311317-a0561a8eef74?q=80&w=640&auto=format&fit=crop" class="w-full h-full object-cover" alt="Cajas de compensación" loading="lazy" onerror="this.parentElement.classList.add('hidden')">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent"></div>
+          <div class="absolute -bottom-4 left-4 w-9 h-9 rounded-xl bg-white shadow-md grid place-items-center text-grn"><i data-lucide="shield-check" data-fb="🛡️" class="w-5 h-5"></i></div>
+        </div>
+        <div class="p-4 pt-6">
+          <div class="font-extrabold text-[15px]">Cajas de compensación</div>
+          <p class="text-[12.5px] text-ink/60 mt-1.5 leading-relaxed">Millones de afiliados, un solo estándar: subsidios y beneficios a escala, <b class="text-ink">sin perder el toque personal</b>.</p>
+        </div>
+      </div>
+      <div class="sector reveal d6 rounded-xl bg-white border border-ink/5 overflow-hidden shadow-sm transition-all duration-500" data-k="4">
+        <div class="relative h-24">
+          <img src="https://images.unsplash.com/photo-1567958451986-2de427a4a0be?q=80&w=640&auto=format&fit=crop" class="w-full h-full object-cover" alt="Retail" loading="lazy" onerror="this.parentElement.classList.add('hidden')">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent"></div>
+          <div class="absolute -bottom-4 left-4 w-9 h-9 rounded-xl bg-white shadow-md grid place-items-center text-violet-600"><i data-lucide="shopping-bag" data-fb="🛍️" class="w-5 h-5"></i></div>
+        </div>
+        <div class="p-4 pt-6">
+          <div class="font-extrabold text-[15px]">Retail</div>
+          <p class="text-[12.5px] text-ink/60 mt-1.5 leading-relaxed">Del mostrador al WhatsApp: antes, durante y después de la compra, <b class="text-ink">para que el cliente vuelva</b>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ S4 · CASO DE USO ============ -->
+<section class="scene" id="s4">
+  <div class="absolute inset-0 navygrad"></div>
+  <div class="absolute inset-0" style="background:radial-gradient(55% 70% at 30% 80%, rgba(255,107,53,.18), transparent)"></div>
+  <div class="blob bg-brand" style="width:380px;height:380px;top:-140px;left:-80px;opacity:.06"></div>
+  <div class="blob bg-grn" style="width:300px;height:300px;bottom:-100px;right:-60px;opacity:.06;animation-direction:reverse"></div>
+  <div class="relative flex-1 flex flex-col items-center justify-center text-white px-[6vw]">
+    <div class="reveal chip bg-brand text-white px-5 py-2 text-xs tracking-[.25em] uppercase mb-7 shadow-lg shadow-brand/40">Caso de uso · En acción</div>
+    <h2 class="reveal d1 font-extrabold text-center leading-[1.05]" style="font-size:clamp(40px,5.4vw,76px)">Ventas</h2>
+    <p class="reveal d2 text-white/70 text-center mt-5 max-w-2xl text-lg font-medium">El <b class="text-brand2">journey comercial completo</b>: del primer interés al cierre de la venta, combinando agentes IA y talento humano especializado.</p>
+    <div class="mt-10 flex items-center gap-0 flex-wrap justify-center">
+      <div class="reveal d3 w-52">
+        <div class="kb relative h-32 shadow-2xl ring-1 ring-white/15">
+          <img src="https://images.unsplash.com/photo-1697545806181-c2604e075a2a?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover" alt="Interés multicanal" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1B3A5C,#0D253F)'">
+          <div class="absolute inset-0 bg-gradient-to-t from-navyd/90 via-navyd/20 to-transparent"></div>
+          <div class="absolute top-2 left-2 w-6 h-6 rounded-full bg-brand text-white grid place-items-center text-[11px] font-extrabold">1</div>
+          <div class="absolute bottom-2 left-3 right-2 flex items-center gap-2 text-white">
+            <i data-lucide="smartphone" data-fb="📲" class="w-4 h-4 text-brand2 flex-none"></i>
+            <span class="text-[12.5px] font-extrabold leading-tight" style="text-shadow:0 2px 6px rgba(0,0,0,.55)">Interés multicanal</span>
+          </div>
+        </div>
+      </div>
+      <svg width="30" height="12" viewBox="0 0 34 12" class="mx-1.5 text-brand2 flex-none"><path d="M0 6h28M22 1l8 5-8 5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      <div class="reveal d4 w-52">
+        <div class="kb relative h-32 shadow-2xl ring-1 ring-white/15">
+          <img src="https://images.unsplash.com/photo-1737644467636-6b0053476bb2?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover" alt="Oferta con Agente IA" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1B3A5C,#0D253F)'">
+          <div class="absolute inset-0 bg-gradient-to-t from-navyd/90 via-navyd/20 to-transparent"></div>
+          <div class="absolute top-2 left-2 w-6 h-6 rounded-full bg-brand text-white grid place-items-center text-[11px] font-extrabold">2</div>
+          <div class="absolute bottom-2 left-3 right-2 flex items-center gap-2 text-white">
+            <i data-lucide="bot" data-fb="🤖" class="w-4 h-4 text-brand2 flex-none"></i>
+            <span class="text-[12.5px] font-extrabold leading-tight" style="text-shadow:0 2px 6px rgba(0,0,0,.55)">Oferta con Agente IA</span>
+          </div>
+        </div>
+      </div>
+      <svg width="30" height="12" viewBox="0 0 34 12" class="mx-1.5 text-brand2 flex-none"><path d="M0 6h28M22 1l8 5-8 5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      <div class="reveal d5 w-52">
+        <div class="kb relative h-32 shadow-2xl ring-1 ring-white/15">
+          <img src="https://images.unsplash.com/photo-1713947504429-45d1f50fc449?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover" alt="Cierre con asesor humano" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1B3A5C,#0D253F)'">
+          <div class="absolute inset-0 bg-gradient-to-t from-navyd/90 via-navyd/20 to-transparent"></div>
+          <div class="absolute top-2 left-2 w-6 h-6 rounded-full bg-grn text-white grid place-items-center text-[11px] font-extrabold">3</div>
+          <div class="absolute bottom-2 left-3 right-2 flex items-center gap-2 text-white">
+            <i data-lucide="user-check" data-fb="👤" class="w-4 h-4 text-grn flex-none"></i>
+            <span class="text-[12.5px] font-extrabold leading-tight" style="text-shadow:0 2px 6px rgba(0,0,0,.55)">Cierre con asesor humano</span>
+          </div>
+        </div>
+      </div>
+      <svg width="30" height="12" viewBox="0 0 34 12" class="mx-1.5 text-brand2 flex-none"><path d="M0 6h28M22 1l8 5-8 5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      <div class="reveal d6 w-52">
+        <div class="kb relative h-32 shadow-2xl ring-1 ring-white/15">
+          <img src="https://images.unsplash.com/photo-1537511446984-935f663eb1f4?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover" alt="Fidelización y recompra" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1B3A5C,#0D253F)'">
+          <div class="absolute inset-0 bg-gradient-to-t from-navyd/90 via-navyd/20 to-transparent"></div>
+          <div class="absolute top-2 left-2 w-6 h-6 rounded-full bg-grn text-white grid place-items-center text-[11px] font-extrabold">4</div>
+          <div class="absolute bottom-2 left-3 right-2 flex items-center gap-2 text-white">
+            <i data-lucide="refresh-cw" data-fb="🔄" class="w-4 h-4 text-grn flex-none"></i>
+            <span class="text-[12.5px] font-extrabold leading-tight" style="text-shadow:0 2px 6px rgba(0,0,0,.55)">Fidelización &amp; recompra</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ S5 · OMNICANAL ============ -->
+<section class="scene" id="s5">
+  <div class="absolute inset-0 navygrad"></div>
+  <div class="blob bg-grn" style="width:400px;height:400px;top:-150px;right:-80px;opacity:.06"></div>
+  <div class="blob bg-brand" style="width:300px;height:300px;bottom:-100px;left:-60px;opacity:.06;animation-direction:reverse"></div>
+  <div class="relative flex-1 grid lg:grid-cols-[1fr_1.05fr] items-center px-[5vw] gap-8 py-16">
+    <div>
+      <div class="reveal chip text-grn px-4 py-1.5 text-xs uppercase tracking-wider mb-5" style="background:rgba(0,191,166,.18)">Asertis 360° · Omnicanalidad real</div>
+      <h2 class="reveal d1 tunder font-extrabold leading-tight text-white" style="font-size:clamp(28px,3.2vw,44px);letter-spacing:-.5px">Todos los canales,<br><span class="grad-text">una sola conversación</span></h2>
+      <p class="reveal d2 mt-5 text-white/70 text-lg max-w-lg font-medium leading-relaxed">IVR, WhatsApp, chat web, correo, SMS y voz convergen en un solo portal. El cliente nunca repite su historia.</p>
+      <div class="reveal d3 mt-6 chip px-5 py-2.5 text-sm text-white" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15)"><i data-lucide="zap" data-fb="⚡" class="w-4 h-4 text-brand"></i> Resolución en autogestión <b class="text-grn ml-1">≥ 40%</b></div>
+      <div class="reveal d4 mt-7 flex gap-4">
+        <div class="card360 overflow-hidden w-[12.5rem] !bg-white/[.06] !border-white/15">
+          <img src="adigital.webp" alt="aDigital" class="w-full h-32 object-cover object-bottom">
+          <div class="px-3.5 py-2.5">
+            <div class="font-extrabold text-[13px] text-white">Comunicación omnicanal</div>
+            <div class="text-[11px] text-white/55 font-semibold">Ventas &amp; fidelización integradas</div>
+          </div>
+        </div>
+        <div class="card360 overflow-hidden w-[12.5rem] !bg-white/[.06] !border-white/15">
+          <img src="asolucion.webp" alt="aSolution" class="w-full h-32 object-cover object-bottom">
+          <div class="px-3.5 py-2.5">
+            <div class="font-extrabold text-[13px] text-white">Indicadores &amp; productividad</div>
+            <div class="text-[11px] text-white/55 font-semibold">Potencia tu contact center</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hidden lg:flex justify-center">
+      <div class="hub reveal d2">
+        <div class="hub-ring hub-ring--1"></div>
+        <div class="hub-ring hub-ring--2"></div>
+        <div class="hub-conns">
+          <div class="conn" style="--a:-90deg"><div class="conn-line"></div><i class="out" style="--d:0s"></i><i class="in" style="--d:1.2s"></i></div>
+          <div class="conn" style="--a:-30deg"><div class="conn-line"></div><i class="out" style="--d:.4s"></i><i class="in" style="--d:1.6s"></i></div>
+          <div class="conn" style="--a:30deg"><div class="conn-line"></div><i class="out" style="--d:.8s"></i><i class="in" style="--d:2s"></i></div>
+          <div class="conn" style="--a:90deg"><div class="conn-line"></div><i class="out" style="--d:1.2s"></i><i class="in" style="--d:0s"></i></div>
+          <div class="conn" style="--a:150deg"><div class="conn-line"></div><i class="out" style="--d:1.6s"></i><i class="in" style="--d:.4s"></i></div>
+          <div class="conn" style="--a:210deg"><div class="conn-line"></div><i class="out" style="--d:2s"></i><i class="in" style="--d:.8s"></i></div>
+        </div>
+        <div class="hub-center">
+          <i data-lucide="orbit" data-fb="◎" class="w-8 h-8"></i>
+          <span class="text-[12px] font-bold mt-1">Asertis 360°</span>
+        </div>
+        <div class="spoke" style="top:55px;left:240px"><div class="icon360"><i data-lucide="phone-call" data-fb="📞" class="w-5 h-5"></i></div><strong class="text-[13px] text-white">IVR</strong><small class="text-[11px] text-white/60">autogestión 24/7</small></div>
+        <div class="spoke" style="top:148px;left:400px"><div class="icon360"><i data-lucide="message-circle" data-fb="💬" class="w-5 h-5"></i></div><strong class="text-[13px] text-white">WhatsApp</strong><small class="text-[11px] text-white/60">bot + asesor</small></div>
+        <div class="spoke" style="top:332px;left:400px"><div class="icon360"><i data-lucide="globe" data-fb="🌐" class="w-5 h-5"></i></div><strong class="text-[13px] text-white">Chat web</strong><small class="text-[11px] text-white/60">en tu sitio</small></div>
+        <div class="spoke" style="top:425px;left:240px"><div class="icon360"><i data-lucide="mail" data-fb="📩" class="w-5 h-5"></i></div><strong class="text-[13px] text-white">Email</strong><small class="text-[11px] text-white/60">trazable</small></div>
+        <div class="spoke" style="top:332px;left:80px"><div class="icon360"><i data-lucide="message-square" data-fb="✉️" class="w-5 h-5"></i></div><strong class="text-[13px] text-white">SMS</strong><small class="text-[11px] text-white/60">notificaciones</small></div>
+        <div class="spoke" style="top:148px;left:80px"><div class="icon360"><i data-lucide="headphones" data-fb="🎧" class="w-5 h-5"></i></div><strong class="text-[13px] text-white">Voz</strong><small class="text-[11px] text-white/60">agente + IA</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ S6 · WHATSAPP + BACKSTAGE ============ -->
+<section class="scene" id="s6">
+  <div class="absolute inset-0 bg-cream"></div>
+  <div class="absolute inset-0 dotsg opacity-40"></div>
+  <div class="relative flex-1 grid lg:grid-cols-[1fr_1.1fr] items-center gap-10 px-[6vw] py-16">
+    <div class="flex justify-center">
+      <div class="phone h-[34rem] reveal">
+        <div class="phone-scr">
+          <div class="flex items-center gap-3 px-3 py-2.5 text-white" style="background:#008069">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="opacity-80"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+            <div class="w-9 h-9 rounded-full bg-gradient-to-br from-brand to-brand2 grid place-items-center font-extrabold text-sm">A</div>
+            <div class="flex-1 leading-tight">
+              <div class="font-bold text-[13.5px] flex items-center gap-1">Asertis BPS <svg width="13" height="13" viewBox="0 0 24 24" fill="#53BDEB"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5" stroke="#fff" stroke-width="2" fill="none"/></svg></div>
+              <div class="text-[10.5px] opacity-80" id="wa1status">en línea</div>
+            </div>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" class="opacity-85"><path d="M6.6 10.8a15 15 0 006.6 6.6l2.2-2.2a1 1 0 011-.24 11 11 0 003.5.56 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11 11 0 00.56 3.5 1 1 0 01-.24 1z"/></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" class="opacity-85"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>
+          </div>
+          <div class="wa-bg flex-1 overflow-y-auto p-3 flex flex-col gap-2" id="chat1">
+            <div class="self-center text-[10px] bg-[#FFF3C7] text-ink/70 rounded-md px-3 py-1 shadow-sm">🔒 Los mensajes están cifrados de extremo a extremo</div>
+            <div class="self-center text-[10px] bg-white/90 text-ink/50 rounded-md px-3 py-1 shadow-sm font-semibold">HOY</div>
+          </div>
+          <div class="flex items-center gap-2 px-3 py-2 bg-[#F0F2F5]">
+            <div class="flex-1 bg-white rounded-full px-4 py-2 text-[12px] text-ink/40">Escribe un mensaje…</div>
+            <div class="w-9 h-9 rounded-full grid place-items-center text-white" style="background:#008069"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20l18-8L3 4v6l12 2-12 2z"/></svg></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-xl">
+      <div class="reveal chip bg-pine text-white px-4 py-1.5 text-xs tracking-[.2em] uppercase mb-5">Mientras tanto, por detrás…</div>
+      <h3 class="reveal d1 font-extrabold leading-tight mb-7" style="font-size:clamp(24px,2.6vw,36px)">Un bot atiende.<br><span class="grad-text">Un proceso completo se ejecuta.</span></h3>
+      <div class="relative flex flex-col gap-5" id="feed1">
+        <div class="ev" data-ev="0"><div class="relative"><div class="evdot"></div><div class="evline"></div></div><div><div class="font-bold text-[15px] flex items-center gap-2"><i data-lucide="user-check" data-fb="🪪" class="w-4 h-4 text-brand"></i>Identificación del lead</div><div class="text-[13px] text-ink/55">Número verificado → Jorge M. · línea prepago activa</div></div></div>
+        <div class="ev" data-ev="1"><div class="relative"><div class="evdot"></div><div class="evline"></div></div><div><div class="font-bold text-[15px] flex items-center gap-2"><i data-lucide="target" data-fb="🎯" class="w-4 h-4 text-brand"></i>Lead scoring en tiempo real</div><div class="text-[13px] text-ink/55">Intención de compra: alta · interés: migrar a Plan Pospago</div></div></div>
+        <div class="ev" data-ev="2"><div class="relative"><div class="evdot"></div><div class="evline"></div></div><div><div class="font-bold text-[15px] flex items-center gap-2"><i data-lucide="clipboard-list" data-fb="📋" class="w-4 h-4 text-brand"></i>Análisis de consumo</div><div class="text-[13px] text-ink/55">Recargas ≈ $30.000/mes → Plan Pospago por valor similar</div></div></div>
+        <div class="ev" data-ev="3"><div class="relative"><div class="evdot"></div><div class="evline"></div></div><div><div class="font-bold text-[15px] flex items-center gap-2"><i data-lucide="calendar-check" data-fb="📅" class="w-4 h-4 text-brand"></i>Oportunidad creada · llamada agendada</div><div class="text-[13px] text-ink/55">Registrada en Asertis 360° · el Agente IA llamará hoy mismo</div></div></div>
+        <div class="ev" data-ev="4"><div class="relative"><div class="evdot"></div></div><div><div class="font-bold text-[15px] flex items-center gap-2"><i data-lucide="refresh-cw" data-fb="🔄" class="w-4 h-4 text-grn"></i>Seguimiento activado</div><div class="text-[13px] text-ink/55">El journey continúa: cada interacción queda trazada al 100%</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ S7 · KANBAN CRM ============ -->
+<section class="scene" id="s7">
+  <div class="absolute inset-0 bg-[#F4F6F9]"></div>
+  <div class="relative flex-1 flex flex-col justify-center px-[5vw] py-16">
+    <div class="reveal mx-auto w-full max-w-6xl glass rounded-xl overflow-hidden shadow-2xl">
+      <div class="flex items-center gap-3 px-6 py-3.5 bg-ink text-white">
+        <div class="flex gap-1.5"><i class="w-3 h-3 rounded-full bg-[#FF5F57] block"></i><i class="w-3 h-3 rounded-full bg-[#FEBC2E] block"></i><i class="w-3 h-3 rounded-full bg-[#28C840] block"></i></div>
+        <div class="ml-3 text-sm font-bold">Asertis 360° · Pipeline comercial</div>
+        <div class="ml-auto flex items-center gap-2 text-[11px]">
+          <span class="chip bg-white/10 px-3 py-1">⏱ Tiempo real</span>
+          <span class="chip bg-brand px-3 py-1">Ventas · Junio</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-4 gap-4 p-5 bg-white/60" id="kanban" style="min-height:21rem">
+        <div class="kcol p-3" data-col="0">
+          <div class="flex items-center justify-between px-1 mb-3"><div class="font-extrabold text-[13px] text-ink/70">LEADS</div><span class="kcount text-[11px] font-bold bg-ink/10 rounded-full px-2 py-0.5 text-ink/50"></span></div>
+          <div class="cards flex flex-col gap-2.5"></div>
+        </div>
+        <div class="kcol p-3" data-col="1">
+          <div class="flex items-center justify-between px-1 mb-3"><div class="font-extrabold text-[13px] text-sky-700">OPORTUNIDAD</div><span class="kcount text-[11px] font-bold bg-sky-100 rounded-full px-2 py-0.5 text-sky-600"></span></div>
+          <div class="cards flex flex-col gap-2.5"></div>
+        </div>
+        <div class="kcol p-3" data-col="2">
+          <div class="flex items-center justify-between px-1 mb-3"><div class="font-extrabold text-[13px] text-brand">NEGOCIACIÓN</div><span class="kcount text-[11px] font-bold bg-orange-100 rounded-full px-2 py-0.5 text-brand"></span></div>
+          <div class="cards flex flex-col gap-2.5"></div>
+        </div>
+        <div class="kcol p-3" data-col="3">
+          <div class="flex items-center justify-between px-1 mb-3"><div class="font-extrabold text-[13px] text-grn">VENTA CERRADA ✓</div><span class="kcount text-[11px] font-bold bg-emerald-100 rounded-full px-2 py-0.5 text-grn"></span></div>
+          <div class="cards flex flex-col gap-2.5"></div>
+        </div>
+      </div>
+    </div>
+    <p class="reveal d3 text-center text-ink/50 font-semibold text-sm mt-6">Cada oportunidad avanza de estado en estado · visible para todo el equipo, en tiempo real</p>
+  </div>
+</section>
+
+<!-- ============ S8 · LLAMADA AGENTE IA ============ -->
+<section class="scene" id="s8">
+  <div class="absolute inset-0 navygrad"></div>
+  <div class="absolute inset-0" style="background:radial-gradient(50% 60% at 25% 30%, rgba(255,107,53,.16), transparent), radial-gradient(40% 50% at 80% 80%, rgba(0,191,166,.12), transparent)"></div>
+  <div class="blob bg-brand" style="width:320px;height:320px;top:-110px;right:-70px;opacity:.05"></div>
+  <div class="relative flex-1 grid lg:grid-cols-[1.15fr_1fr] items-center gap-10 px-[6vw] py-16 text-white">
+    <div>
+      <div class="reveal chip bg-brand text-white px-4 py-1.5 text-xs tracking-[.2em] uppercase mb-5">Campaña comercial · Horas después</div>
+      <h3 class="reveal d1 font-extrabold leading-tight mb-6" style="font-size:clamp(24px,2.8vw,38px)">Quien llama no es una persona.<br><span class="grad-text">Es nuestro Agente IA.</span></h3>
+
+      <div class="reveal d2 glass rounded-xl p-6 !bg-white/[.07] !border-white/10 relative overflow-hidden">
+        <div class="flex items-center gap-4">
+          <div class="relative">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-brand to-brand2 grid place-items-center text-white shadow-lg shadow-brand/40"><i data-lucide="bot" data-fb="🤖" class="w-8 h-8"></i></div>
+            <span id="callRing" class="absolute inset-0 rounded-full bg-brand/60 ring-pulse hidden"></span>
+          </div>
+          <div class="flex-1">
+            <div class="font-extrabold text-lg">Sofía · Agente IA · Celular Colombia</div>
+            <div class="text-white/60 text-sm">Llamada saliente → Jorge M. · 📱 315 ··· ··87</div>
+          </div>
+          <div id="callTime" class="font-mono text-brand2 font-bold text-lg">00:00</div>
+        </div>
+        <div class="wv mt-5" id="wave"></div>
+        <div id="callCap" class="mt-4 min-h-[3.6rem] text-[15px] leading-relaxed text-white/90 font-medium italic"></div>
+        <div class="mt-5 flex items-center gap-3">
+          <button id="callBtn" class="chip bg-brand hover:bg-brand2 transition px-6 py-2.5 text-sm shadow-lg shadow-brand/30">▶ Reproducir llamada real</button>
+          <button id="skipBtn" class="chip bg-white/10 hover:bg-white/20 transition px-5 py-2.5 text-sm">Continuar la historia →</button>
+        </div>
+      </div>
+      <div class="reveal d3 mt-4 text-white/50 text-xs font-semibold flex items-center gap-2"><i data-lucide="volume-2" data-fb="🔊" class="w-4 h-4"></i> Audio real de una gestión comercial · los datos se anonimizan para esta demo</div>
+    </div>
+    <div>
+      <div class="reveal d2 text-xs tracking-[.25em] uppercase text-white/50 font-bold mb-5">Lo que el agente IA ejecuta en vivo</div>
+      <div class="relative flex flex-col gap-4" id="feed2">
+        <div class="ev" data-t="1"><div class="relative"><div class="evdot"></div><div class="evline"></div></div><div><div class="font-bold text-[14px] flex items-center gap-2"><i data-lucide="phone-outgoing" data-fb="📞" class="w-4 h-4 text-brand2"></i>Marcación automática · campaña Celular Colombia</div></div></div>
+        <div class="ev" data-t="6"><div class="relative"><div class="evdot"></div><div class="evline"></div></div><div><div class="font-bold text-[14px] flex items-center gap-2"><i data-lucide="user-check" data-fb="🪪" class="w-4 h-4 text-brand2"></i>Validación del titular <span class="text-grn">✓</span></div></div></div>
+        <div class="ev" data-t="13"><div class="relative"><div class="evdot"></div><div class="evline"></div></div><div><div class="font-bold text-[14px] flex items-center gap-2"><i data-lucide="user-check" data-fb="🙋" class="w-4 h-4 text-brand2"></i>Presentación personalizada de la asesora IA</div></div></div>
+        <div class="ev" data-t="26"><div class="relative"><div class="evdot"></div><div class="evline"></div></div><div><div class="font-bold text-[14px] flex items-center gap-2"><i data-lucide="folder-open" data-fb="📂" class="w-4 h-4 text-brand2"></i>Consulta del perfil · plan de recarga semanal</div></div></div>
+        <div class="ev" data-t="38"><div class="relative"><div class="evdot"></div><div class="evline"></div></div><div><div class="font-bold text-[14px] flex items-center gap-2"><i data-lucide="calculator" data-fb="🧮" class="w-4 h-4 text-brand2"></i>Cálculo de ahorro: recargas vs pospago (≈$30.000/mes)</div></div></div>
+        <div class="ev" data-t="49"><div class="relative"><div class="evdot"></div><div class="evline"></div></div><div><div class="font-bold text-[14px] flex items-center gap-2"><i data-lucide="clipboard-list" data-fb="📋" class="w-4 h-4 text-brand2"></i>Propone plan pospago · beneficios sin recargas</div></div></div>
+        <div class="ev" data-t="54"><div class="relative"><div class="evdot"></div><div class="evline"></div></div><div><div class="font-bold text-[14px] flex items-center gap-2"><i data-lucide="clipboard-list" data-fb="📋" class="w-4 h-4 text-brand2"></i>Crea tarea: asesor humano da seguimiento y cierra</div></div></div>
+        <div class="ev" data-t="58"><div class="relative"><div class="evdot"></div></div><div><div class="font-bold text-[14px] flex items-center gap-2"><i data-lucide="check-check" data-fb="✅" class="w-4 h-4 text-grn"></i>Tipificación automática · lead interesado ✓</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ S9 · COMPROBANTE + PAGO ============ -->
+<section class="scene" id="s9">
+  <div class="absolute inset-0 bg-cream"></div>
+  <div class="absolute inset-0 dots opacity-45"></div>
+  <div class="relative flex-1 grid lg:grid-cols-[1fr_1.15fr] items-center gap-10 px-[6vw] py-16">
+    <div class="flex justify-center">
+      <div class="phone h-[34rem] reveal">
+        <div class="phone-scr">
+          <div class="flex items-center gap-3 px-3 py-2.5 text-white" style="background:#008069">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="opacity-80"><path d="M15 18l-6-6 6-6"/></svg>
+            <div class="w-9 h-9 rounded-full grid place-items-center font-extrabold text-sm" style="background:linear-gradient(135deg,#00BFA6,#007A6A)">L</div>
+            <div class="flex-1 leading-tight">
+              <div class="font-bold text-[13.5px] flex items-center gap-1">Laura · Asertis <svg width="13" height="13" viewBox="0 0 24 24" fill="#53BDEB"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5" stroke="#fff" stroke-width="2" fill="none"/></svg></div>
+              <div class="text-[10.5px] opacity-80" id="wa2status">Asesora comercial · en línea</div>
+            </div>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" class="opacity-85"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>
+          </div>
+          <div class="wa-bg flex-1 overflow-y-auto p-3 flex flex-col gap-2" id="chat2">
+            <div class="self-center text-[10px] bg-white/90 text-ink/50 rounded-md px-3 py-1 shadow-sm font-semibold">HOY</div>
+          </div>
+          <div class="flex items-center gap-2 px-3 py-2 bg-[#F0F2F5]">
+            <div class="flex-1 bg-white rounded-full px-4 py-2 text-[12px] text-ink/40">Escribe un mensaje…</div>
+            <div class="w-9 h-9 rounded-full grid place-items-center text-white" style="background:#008069"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20l18-8L3 4v6l12 2-12 2z"/></svg></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-2xl w-full">
+      <div class="reveal chip bg-grn/10 text-grn px-4 py-1.5 text-xs tracking-[.2em] uppercase mb-4">Cierre de la venta · Talento humano</div>
+      <h3 class="reveal d1 font-extrabold leading-tight mb-6" style="font-size:clamp(22px,2.4vw,34px)">Esta vez no responde un bot…<br><span class="grad-text">un asesor humano especializado cierra la venta.</span></h3>
+
+      <!-- mini kanban -->
+      <div class="reveal d2 glass rounded-xl overflow-hidden">
+        <div class="flex items-center gap-2 px-4 py-2.5 bg-ink text-white text-[12px] font-bold">
+          <div class="flex gap-1.5"><i class="w-2.5 h-2.5 rounded-full bg-[#FF5F57] block"></i><i class="w-2.5 h-2.5 rounded-full bg-[#FEBC2E] block"></i><i class="w-2.5 h-2.5 rounded-full bg-[#28C840] block"></i></div>
+          <span class="ml-2">Asertis 360° · Cartera</span>
+          <span class="ml-auto chip bg-grn px-2.5 py-0.5 text-[10px]" id="payBadge" style="opacity:0;transition:opacity .6s">✓ Venta cerrada</span>
+        </div>
+        <div class="grid grid-cols-2 gap-3 p-4 bg-white/70" id="kanban2" style="min-height:9.5rem">
+          <div class="kcol p-2.5" data-col="0">
+            <div class="font-extrabold text-[11px] text-brand px-1 mb-2">NEGOCIACIÓN</div>
+            <div class="cards flex flex-col gap-2"></div>
+          </div>
+          <div class="kcol p-2.5" data-col="1">
+            <div class="font-extrabold text-[11px] text-grn px-1 mb-2">VENTA CERRADA ✓</div>
+            <div class="cards flex flex-col gap-2"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- sms phone toast -->
+      <div class="reveal d3 mt-5 relative h-24 overflow-hidden rounded-xl bg-ink p-3">
+        <div class="text-[10px] text-white/40 font-bold tracking-[.2em] uppercase mb-1.5 pl-1">Notificación SMS del cliente</div>
+        <div id="smsToast" class="hidden glass rounded-xl px-4 py-2.5 flex items-start gap-3 !bg-white">
+          <div class="w-8 h-8 rounded-lg bg-grn grid place-items-center text-white flex-none"><i data-lucide="message-square" data-fb="💬" class="w-4 h-4"></i></div>
+          <div class="leading-snug">
+            <div class="text-[11px] font-extrabold text-ink">ASERTIS · ahora</div>
+            <div class="text-[12px] text-ink/70">Tu <b>Plan Pospago</b> quedó activo y tu número se conserva. ¡Bienvenido, Jorge! 🎉</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ S10 · POST-PROCESO ============ -->
+<section class="scene" id="s10">
+  <div class="absolute inset-0 navygrad"></div>
+  <div class="absolute inset-0" style="background:radial-gradient(55% 70% at 75% 25%, rgba(255,107,53,.15), transparent)"></div>
+  <div class="blob bg-grn" style="width:360px;height:360px;bottom:-130px;left:-70px;opacity:.06"></div>
+  <div class="relative flex-1 grid lg:grid-cols-[1fr_1.5fr] items-center gap-10 px-[4.5vw] text-white">
+    <div>
+      <div class="reveal chip bg-white/10 text-white/90 px-4 py-1.5 text-xs tracking-[.2em] uppercase mb-6">Posventa · El journey continúa</div>
+      <h2 class="reveal d1 font-extrabold leading-tight" style="font-size:clamp(28px,3.4vw,46px)">La venta no es el final.<br><span class="text-brand2">Es el comienzo de la relación.</span></h2>
+      <p class="reveal d2 mt-5 text-white/70 text-lg max-w-lg font-medium">Analítica y speech analytics leen cada interacción. Con eso lanzamos <b class="text-white">campañas de fidelización y upsell</b> en el momento justo: onboarding, renovación y nuevos servicios para cada cliente.</p>
+      <div class="reveal d4 mt-7 flex flex-wrap gap-3 text-sm">
+        <div class="chip bg-white/10 border border-white/15 px-4 py-2"><i data-lucide="bar-chart-3" data-fb="📊" class="w-4 h-4 text-brand2"></i> Power BI en vivo</div>
+        <div class="chip bg-white/10 border border-white/15 px-4 py-2"><i data-lucide="mic" data-fb="🗣️" class="w-4 h-4 text-brand2"></i> Speech &amp; Text Analytics</div>
+        <div class="chip bg-white/10 border border-white/15 px-4 py-2"><i data-lucide="bell-ring" data-fb="🚨" class="w-4 h-4 text-brand2"></i> Alertas antes del problema</div>
+      </div>
+    </div>
+    <div class="hidden lg:block reveal d2 w-full">
+      <div class="glass rounded-xl overflow-hidden shadow-2xl text-ink w-full max-w-[640px] ml-auto">
+        <div class="flex items-center gap-3 px-4 py-2.5 bg-ink text-white">
+          <div class="flex gap-1.5"><i class="w-3 h-3 rounded-full bg-[#FF5F57] block"></i><i class="w-3 h-3 rounded-full bg-[#FEBC2E] block"></i><i class="w-3 h-3 rounded-full bg-[#28C840] block"></i></div>
+          <div class="ml-2 text-sm font-bold">Asertis 360° · Dashboard gerencial de ventas</div>
+          <div class="ml-auto flex items-center gap-2 text-[11px]">
+            <span class="chip bg-grn px-3 py-1"><span class="w-1.5 h-1.5 rounded-full bg-white inline-block animate-pulse"></span> En vivo</span>
+            <span class="chip bg-brand px-3 py-1">Junio</span>
+          </div>
+        </div>
+        <div class="p-3 bg-white/85" id="dashv">
+          <div class="grid grid-cols-4 gap-3">
+            <div class="rounded-lg p-2.5" style="background:#F1F5F9">
+              <div class="text-[9.5px] font-extrabold tracking-wider text-ink/45 uppercase">Ventas del mes</div>
+              <div class="font-black text-[19px] text-navy leading-tight"><span class="kpi-v" data-v="128.4" data-pre="$" data-suf="M" data-dec="1">$0M</span></div>
+              <div class="text-[10.5px] font-bold text-grn">▲ +18% vs mayo</div>
+            </div>
+            <div class="rounded-lg p-2.5" style="background:#F1F5F9">
+              <div class="text-[9.5px] font-extrabold tracking-wider text-ink/45 uppercase">Ventas cerradas</div>
+              <div class="font-black text-[19px] text-navy leading-tight"><span class="kpi-v" data-v="342" data-dec="0">0</span></div>
+              <div class="text-[10.5px] font-bold text-grn">▲ +12% vs mayo</div>
+            </div>
+            <div class="rounded-lg p-2.5" style="background:#F1F5F9">
+              <div class="text-[9.5px] font-extrabold tracking-wider text-ink/45 uppercase">Conversión</div>
+              <div class="font-black text-[19px] text-navy leading-tight"><span class="kpi-v" data-v="23.8" data-suf="%" data-dec="1">0%</span></div>
+              <div class="text-[10.5px] font-bold text-grn">▲ +2,1 pts</div>
+            </div>
+            <div class="rounded-lg p-2.5" style="background:#F1F5F9">
+              <div class="text-[9.5px] font-extrabold tracking-wider text-ink/45 uppercase">Ticket promedio</div>
+              <div class="font-black text-[19px] text-navy leading-tight"><span class="kpi-v" data-v="375" data-pre="$" data-suf="K" data-dec="0">$0K</span></div>
+              <div class="text-[10.5px] font-bold text-grn">▲ +5%</div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2.5 mt-2.5">
+            <div class="rounded-lg p-2.5 border border-ink/10 bg-white">
+              <div class="text-[10px] font-extrabold tracking-wider text-ink/45 uppercase mb-2">Ventas consolidadas por mes</div>
+              <div class="relative h-20">
+                <div class="absolute inset-0 flex items-end gap-2 grow">
+                  <div class="gbar flex-1 rounded-t" style="height:36%;background:#CBD5E1;--d:.1s"></div>
+                  <div class="gbar flex-1 rounded-t" style="height:44%;background:#CBD5E1;--d:.2s"></div>
+                  <div class="gbar flex-1 rounded-t" style="height:52%;background:rgba(0,191,166,.55);--d:.3s"></div>
+                  <div class="gbar flex-1 rounded-t" style="height:61%;background:rgba(0,191,166,.8);--d:.4s"></div>
+                  <div class="gbar flex-1 rounded-t" style="height:76%;background:linear-gradient(180deg,#FF8A5C,#FF6B35);--d:.5s"></div>
+                  <div class="gbar flex-1 rounded-t" style="height:96%;background:linear-gradient(180deg,#FF8A5C,#FF6B35);--d:.6s"></div>
+                </div>
+                <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 60" preserveAspectRatio="none">
+                  <polyline class="drawpath" points="8.3,38.4 25,33.6 41.7,28.8 58.3,23.4 75,14.4 91.7,2.4" fill="none" stroke="#1B3A5C" stroke-width="1.6" stroke-dasharray="1400"/>
+                </svg>
+                <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 60" preserveAspectRatio="none">
+                  <g fill="#1B3A5C"><circle cx="8.3" cy="38.4" r="1.6"/><circle cx="25" cy="33.6" r="1.6"/><circle cx="41.7" cy="28.8" r="1.6"/><circle cx="58.3" cy="23.4" r="1.6"/><circle cx="75" cy="14.4" r="1.6"/><circle cx="91.7" cy="2.4" r="2.2"/></g>
+                </svg>
+              </div>
+              <div class="flex justify-between text-[9px] text-ink/40 font-bold mt-1 px-0.5"><span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span><span>May</span><span>Jun</span></div>
+            </div>
+            <div class="rounded-lg p-2.5 border border-ink/10 bg-white growx">
+              <div class="text-[10px] font-extrabold tracking-wider text-ink/45 uppercase mb-2.5">Ventas por vendedor</div>
+              <div class="flex flex-col gap-1.5">
+                <div class="flex items-center gap-2"><span class="w-16 text-[10.5px] font-bold text-ink/70 truncate">Laura P.</span><div class="flex-1 h-2.5 rounded-full bg-ink/5 overflow-hidden"><div class="gbarx h-full rounded-full" style="width:92%;background:linear-gradient(90deg,#FF6B35,#FF8A5C);--d:.2s"></div></div><span class="w-12 text-right text-[10.5px] font-extrabold text-navy">$32,4M</span></div>
+                <div class="flex items-center gap-2"><span class="w-16 text-[10.5px] font-bold text-ink/70 truncate">Carlos G.</span><div class="flex-1 h-2.5 rounded-full bg-ink/5 overflow-hidden"><div class="gbarx h-full rounded-full" style="width:80%;background:#00BFA6;--d:.35s"></div></div><span class="w-12 text-right text-[10.5px] font-extrabold text-navy">$28,1M</span></div>
+                <div class="flex items-center gap-2"><span class="w-16 text-[10.5px] font-bold text-ink/70 truncate">María R.</span><div class="flex-1 h-2.5 rounded-full bg-ink/5 overflow-hidden"><div class="gbarx h-full rounded-full" style="width:70%;background:#00BFA6;--d:.5s"></div></div><span class="w-12 text-right text-[10.5px] font-extrabold text-navy">$24,7M</span></div>
+                <div class="flex items-center gap-2"><span class="w-16 text-[10.5px] font-bold text-ink/70 truncate">Andrés T.</span><div class="flex-1 h-2.5 rounded-full bg-ink/5 overflow-hidden"><div class="gbarx h-full rounded-full" style="width:62%;background:#1B3A5C;--d:.65s"></div></div><span class="w-12 text-right text-[10.5px] font-extrabold text-navy">$22,9M</span></div>
+                <div class="flex items-center gap-2"><span class="w-16 text-[10.5px] font-bold text-brand truncate">🤖 Sofía IA</span><div class="flex-1 h-2.5 rounded-full bg-ink/5 overflow-hidden"><div class="gbarx h-full rounded-full" style="width:55%;background:linear-gradient(90deg,#FF6B35,#00BFA6);--d:.8s"></div></div><span class="w-12 text-right text-[10.5px] font-extrabold text-navy">$20,3M</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-lg p-3 border border-ink/10 bg-white mt-3 growx">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[10px] font-extrabold tracking-wider text-ink/45 uppercase">Ventas por canal</span>
+              <span class="text-[10px] font-bold text-ink/50">Total acumulado año: <b class="text-navy">$612,8M</b></span>
+            </div>
+            <div class="flex h-3.5 rounded-full overflow-hidden gap-0.5">
+              <div class="gbarx h-full" style="width:38%;background:#25D366;--d:.3s"></div>
+              <div class="gbarx h-full" style="width:27%;background:#FF6B35;--d:.45s"></div>
+              <div class="gbarx h-full" style="width:21%;background:#00BFA6;--d:.6s"></div>
+              <div class="gbarx h-full" style="width:14%;background:#1B3A5C;--d:.75s"></div>
+            </div>
+            <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-[10px] font-bold text-ink/60">
+              <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:#25D366"></span>WhatsApp 38%</span>
+              <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:#FF6B35"></span>Llamada IA 27%</span>
+              <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:#00BFA6"></span>Web 21%</span>
+              <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:#1B3A5C"></span>Tienda 14%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ S11 · CIERRE ============ -->
+<section class="scene" id="s11">
+  <div class="absolute inset-0 bg-cream"></div>
+  <div class="absolute inset-0 dots opacity-50"></div>
+  <div class="blob bg-grn" style="width:460px;height:460px;bottom:-180px;right:-110px;opacity:.06"></div>
+  <div class="blob bg-brand" style="width:360px;height:360px;top:-130px;left:-90px;opacity:.05;animation-direction:reverse"></div>
+
+  <div class="relative flex-1 flex flex-col items-center justify-center px-[6vw] text-center">
+    <div class="reveal badge360 mb-7" style="color:#FF6B35"><i data-lucide="sparkles" data-fb="✨" class="w-3.5 h-3.5"></i> PARA CUALQUIER SECTOR</div>
+
+    <p class="reveal d1 text-ink2 font-bold tracking-wide" style="font-size:clamp(17px,1.8vw,24px)">Nuestro diferencial no es solo la tecnología que usamos…</p>
+    <h2 class="reveal d2 font-black text-navy mt-3" style="font-size:clamp(36px,4.6vw,66px);letter-spacing:-1.5px;line-height:1.08">
+      Es el <span style="background:linear-gradient(90deg,#FF6B35,#E8541A);-webkit-background-clip:text;background-clip:text;color:transparent">talento humano</span> y el<br>conocimiento de los <span style="background:linear-gradient(90deg,#00A38D,#007A6A);-webkit-background-clip:text;background-clip:text;color:transparent">procesos</span>
+    </h2>
+    <p class="reveal d3 mt-5 text-ink font-extrabold" style="font-size:clamp(21px,2.4vw,32px)">lo que nos permite generar <span class="hl-marker text-ink">soluciones reales</span>.</p>
+
+    <div class="mt-10 flex flex-wrap justify-center gap-5">
+      <div class="reveal d3 group w-44">
+        <div class="kb relative h-28 shadow-2xl ring-1 ring-ink/10">
+          <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Salud" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1B3A5C,#0D253F)'">
+          <div class="absolute inset-0 bg-gradient-to-t from-navyd/90 via-navyd/15 to-transparent"></div>
+          <div class="absolute bottom-2 inset-x-0 text-[14px] font-extrabold text-white tracking-wide" style="text-shadow:0 2px 6px rgba(0,0,0,.5)">Salud</div>
+        </div>
+      </div>
+      <div class="reveal d4 group w-44">
+        <div class="kb relative h-28 shadow-2xl ring-1 ring-ink/10">
+          <img src="https://images.unsplash.com/photo-1599707254554-027aeb4deacd?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Construcción" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1B3A5C,#0D253F)'">
+          <div class="absolute inset-0 bg-gradient-to-t from-navyd/90 via-navyd/15 to-transparent"></div>
+          <div class="absolute bottom-2 inset-x-0 text-[14px] font-extrabold text-white tracking-wide" style="text-shadow:0 2px 6px rgba(0,0,0,.5)">Construcción</div>
+        </div>
+      </div>
+      <div class="reveal d5 group w-44">
+        <div class="kb relative h-28 shadow-2xl ring-1 ring-ink/10">
+          <img src="https://images.unsplash.com/photo-1553775282-20af80779df7?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Servicios" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1B3A5C,#0D253F)'">
+          <div class="absolute inset-0 bg-gradient-to-t from-navyd/90 via-navyd/15 to-transparent"></div>
+          <div class="absolute bottom-2 inset-x-0 text-[14px] font-extrabold text-white tracking-wide" style="text-shadow:0 2px 6px rgba(0,0,0,.5)">Servicios</div>
+        </div>
+      </div>
+      <div class="reveal d6 group w-44">
+        <div class="kb relative h-28 shadow-2xl ring-1 ring-ink/10">
+          <img src="https://images.unsplash.com/photo-1681311311317-a0561a8eef74?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Cajas de compensación" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1B3A5C,#0D253F)'">
+          <div class="absolute inset-0 bg-gradient-to-t from-navyd/90 via-navyd/15 to-transparent"></div>
+          <div class="absolute bottom-2 inset-x-0 text-[13px] font-extrabold text-white tracking-wide leading-tight" style="text-shadow:0 2px 6px rgba(0,0,0,.5)">Cajas de compensación</div>
+        </div>
+      </div>
+      <div class="reveal d7 group w-44">
+        <div class="kb relative h-28 shadow-2xl ring-1 ring-ink/10">
+          <img src="https://images.unsplash.com/photo-1567958451986-2de427a4a0be?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Retail" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1B3A5C,#0D253F)'">
+          <div class="absolute inset-0 bg-gradient-to-t from-navyd/90 via-navyd/15 to-transparent"></div>
+          <div class="absolute bottom-2 inset-x-0 text-[14px] font-extrabold text-white tracking-wide" style="text-shadow:0 2px 6px rgba(0,0,0,.5)">Retail</div>
+        </div>
+      </div>
+      <div class="reveal d8 group w-44">
+        <div class="kb relative h-28 shadow-2xl grid place-items-center pulse360" style="background:linear-gradient(135deg,#FF6B35,#00BFA6)">
+          <div class="text-white font-black text-[17px] leading-tight" style="text-shadow:0 2px 6px rgba(0,0,0,.3)">+ Tu<br>sector</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal d8 mt-10 flex flex-wrap items-center justify-center gap-4">
+      <a href="mailto:comercial@asertis.com.co" class="chip text-white px-7 py-3 text-sm font-bold pulse360 hover:scale-105 transition" style="background:linear-gradient(135deg,#FF6B35,#FF8A5C)"><i data-lucide="mail" data-fb="📧" class="w-4 h-4"></i> Conversemos · comercial@asertis.com.co</a>
+      <button id="replayBtn" class="chip px-6 py-3 text-sm text-ink border-2 border-ink/20 hover:bg-ink/5 hover:border-ink/40 transition">↺ Ver de nuevo</button>
+    </div>
+    <div class="reveal d8 mt-6 flex flex-wrap items-center justify-center gap-x-7 gap-y-1 text-[13px] font-semibold text-ink2/80">
+      <span class="flex items-center gap-2"><i data-lucide="phone" data-fb="📱" class="w-3.5 h-3.5 text-grn"></i> +57 317 667 4644</span>
+      <span class="flex items-center gap-2"><i data-lucide="globe" data-fb="🌐" class="w-3.5 h-3.5 text-grn"></i> www.asertis.com.co</span>
+      <span class="flex items-center gap-2"><i data-lucide="map-pin" data-fb="📍" class="w-3.5 h-3.5 text-grn"></i> Cali · Bogotá</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SF · DIAPOSITIVA FINAL ============ -->
+<section class="scene" id="sf">
+  <div class="absolute inset-0 navygrad"></div>
+  <div class="blob bg-grn" style="width:420px;height:420px;top:-150px;right:-100px;opacity:.06"></div>
+  <div class="blob bg-brand" style="width:340px;height:340px;bottom:-120px;left:-80px;opacity:.05;animation-direction:reverse"></div>
+  <div class="relative flex-1 flex items-center justify-center p-[4vw]">
+    <img src="ultima_diapositiva.png" alt="Asertis BPS" class="reveal max-w-full max-h-full object-contain rounded-xl shadow-2xl" draggable="false">
+  </div>
+</section>
+</div>
+
+<!-- subtitle -->
+<div id="subwrap"><div id="sub"></div></div>
+
+<!-- controls -->
+<div id="bar">
+  <button id="btnPrev" class="w-9 h-9 rounded-full grid place-items-center text-ink/60 hover:bg-ink/5" title="Anterior">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm12 0v12L9.5 12z"/></svg>
+  </button>
+  <button id="btnPlay" class="w-12 h-12 rounded-full bg-brand text-white grid place-items-center shadow-lg shadow-brand/40 hover:scale-105 transition" title="Reproducir / Pausa">
+    <svg id="icPlay" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg id="icPause" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="hidden"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+  </button>
+  <button id="btnNext" class="w-9 h-9 rounded-full grid place-items-center text-ink/60 hover:bg-ink/5" title="Siguiente">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 6h2v12h-2zM6 6l8.5 6L6 18z"/></svg>
+  </button>
+  <div id="dots" class="flex items-center gap-2 px-2"></div>
+  <button id="btnCC" class="px-2.5 py-1 rounded-md text-[11px] font-extrabold tracking-wider text-ink/40 border border-ink/15 hover:bg-ink/5 transition" title="Mostrar / ocultar subtítulos">CC</button>
+</div>
+
+<script>
+/* ================= helpers ================= */
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const scenesEl=$$('.scene');
+
+function setSub(x){
+  const s=$('#sub');
+  if(!x){s.classList.remove('show');return;}
+  s.textContent=x; s.classList.add('show');
+  s.classList.remove('pop'); void s.offsetWidth; s.classList.add('pop');
+}
+
+/* ---------- whatsapp chat ---------- */
+function chatMsg(chat,side,html,time='9:41'){
+  killTyping(chat);
+  const d=document.createElement('div');
+  d.className='bub '+side;
+  d.innerHTML=html+`<div class="meta">${time} ${side==='out'?'<span class="ticks">✓✓</span>':''}</div>`;
+  chat.appendChild(d); chat.scrollTop=1e6; return d;
+}
+function typing(chat,statusEl){
+  killTyping(chat);
+  const d=document.createElement('div'); d.className='typing';
+  d.innerHTML='<i></i><i></i><i></i>';
+  chat.appendChild(d); chat.scrollTop=1e6;
+  if(statusEl) statusEl.textContent='escribiendo…';
+}
+function killTyping(chat){
+  chat.querySelectorAll('.typing').forEach(e=>e.remove());
+  $('#wa1status').textContent='en línea'; $('#wa2status').textContent='en línea';
+}
+
+/* ---------- kanban ---------- */
+function kCard(init,name,amt,tag,hero=false,color='#FF6B35'){
+  const d=document.createElement('div');
+  d.className='kcard'+(hero?' hero':'');
+  d.innerHTML=`<div class="flex items-center gap-2.5">
+    <div class="w-8 h-8 rounded-xl grid place-items-center text-white text-[11px] font-extrabold flex-none" style="background:${color}">${init}</div>
+    <div class="min-w-0"><div class="font-bold text-[13px] truncate">${name}</div><div class="text-[11px] text-ink/50 font-semibold">${amt}</div></div>
+  </div>
+  <div class="mt-2 flex items-center gap-1.5 flex-wrap"><span class="text-[10px] font-bold rounded-full px-2 py-0.5 bg-ink/5 text-ink/60">${tag}</span>${hero?'<span class="text-[10px] font-bold rounded-full px-2 py-0.5 bg-orange-100 text-brand">● Gestión IA</span>':''}</div>`;
+  return d;
+}
+function flipMove(card,colEl){
+  const f=card.getBoundingClientRect();
+  colEl.querySelector('.cards').prepend(card);
+  const l=card.getBoundingClientRect();
+  card.style.transition='none';
+  card.style.transform=`translate(${f.left-l.left}px,${f.top-l.top}px)`;
+  requestAnimationFrame(()=>{requestAnimationFrame(()=>{
+    card.style.transition='transform .9s cubic-bezier(.22,1,.36,1)';
+    card.style.transform='';
+  });});
+}
+function kCounts(){
+  $$('#kanban .kcol').forEach(c=>{c.querySelector('.kcount').textContent=c.querySelectorAll('.kcard').length;});
+}
+let heroCard=null, hero2=null;
+function setupKanban(){
+  $$('#kanban .cards').forEach(c=>c.innerHTML='');
+  const cols=$$('#kanban .kcol');
+  heroCard=kCard('JM','Jorge Martínez','Migración a Plan Pospago','Lead WhatsApp',true);
+  cols[0].querySelector('.cards').append(kCard('MG','María Gómez','Plan Hogar 300MB','Lead Facebook',false,'#2E9E7E'),heroCard,kCard('AP','Andrés Parra','Plan Conecta 20GB','Lead llamada',false,'#5C6BC0'));
+  cols[1].querySelector('.cards').append(kCard('CT','Carolina Torres','Plan Empresas x12','Calificada',false,'#8E24AA'));
+  cols[2].querySelector('.cards').append(kCard('DR','Diana Ríos','Plan Pospago 25GB','Propuesta enviada',false,'#00897B'));
+  cols[3].querySelector('.cards').append(kCard('LF','Luisa Fernanda','Plan Hogar 300MB ✓','Activado',false,'#00BFA6'));
+  kCounts();
+}
+function setupKanban2(){
+  $$('#kanban2 .cards').forEach(c=>c.innerHTML='');
+  hero2=kCard('JM','Jorge Martínez','Plan Pospago · migración','Interesado · llamada IA',true);
+  $$('#kanban2 .kcol')[0].querySelector('.cards').append(hero2);
+  $('#payBadge').style.opacity=0;
+}
+
+/* ---------- waveform ---------- */
+(function(){const w=$('#wave');for(let i=0;i<42;i++){const b=document.createElement('i');b.style.animationDelay=(Math.random()*-1.2)+'s';b.style.animationDuration=(.6+Math.random()*.9)+'s';w.appendChild(b);}})();
+
+/* ================= call audio ================= */
+const CALL_CUES=[
+{t:2.4,x:"—Hola, soy Sofía de Celular Colombia. ¿Tengo el gusto de hablar con Jorge?"},
+{t:8.7,x:"—Sí, con él. ¿Con quién tengo el gusto? Perdón…"},
+{t:13.2,x:"—Gracias, Jorge, por confirmar. Te saluda Sofía, asesora de Celular Colombia. Espero estés teniendo una excelente tarde."},
+{t:19.2,x:"—Te llamo porque hemos seleccionado tu línea para una mejora exclusiva en tu servicio móvil."},
+{t:25.9,x:"—Según nuestros registros, actualmente usas un plan de recarga semanal, ¿es correcto?"},
+{t:33.4,x:"—Sí, correcto. —¡Perfecto, Jorge!"},
+{t:38.3,x:"—Mira: si normalmente haces recargas semanales de $7.500, eso suma unos $30.000 al mes…"},
+{t:45.1,x:"—…por un valor muy similar te propongo un plan pospago…"},
+{t:50.8,x:"—…con beneficios increíbles: conexión estable todo el tiempo, llamadas ilimitadas, datos adicionales…"},
+{t:57.7,x:"—…y sin preocuparte por recargas."}];
+
+const call=new Audio('llamada_ventas.mp3');
+let callStarted=false, callEnded=false, lastCap=-1;
+
+function fmtT(s){s=Math.floor(s);return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
+function updateCallUI(){
+  $('#callTime').textContent=fmtT(call.currentTime);
+  const live=!call.paused&&!call.ended;
+  $('#wave').classList.toggle('live',live);
+  $('#callRing').classList.toggle('hidden',!live);
+  $('#callBtn').innerHTML=live?'⏸ Pausar llamada':(callStarted?'▶ Reanudar llamada':'▶ Reproducir llamada real');
+  // captions
+  let cap='';
+  for(const c of CALL_CUES){ if(call.currentTime>=c.t) cap=c.x; else break; }
+  if(cap && cap!==$('#callCap').textContent) $('#callCap').textContent=cap;
+  // backstage feed
+  $$('#feed2 .ev').forEach(e=>{ if(call.currentTime>=+e.dataset.t) e.classList.add('on'); });
+}
+function resetCall(){
+  call.pause(); call.currentTime=0; call.volume=1; call.playbackRate=1; callStarted=false; callEnded=false; callPhase=0;
+  $('#callCap').textContent=''; $('#callTime').textContent='00:00';
+  $('#wave').classList.remove('live'); $('#callRing').classList.add('hidden');
+  $$('#feed2 .ev').forEach(e=>e.classList.remove('on'));
+  $('#callBtn').innerHTML='▶ Reproducir llamada real';
+}
+function startCall(){ setSub(''); music.pause(); call.play().then(()=>{callStarted=true;}).catch(()=>{}); }
+function finishCall(){ call.pause(); callEnded=true; updateCallUI(); if(playing) music.play().catch(()=>{}); }
+$('#callBtn').addEventListener('click',()=>{ if(call.paused){startCall();}else{call.pause();} updateCallUI(); });
+$('#skipBtn').addEventListener('click',()=>{ finishCall(); if(callPhase===1){ callPhase=2; callDone=true; if(playing){ voz.play().catch(()=>{}); music.play().catch(()=>{}); } } });
+call.addEventListener('ended',()=>{ finishCall(); });
+
+/* ================= scene definitions ================= */
+const chat1=()=>$('#chat1'), chat2=()=>$('#chat2');
+function resetChat(chat,extra){ chat.innerHTML=extra; }
+function hlSector(k){
+  $$('.sector').forEach(s=>{
+    const on=+s.dataset.k===k;
+    s.style.transform=on?'translateY(-10px) scale(1.05)':'';
+    s.style.boxShadow=on?'0 22px 48px rgba(255,107,53,.28)':'';
+    s.style.borderColor=on?'#FF6B35':'';
+    s.style.opacity=(k>=0&&!on)?.55:1;
+  });
+}
+
+function hlStat(k){
+  $$('#s0 .stat').forEach(s=>{
+    const on=+s.dataset.s===k;
+    s.style.transform=on?'translateY(-6px) scale(1.18)':'';
+    s.style.opacity=(k>=0&&!on)?.45:1;
+  });
+}
+function dashCount(){
+  $$('#dashv .kpi-v').forEach(e=>{
+    const v=parseFloat(e.dataset.v), pre=e.dataset.pre||'', suf=e.dataset.suf||'', dec=+(e.dataset.dec||0);
+    const t0=performance.now();
+    (function st(){
+      const p=Math.min((performance.now()-t0)/1300,1), ease=1-Math.pow(1-p,3);
+      e.textContent=pre+(v*ease).toFixed(dec).replace('.',',')+suf;
+      if(p<1) requestAnimationFrame(st);
+    })();
+  });
+}
+function hlDom(k){
+  $$('.dom').forEach(s=>{
+    const on=+s.dataset.d===k;
+    s.style.transform=on?'translateY(-8px) scale(1.05)':'';
+    s.style.boxShadow=on?'0 18px 40px rgba(255,107,53,.25)':'';
+    s.style.borderColor=on?'#FF6B35':'';
+    s.style.opacity=(k>=0&&!on)?.55:1;
+  });
+}
+
+const DEF=[
+/* SI apertura */ {tag:'Asertis BPS', dur:3, cues:[]},
+/* SW intro webinar */ {tag:'Del diseño a la ejecución', dur:13, cues:[
+  {t:0,  sub:'Del diseño a la ejecución: procesos de venta que multiplican tus resultados.'},
+  {t:5.5,sub:'Talento humano, inteligencia artificial y automatización, para convertir tu estrategia comercial en ventas reales y sostenibles.'}]},
+/* S0 portada */ {tag:'Bienvenida', dur:17, setup:()=>hlStat(-1), cues:[
+  {t:0,   sub:'Somos un ecosistema que acompaña tu operación: talento humano especializado, tecnología y procesos.', a:()=>hlStat(-1)},
+  {t:4.5, sub:'Con más de 25 años de experiencia en BPO…', a:()=>hlStat(0)},
+  {t:7.5, sub:'…un ecosistema digital 360 de soluciones de experiencia…', a:()=>hlStat(1)},
+  {t:10.5,sub:'…más del 40% de resolución en autogestión…', a:()=>hlStat(2)},
+  {t:13.5,sub:'…y trazabilidad del cien por ciento en cada interacción.', a:()=>hlStat(3)}]},
+/* S1 transformación digital */ {tag:'Transformación digital', dur:18, setup:()=>hlDom(-1), cues:[
+  {t:0,  sub:'En Asertis usamos todos los dominios de la transformación digital para apoyar tu operación.', a:()=>hlDom(-1)},
+  {t:5,  sub:'Acompañamos a tus clientes, optimizamos tus procesos y aplicamos la tecnología donde es estratégica.', a:()=>hlDom(0)},
+  {t:7.5, a:()=>hlDom(1)},
+  {t:9.5, a:()=>hlDom(2)},
+  {t:11, sub:'Y convertimos la data en decisiones, con Asertis 360°: el portal omnicanal donde centralizamos toda la operación.', a:()=>hlDom(3)},
+  {t:16, a:()=>hlDom(-1)}]},
+/* S2 punto de partida */ {tag:'Punto de partida', dur:13, cues:[
+  {t:0,  sub:'Nuestro punto de partida es siempre el mismo: entender las preocupaciones y necesidades de cada cliente.'},
+  {t:6.5,sub:'Mapeamos de forma consistente no solo su necesidad, sino todo su proceso, de punta a punta.'}]},
+/* S3 sectores */ {tag:'Sectores', dur:33, setup:()=>hlSector(-1), cues:[
+  {t:0,   sub:'Esa forma de trabajar, y más de 25 años de experiencia, nos han llevado a múltiples sectores.', a:()=>hlSector(-1)},
+  {t:3.5, sub:'En salud, cuidamos cada interacción como se cuida a un paciente: con precisión clínica y calidez humana.', a:()=>hlSector(0)},
+  {t:9.5, sub:'En construcción, gestionamos relaciones tan sólidas como una obra bien hecha: plano a plano, sin grietas.', a:()=>hlSector(1)},
+  {t:15.5,sub:'En servicios, donde el producto es invisible, la experiencia lo es todo: cada contacto es una promesa cumplida.', a:()=>hlSector(2)},
+  {t:21,  sub:'Con las cajas de compensación atendemos a millones de afiliados, sin perder nunca el toque personal.', a:()=>hlSector(3)},
+  {t:27,  sub:'Y en retail, acompañamos al comprador del mostrador al WhatsApp, para que siempre vuelva.', a:()=>hlSector(4)}]},
+/* S4 caso de uso */ {tag:'Caso de uso', dur:13, cues:[
+  {t:0,sub:'Hoy queremos mostrárselo en acción, con un caso de uso real: ventas.'},
+  {t:5,sub:'Recorreremos el journey comercial completo: del primer interés al cierre de la venta, combinando agentes IA y talento humano.'}]},
+/* S5 omnicanal */ {tag:'Omnicanalidad', dur:12, cues:[
+  {t:0,sub:'IVR, WhatsApp, chat web, correo, SMS y voz: todos los canales convergen en un solo portal.'},
+  {t:6.5,sub:'La conversación nunca pierde el hilo, sin importar por dónde llegue el cliente.'}]},
+/* S6 whatsapp */ {tag:'Atención por WhatsApp', dur:31,
+  setup:()=>{ resetChat(chat1(),'<div class="self-center text-[10px] bg-[#FFF3C7] text-ink/70 rounded-md px-3 py-1 shadow-sm">🔒 Los mensajes están cifrados de extremo a extremo</div><div class="self-center text-[10px] bg-white/90 text-ink/50 rounded-md px-3 py-1 shadow-sm font-semibold">HOY</div>'); $$('#feed1 .ev').forEach(e=>e.classList.remove('on')); },
+  cues:[
+  {t:0,   sub:'Veámoslo. Un cliente vio nuestro plan de celular y nos escribe por WhatsApp.'},
+  {t:1.2, a:()=>chatMsg(chat1(),'out','Hola 👋 vi la promo del plan pospago, ¿me dan más información?','9:40')},
+  {t:3,   a:()=>typing(chat1(),$('#wa1status'))},
+  {t:4.8, a:()=>{chatMsg(chat1(),'in','¡Hola, <b>Jorge</b>! 👋 Soy el asistente virtual de <b>Celular Colombia</b> 📱<br>Veo que hoy usas recargas semanales. Con el <b>Plan Pospago</b>: llamadas ilimitadas · más datos · conexión estable','9:40'); $('#feed1 [data-ev="0"]').classList.add('on');}},
+  {t:5.5, sub:'Un bot lo atiende al instante. Y mientras conversan, por detrás se ejecuta todo un proceso.'},
+  {t:8,   a:()=>{chatMsg(chat1(),'in','Y por un valor similar a tus recargas: <b>≈$30.000/mes</b> ✓ ¿Quieres que un especialista te llame hoy y te cuente más? 🤝','9:40'); $('#feed1 [data-ev="1"]').classList.add('on');}},
+  {t:11,  sub:'Identificamos al lead y calificamos su intención de compra…'},
+  {t:12.5,a:()=>chatMsg(chat1(),'out','¿Y conservo mi número?','9:41')},
+  {t:14,  a:()=>typing(chat1(),$('#wa1status'))},
+  {t:16,  sub:'…analizamos su consumo para armar la oferta ideal…', a:()=>{chatMsg(chat1(),'in','¡Claro! Conservas tu número y tu línea de siempre 💪 ¿Te agendo la llamada?','9:41'); $('#feed1 [data-ev="2"]').classList.add('on');}},
+  {t:19.5,a:()=>chatMsg(chat1(),'out','Sí, de una 🙌','9:41')},
+  {t:21.5,sub:'…creamos la oportunidad y agendamos la llamada comercial.', a:()=>{chatMsg(chat1(),'in','✅ ¡Listo! Registré tu interés. Hoy mismo te llamará nuestro equipo. ¡Gracias, Jorge! 🧡','9:42'); $('#feed1 [data-ev="3"]').classList.add('on');}},
+  {t:26,  sub:'Y todo queda trazado al cien por ciento, en un solo lugar.', a:()=>$('#feed1 [data-ev="4"]').classList.add('on')}]},
+/* S7 kanban */ {tag:'Pipeline comercial', dur:14, setup:setupKanban, cues:[
+  {t:0,sub:'Cada gestión vive en nuestro pipeline comercial: el cliente avanza de estado en estado.'},
+  {t:3.5,a:()=>{flipMove(heroCard,$$('#kanban .kcol')[1]); kCounts();}},
+  {t:7,sub:'Jorge ya es una oportunidad calificada… y todo el equipo ve su avance en tiempo real.'}]},
+/* S8 llamada IA */ {tag:'Agente IA · Llamada', dur:Infinity, setup:resetCall, cues:[
+  {t:0,  sub:'Horas después, la campaña comercial entra en acción: llamamos al cliente para ofrecerle el plan.'},
+  {t:4.5,sub:'Pero quien llama no es una persona… es nuestro agente de inteligencia artificial.'},
+  {t:9.5,sub:'Escuchemos el inicio de la llamada real 🎧'},
+  {t:12.5,sub:'Les voy a explicar lo que está pasando en esta llamada.'},
+  {t:18, sub:'Valida al titular y consulta su perfil: sabe que Jorge usa recargas semanales.'},
+  {t:24, sub:'Calcula el ahorro y arma la oferta: un plan pospago por lo mismo que gasta hoy.'},
+  {t:30, sub:'Presenta los beneficios, resuelve las dudas… y detecta el interés del cliente.'},
+  {t:36, sub:'Registra todo y crea una tarea para que un asesor humano especializado cierre la venta.'},
+  {t:42, sub:'Todo esto ocurre en una sola llamada, sin intervención humana.'}]},
+/* S9 cierre humano */ {tag:'Cierre de venta · Humano', dur:27,
+  setup:()=>{ resetChat(chat2(),'<div class="self-center text-[10px] bg-white/90 text-ink/50 rounded-md px-3 py-1 shadow-sm font-semibold">HOY</div>'); setupKanban2(); const s=$('#smsToast'); s.classList.add('hidden'); s.classList.remove('sms-in'); },
+  cues:[
+  {t:0,  sub:'El cliente quedó interesado… y escribe de nuevo por WhatsApp.'},
+  {t:2,  a:()=>chatMsg(chat2(),'out','¡Hola! Soy Jorge, me llamó Sofía por el plan pospago 😃 quiero activarlo','9:41')},
+  {t:4,  a:()=>typing(chat2(),$('#wa2status'))},
+  {t:5,  sub:'Pero esta vez no responde un bot: detrás hay un asesor humano especializado.'},
+  {t:6.5,a:()=>chatMsg(chat2(),'in','¡Hola, <b>Jorge</b>! Soy <b>Laura</b>, tu asesora especializada 😊 Vi toda tu conversación con Sofía: te ayudo a activarlo de una vez.','9:42')},
+  {t:9.5,a:()=>chatMsg(chat2(),'in','Te confirmo: <b>Plan Pospago</b> · llamadas ilimitadas · más datos · conexión estable · <b>≈$30.000/mes</b> (lo que hoy gastas en recargas). ¿Lo activamos con tu línea actual? 📱','9:42')},
+  {t:12, sub:'El asesor conoce todo el historial: la conversación nunca empieza de cero.'},
+  {t:13.5,a:()=>chatMsg(chat2(),'out','Sí, con esa misma 🙌','9:43')},
+  {t:15, sub:'Cierra la venta… y el tablero pasa a “Venta cerrada”.', a:()=>{chatMsg(chat2(),'in','✅ ¡<b>Venta cerrada</b>! Tu plan queda activo esta misma noche. ¡Bienvenido! 🎉','9:43'); flipMove(hero2,$$('#kanban2 .kcol')[1]); $('#payBadge').style.opacity=1;}},
+  {t:18.5,sub:'…y el cliente recibe su confirmación por SMS, al instante.', a:()=>{const s=$('#smsToast'); s.classList.remove('hidden'); void s.offsetWidth; s.classList.add('sms-in');}}]},
+/* S10 posventa */ {tag:'Fidelización & upsell', dur:17, cues:[
+  {t:0, sub:'Pero el journey no termina con la venta: seguimos acompañando al cliente.', a:()=>dashCount()},
+  {t:5, sub:'Analizamos su uso y comportamiento, y lanzamos campañas de fidelización y upsell en el momento justo.'},
+  {t:11.5,sub:'La venta deja de ser una transacción… y se convierte en una relación.'}]},
+/* S11 cierre */ {tag:'Cierre', dur:21, cues:[
+  {t:0, sub:'Esto es Asertis: un ecosistema que combina talento, tecnología y procesos para acompañar tu operación, en cualquier sector.'},
+  {t:8.5,sub:'Nuestro diferencial no es solo la tecnología que usamos: es el talento humano y el conocimiento de los procesos lo que nos permite generar soluciones reales.'},
+  {t:17,sub:'Conversemos. 🧡'}]},
+/* SF final */ {tag:'Gracias', dur:60, cues:[]}
+];
+
+/* ================= sincronización con la voz (audio_presentacion.mp3) ================= */
+const AT=[
+  [],
+  [0.05,4.56],
+  [11.20,17.05,19.20,22.32,25.05],
+  [26.24,32.37,33.60,35.20,37.90,43.50],
+  [44.30,48.78],
+  [53.78,58.82,64.18,69.72,75.41,80.97],
+  [85.61,90.25],
+  [99.00,106.69],
+  [110.59,111.41,112.64,113.87,114.35,116.75,119.63,120.49,121.36,122.51,124.36,125.42,126.45],
+  [131.25,133.41,135.57],
+  [139.52,144.32,148.64,150.48,153.29,158.25,162.74,167.23,171.71],
+  [176.03,177.29,178.55,179.18,180.00,181.64,183.01,184.93,186.85,189.25],
+  [193.19,196.95,203.19],
+  [206.87,214.76,223.00],
+  []
+];
+DEF.forEach((D,i)=>D.cues.forEach((c,j)=>c.at=AT[i][j]));
+const SCENE_START=AT.map(a=>a.length?a[0]:0);
+const CALL_SCENE=10, FINAL_SCENE=14;
+const CALL_PAUSE_T=150.42;  // fin de "…la llamada real": entra la llamada con volumen
+const CALL_LOUD=10;         // segundos de llamada con volumen
+let CALL_CUT=59.6;          // fin (ya en silencio) de la llamada
+let callDone=false, callPhase=0; // 0=pendiente · 1=sonando · 2=en silencio
+
+const voz=new Audio('audio_presentacion.mp3');
+const music=new Audio('musica_fondo.mp3');
+music.loop=true; music.volume=0.16;
+music.addEventListener('ended',()=>{ music.currentTime=0; if(playing && callPhase!==1) music.play().catch(()=>{}); });
+
+/* ================= engine ================= */
+let idx=0, playing=false;
+let introOn=false, introE=0, lastTk=null, finTimer=null;
+
+const dotsEl=$('#dots');
+DEF.forEach((_,i)=>{const d=document.createElement('div');d.className='dot';d.addEventListener('click',()=>go(i));dotsEl.appendChild(d);});
+
+function sceneAt(T){ let s=1; for(let i=1;i<SCENE_START.length;i++){ if(AT[i].length && T>=SCENE_START[i]) s=i; } return s; }
+function resetFiredFrom(T){
+  DEF.forEach(D=>D.cues.forEach(c=>{ c.f = c.at!==undefined && c.at < T - 0.04; }));
+  callDone = T >= CALL_PAUSE_T - 0.02;
+  if(T < CALL_PAUSE_T) callPhase=0;
+}
+
+function go(i, seek=true){
+  if(i<0||i>=DEF.length) return;
+  if(idx===CALL_SCENE&&i!==CALL_SCENE) resetCall();
+  idx=i;
+  scenesEl.forEach((s,k)=>s.classList.toggle('active',k===i));
+  $$('#dots .dot').forEach((d,k)=>d.classList.toggle('on',k===i));
+  $('#sceneTag').textContent=DEF[i].tag;
+  setSub('');
+  DEF[i].setup&&DEF[i].setup();
+  if(i===0){
+    if(seek){ voz.pause(); voz.currentTime=0; resetFiredFrom(0); music.pause(); music.currentTime=0; introOn=false; introE=0; playing=false; uiPlay(false); clearTimeout(finTimer); }
+    return;
+  }
+  if(i===FINAL_SCENE){
+    if(seek){ voz.pause(); voz.currentTime=Math.max(0,(voz.duration||224)-0.05); resetFiredFrom(1e9); armFinal(); }
+    return;
+  }
+  if(seek){
+    introOn=false;
+    voz.currentTime=Math.max(SCENE_START[i]-0.05,0);
+    resetFiredFrom(voz.currentTime);
+    if(playing){ voz.play().catch(()=>{}); music.play().catch(()=>{}); }
+  }
+}
+function armFinal(){
+  clearTimeout(finTimer);
+  finTimer=setTimeout(()=>{ if(idx===FINAL_SCENE){ music.pause(); playing=false; uiPlay(false); } },60000);
+  if(playing) music.play().catch(()=>{});
+}
+
+const inCall=()=>callStarted&&!callEnded;
+function uiPlay(p){
+  $('#icPlay').classList.toggle('hidden',p);
+  $('#icPause').classList.toggle('hidden',!p);
+  $('#bar').classList.toggle('mini',p);
+}
+function setPlaying(p){
+  playing=p; uiPlay(p);
+  if(introOn){ p?music.play().catch(()=>{}):music.pause(); return; }
+  if(callPhase===1 && inCall()){ p?call.play().catch(()=>{}):call.pause(); return; }
+  if(idx===FINAL_SCENE){ p?music.play().catch(()=>{}):music.pause(); return; }
+  if(p){ voz.play().catch(()=>{}); music.play().catch(()=>{}); if(inCall()) call.play().catch(()=>{}); }
+  else { voz.pause(); music.pause(); if(inCall()) call.pause(); }
+}
+
+function tick(ts){
+  requestAnimationFrame(tick);
+  if(lastTk==null) lastTk=ts;
+  const dt=Math.min((ts-lastTk)/1000,.1); lastTk=ts;
+  if(introOn && playing){
+    introE+=dt;
+    if(introE>=3){ introOn=false; voz.play().catch(()=>{}); }
+  }
+  const T=voz.currentTime;
+  if(!voz.paused){
+    if(!callDone && T>=CALL_PAUSE_T){
+      voz.pause(); voz.currentTime=CALL_PAUSE_T; music.pause();
+      if(idx!==CALL_SCENE) go(CALL_SCENE,false);
+      callPhase=1; startCall(); updateCallUI();
+    } else {
+      const s=sceneAt(T);
+      if(s!==idx && idx!==FINAL_SCENE) go(s,false);
+      DEF[idx].cues.forEach(c=>{ if(!c.f && c.at!==undefined && T>=c.at){ c.f=true; if(c.sub!==undefined) setSub(c.sub); if(c.a) c.a(); } });
+    }
+  }
+  if(idx===CALL_SCENE){
+    if(callPhase===1 && inCall() && call.currentTime>=CALL_LOUD){
+      callPhase=2; callDone=true;
+      call.playbackRate=1.95; // muda: avanza más rápido para que los eventos acompañen a la narración
+      if(playing){ voz.play().catch(()=>{}); music.play().catch(()=>{}); }
+    }
+    if(callPhase===2 && call.volume>0) call.volume=Math.max(0,call.volume-0.04);
+    if(inCall() && call.currentTime>=CALL_CUT) finishCall();
+    updateCallUI();
+  }
+  const dur=voz.duration||224;
+  $('#prog').style.width=(Math.min(T/dur,1)*100)+'%';
+}
+requestAnimationFrame(tick);
+
+voz.addEventListener('ended',()=>{ go(FINAL_SCENE,false); armFinal(); });
+
+/* controls */
+$('#btnCC').addEventListener('click',()=>{
+  const on=document.body.classList.toggle('subs-on');
+  $('#btnCC').style.color=on?'#FF6B35':'';
+  $('#btnCC').style.borderColor=on?'#FF6B35':'';
+});
+function startShow(){
+  go(0,false);
+  introOn=true; introE=0; playing=true; uiPlay(true);
+  clearTimeout(finTimer);
+  music.currentTime=0; music.play().catch(()=>{});
+}
+$('#bigPlay').addEventListener('click',startShow);
+$('#btnPlay').addEventListener('click',()=>{ if(idx===0 && !introOn) startShow(); else setPlaying(!playing); });
+$('#btnNext').addEventListener('click',()=>go(idx+1));
+$('#btnPrev').addEventListener('click',()=>go(idx-1));
+$('#replayBtn').addEventListener('click',()=>{ go(0); });
+document.addEventListener('keydown',e=>{
+  if(e.code==='Space'){ e.preventDefault(); if(idx===0 && !introOn) startShow(); else setPlaying(!playing); }
+  if(e.code==='ArrowRight') go(idx+1);
+  if(e.code==='ArrowLeft') go(idx-1);
+});
+
+go(0);
+
+/* iconos profesionales (lucide) con respaldo */
+try{ if(window.lucide) lucide.createIcons(); }catch(e){}
+$$('i[data-lucide]').forEach(e=>{ e.textContent=e.dataset.fb||''; });
+</script>
+<!-- versión ventas · estilo Asertis 360 -->
+</body>
+</html>

@@ -1,0 +1,2134 @@
+{
+  "metadata": {
+    "transaction_key": "deprecated",
+    "request_id": "019eb1d7-95bd-7f03-aba7-ef69fba2cbe8",
+    "sha256": "b9ed1af95f6a96aa2420cd49403fdb79167095f6b96dbc9a072b5ef46679146c",
+    "created": "2026-06-10T14:02:37.336Z",
+    "duration": 164.59094,
+    "channels": 1,
+    "models": [
+      "4f82af92-7749-4465-92ad-3db204bc8e03"
+    ],
+    "model_info": {
+      "4f82af92-7749-4465-92ad-3db204bc8e03": {
+        "name": "2-general-nova",
+        "version": "2023-12-14.34983",
+        "arch": "nova-2"
+      }
+    }
+  },
+  "results": {
+    "channels": [
+      {
+        "alternatives": [
+          {
+            "transcript": "hola soy sofía de celular colombia tengo el gusto de hablar con jorge sí con él con quién tengo el gusto perdón gracias jorge por confirmar te saluda sofía asesora de celular colombia espero estés teniendo una excelente tarde te llamo porque hemos seleccionado tu línea para una mejora exclusiva en tu servicio móvil según nuestros registros actualmente usas un plan de recarga semanal es correcto sí correcto perfecto jorge mira si normalmente haces recargas semanales por ejemplo de siete mil quinientos pesos eso suma unos treinta mil pesos al mes por un valor muy similar te propongo un plan pospago con beneficios increíbles conexión estable todo el tiempo llamadas ilimitadas datos adicionales y sin preocuparte por recargas cómo te gustaría que te detalle esta opción podría ser justo lo que necesitas no no una persona ya qué pena sofía no te escuché lo que pasa es que estaba en una reunión me puedes repetir claro jorge no te preocupes entiendo que estabas ocupado te cuento nuevamente ahora mismo tienes un plan de recarga semanal cierto eso normalmente suma unos treinta mil pesos al mes si recargas semanalmente siete mil quinientos pesos te estoy proponiendo cambiar a un plan pospago por un valor muy similar pero con más beneficios conexión estable sin interrupciones llamadas ilimitadas y más datos todo sin preocuparte por recargas qué te parece sí pero te voy a preguntar una cosa lo que pasa es que ahorita estoy en una reunión no te puedo atender me podrías llamar después entendido jorge no quiero interrumpir te parece si te contacto más tarde solo dime rápidamente a qué hora te vendría mejor que te llame nuevamente así te doy la información en el momento ideal para ti cinco de la tarde cinco de la tarde puedo perfecto jorge te estaré llamando a las cinco de la tarde para retomar esta conversación espero que tengas una excelente reunión y nos hablamos más tarde hasta pronto muchísimas gracias buenos días gracias por tu tiempo jorge te estaré contactando a las cinco de la tarde como acordamos que tengas un excelente día",
+            "confidence": 0.9980469,
+            "words": [
+              {
+                "word": "hola",
+                "start": 2.3999999,
+                "end": 2.72,
+                "confidence": 0.71972656
+              },
+              {
+                "word": "soy",
+                "start": 2.72,
+                "end": 3.12,
+                "confidence": 0.99609375
+              },
+              {
+                "word": "sofía",
+                "start": 3.12,
+                "end": 3.52,
+                "confidence": 0.7824707
+              },
+              {
+                "word": "de",
+                "start": 3.52,
+                "end": 3.6799998,
+                "confidence": 0.9921875
+              },
+              {
+                "word": "celular",
+                "start": 3.6799998,
+                "end": 4.18,
+                "confidence": 0.9753418
+              },
+              {
+                "word": "colombia",
+                "start": 4.72,
+                "end": 4.96,
+                "confidence": 0.95336914
+              },
+              {
+                "word": "tengo",
+                "start": 4.96,
+                "end": 5.2799997,
+                "confidence": 1
+              },
+              {
+                "word": "el",
+                "start": 5.2799997,
+                "end": 5.3599997,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "gusto",
+                "start": 5.3599997,
+                "end": 5.68,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 5.68,
+                "end": 5.8399997,
+                "confidence": 0.9951172
+              },
+              {
+                "word": "hablar",
+                "start": 5.8399997,
+                "end": 6.3199997,
+                "confidence": 1
+              },
+              {
+                "word": "con",
+                "start": 6.3199997,
+                "end": 6.56,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "jorge",
+                "start": 6.56,
+                "end": 7.06,
+                "confidence": 1
+              },
+              {
+                "word": "sí",
+                "start": 8.72,
+                "end": 8.96,
+                "confidence": 0.9733887
+              },
+              {
+                "word": "con",
+                "start": 8.96,
+                "end": 9.12,
+                "confidence": 0.95947266
+              },
+              {
+                "word": "él",
+                "start": 9.12,
+                "end": 9.28,
+                "confidence": 0.83032227
+              },
+              {
+                "word": "con",
+                "start": 9.28,
+                "end": 9.599999,
+                "confidence": 0.9975586
+              },
+              {
+                "word": "quién",
+                "start": 9.599999,
+                "end": 9.76,
+                "confidence": 0.9951172
+              },
+              {
+                "word": "tengo",
+                "start": 9.76,
+                "end": 9.92,
+                "confidence": 1
+              },
+              {
+                "word": "el",
+                "start": 9.92,
+                "end": 10.08,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "gusto",
+                "start": 10.08,
+                "end": 10.48,
+                "confidence": 0.7705078
+              },
+              {
+                "word": "perdón",
+                "start": 10.48,
+                "end": 10.98,
+                "confidence": 0.90356445
+              },
+              {
+                "word": "gracias",
+                "start": 13.225,
+                "end": 13.705,
+                "confidence": 0.9628906
+              },
+              {
+                "word": "jorge",
+                "start": 13.705,
+                "end": 14.025001,
+                "confidence": 0.9941406
+              },
+              {
+                "word": "por",
+                "start": 14.025001,
+                "end": 14.265,
+                "confidence": 1
+              },
+              {
+                "word": "confirmar",
+                "start": 14.265,
+                "end": 14.765,
+                "confidence": 0.9790039
+              },
+              {
+                "word": "te",
+                "start": 15.145,
+                "end": 15.385,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "saluda",
+                "start": 15.385,
+                "end": 15.705,
+                "confidence": 0.98535156
+              },
+              {
+                "word": "sofía",
+                "start": 15.705,
+                "end": 16.185,
+                "confidence": 0.99560547
+              },
+              {
+                "word": "asesora",
+                "start": 16.185,
+                "end": 16.585,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 16.585,
+                "end": 16.745,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "celular",
+                "start": 16.745,
+                "end": 17.225,
+                "confidence": 0.9890137
+              },
+              {
+                "word": "colombia",
+                "start": 17.225,
+                "end": 17.725,
+                "confidence": 0.97753906
+              },
+              {
+                "word": "espero",
+                "start": 17.945,
+                "end": 18.345001,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "estés",
+                "start": 18.345001,
+                "end": 18.585,
+                "confidence": 0.7602539
+              },
+              {
+                "word": "teniendo",
+                "start": 18.585,
+                "end": 18.985,
+                "confidence": 1
+              },
+              {
+                "word": "una",
+                "start": 18.985,
+                "end": 19.225,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "excelente",
+                "start": 19.225,
+                "end": 19.625,
+                "confidence": 1
+              },
+              {
+                "word": "tarde",
+                "start": 19.625,
+                "end": 20.125,
+                "confidence": 0.9995117
+              },
+              {
+                "word": "te",
+                "start": 20.265,
+                "end": 20.505001,
+                "confidence": 1
+              },
+              {
+                "word": "llamo",
+                "start": 20.505001,
+                "end": 20.825,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "porque",
+                "start": 20.825,
+                "end": 21.325,
+                "confidence": 0.99316406
+              },
+              {
+                "word": "hemos",
+                "start": 21.625,
+                "end": 22.025,
+                "confidence": 1
+              },
+              {
+                "word": "seleccionado",
+                "start": 22.025,
+                "end": 22.345001,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "tu",
+                "start": 22.345001,
+                "end": 22.505001,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "línea",
+                "start": 22.505001,
+                "end": 22.985,
+                "confidence": 0.99609375
+              },
+              {
+                "word": "para",
+                "start": 22.985,
+                "end": 23.064999,
+                "confidence": 1
+              },
+              {
+                "word": "una",
+                "start": 23.064999,
+                "end": 23.384998,
+                "confidence": 1
+              },
+              {
+                "word": "mejora",
+                "start": 23.384998,
+                "end": 23.705,
+                "confidence": 0.71484375
+              },
+              {
+                "word": "exclusiva",
+                "start": 23.705,
+                "end": 24.205,
+                "confidence": 1
+              },
+              {
+                "word": "en",
+                "start": 24.904999,
+                "end": 25.385,
+                "confidence": 0.9970703
+              },
+              {
+                "word": "tu",
+                "start": 25.385,
+                "end": 25.865,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "servicio",
+                "start": 25.865,
+                "end": 26.105,
+                "confidence": 1
+              },
+              {
+                "word": "móvil",
+                "start": 26.105,
+                "end": 26.605,
+                "confidence": 0.99853516
+              },
+              {
+                "word": "según",
+                "start": 27.07,
+                "end": 27.43,
+                "confidence": 1
+              },
+              {
+                "word": "nuestros",
+                "start": 27.43,
+                "end": 27.789999,
+                "confidence": 0.9873047
+              },
+              {
+                "word": "registros",
+                "start": 27.789999,
+                "end": 28.289999,
+                "confidence": 0.9880371
+              },
+              {
+                "word": "actualmente",
+                "start": 28.83,
+                "end": 29.15,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "usas",
+                "start": 29.15,
+                "end": 29.63,
+                "confidence": 0.8959961
+              },
+              {
+                "word": "un",
+                "start": 29.63,
+                "end": 29.789999,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "plan",
+                "start": 29.789999,
+                "end": 29.95,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 29.95,
+                "end": 30.11,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "recarga",
+                "start": 30.11,
+                "end": 30.61,
+                "confidence": 0.82177734
+              },
+              {
+                "word": "semanal",
+                "start": 30.67,
+                "end": 31.15,
+                "confidence": 0.8984375
+              },
+              {
+                "word": "es",
+                "start": 31.15,
+                "end": 31.39,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "correcto",
+                "start": 31.39,
+                "end": 31.89,
+                "confidence": 1
+              },
+              {
+                "word": "sí",
+                "start": 33.39,
+                "end": 33.71,
+                "confidence": 0.9916992
+              },
+              {
+                "word": "correcto",
+                "start": 33.71,
+                "end": 34.21,
+                "confidence": 0.9970703
+              },
+              {
+                "word": "perfecto",
+                "start": 36.51,
+                "end": 36.75,
+                "confidence": 0.9970703
+              },
+              {
+                "word": "jorge",
+                "start": 36.75,
+                "end": 37.25,
+                "confidence": 0.9995117
+              },
+              {
+                "word": "mira",
+                "start": 38.27,
+                "end": 38.67,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "si",
+                "start": 38.67,
+                "end": 38.91,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "normalmente",
+                "start": 38.91,
+                "end": 39.41,
+                "confidence": 0.9970703
+              },
+              {
+                "word": "haces",
+                "start": 39.71,
+                "end": 40.185,
+                "confidence": 1
+              },
+              {
+                "word": "recargas",
+                "start": 40.345,
+                "end": 40.665,
+                "confidence": 1
+              },
+              {
+                "word": "semanales",
+                "start": 40.665,
+                "end": 41.165,
+                "confidence": 0.9951172
+              },
+              {
+                "word": "por",
+                "start": 42.105,
+                "end": 42.425003,
+                "confidence": 1
+              },
+              {
+                "word": "ejemplo",
+                "start": 42.425003,
+                "end": 42.745003,
+                "confidence": 0.9914551
+              },
+              {
+                "word": "de",
+                "start": 42.745003,
+                "end": 42.905003,
+                "confidence": 1
+              },
+              {
+                "word": "siete",
+                "start": 42.905003,
+                "end": 43.145,
+                "confidence": 1
+              },
+              {
+                "word": "mil",
+                "start": 43.145,
+                "end": 43.645,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "quinientos",
+                "start": 43.865,
+                "end": 44.365,
+                "confidence": 1
+              },
+              {
+                "word": "pesos",
+                "start": 44.425003,
+                "end": 44.585003,
+                "confidence": 0.99658203
+              },
+              {
+                "word": "eso",
+                "start": 44.585003,
+                "end": 44.745003,
+                "confidence": 0.99316406
+              },
+              {
+                "word": "suma",
+                "start": 44.745003,
+                "end": 45.145,
+                "confidence": 1
+              },
+              {
+                "word": "unos",
+                "start": 45.145,
+                "end": 45.625,
+                "confidence": 1
+              },
+              {
+                "word": "treinta",
+                "start": 45.625,
+                "end": 45.865,
+                "confidence": 1
+              },
+              {
+                "word": "mil",
+                "start": 45.865,
+                "end": 46.265,
+                "confidence": 1
+              },
+              {
+                "word": "pesos",
+                "start": 46.265,
+                "end": 46.665,
+                "confidence": 1
+              },
+              {
+                "word": "al",
+                "start": 46.665,
+                "end": 47.065002,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "mes",
+                "start": 47.065002,
+                "end": 47.565002,
+                "confidence": 0.8737793
+              },
+              {
+                "word": "por",
+                "start": 47.705,
+                "end": 47.865,
+                "confidence": 1
+              },
+              {
+                "word": "un",
+                "start": 47.865,
+                "end": 48.025,
+                "confidence": 1
+              },
+              {
+                "word": "valor",
+                "start": 48.025,
+                "end": 48.345,
+                "confidence": 1
+              },
+              {
+                "word": "muy",
+                "start": 48.345,
+                "end": 48.585,
+                "confidence": 1
+              },
+              {
+                "word": "similar",
+                "start": 48.585,
+                "end": 49.065002,
+                "confidence": 1
+              },
+              {
+                "word": "te",
+                "start": 49.065002,
+                "end": 49.565002,
+                "confidence": 0.5053711
+              },
+              {
+                "word": "propongo",
+                "start": 50.185,
+                "end": 50.585,
+                "confidence": 1
+              },
+              {
+                "word": "un",
+                "start": 50.585,
+                "end": 50.745003,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "plan",
+                "start": 50.745003,
+                "end": 50.825,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "pospago",
+                "start": 50.825,
+                "end": 51.325,
+                "confidence": 0.9316406
+              },
+              {
+                "word": "con",
+                "start": 51.465,
+                "end": 51.545002,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "beneficios",
+                "start": 51.545002,
+                "end": 52.045002,
+                "confidence": 1
+              },
+              {
+                "word": "increíbles",
+                "start": 52.345,
+                "end": 52.845,
+                "confidence": 0.8520508
+              },
+              {
+                "word": "conexión",
+                "start": 52.905,
+                "end": 53.385002,
+                "confidence": 1
+              },
+              {
+                "word": "estable",
+                "start": 53.385002,
+                "end": 53.865,
+                "confidence": 1
+              },
+              {
+                "word": "todo",
+                "start": 53.865,
+                "end": 54.025,
+                "confidence": 0.9873047
+              },
+              {
+                "word": "el",
+                "start": 54.025,
+                "end": 54.525,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "tiempo",
+                "start": 54.745003,
+                "end": 54.825,
+                "confidence": 0.99853516
+              },
+              {
+                "word": "llamadas",
+                "start": 54.825,
+                "end": 55.065002,
+                "confidence": 1
+              },
+              {
+                "word": "ilimitadas",
+                "start": 55.065002,
+                "end": 55.565002,
+                "confidence": 0.9996745
+              },
+              {
+                "word": "datos",
+                "start": 56.34,
+                "end": 56.66,
+                "confidence": 1
+              },
+              {
+                "word": "adicionales",
+                "start": 56.66,
+                "end": 57.16,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 57.379997,
+                "end": 57.62,
+                "confidence": 0.8935547
+              },
+              {
+                "word": "sin",
+                "start": 57.62,
+                "end": 57.94,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "preocuparte",
+                "start": 57.94,
+                "end": 58.42,
+                "confidence": 1
+              },
+              {
+                "word": "por",
+                "start": 58.42,
+                "end": 58.66,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "recargas",
+                "start": 58.66,
+                "end": 59.16,
+                "confidence": 0.9895833
+              },
+              {
+                "word": "cómo",
+                "start": 59.3,
+                "end": 59.62,
+                "confidence": 0.8413086
+              },
+              {
+                "word": "te",
+                "start": 59.62,
+                "end": 59.859997,
+                "confidence": 1
+              },
+              {
+                "word": "gustaría",
+                "start": 59.859997,
+                "end": 60.26,
+                "confidence": 1
+              },
+              {
+                "word": "que",
+                "start": 60.26,
+                "end": 60.339996,
+                "confidence": 0.9970703
+              },
+              {
+                "word": "te",
+                "start": 60.339996,
+                "end": 60.839996,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "detalle",
+                "start": 60.98,
+                "end": 61.48,
+                "confidence": 0.9951172
+              },
+              {
+                "word": "esta",
+                "start": 61.539997,
+                "end": 61.78,
+                "confidence": 0.9970703
+              },
+              {
+                "word": "opción",
+                "start": 61.78,
+                "end": 62.28,
+                "confidence": 0.99853516
+              },
+              {
+                "word": "podría",
+                "start": 62.579998,
+                "end": 62.98,
+                "confidence": 0.97314453
+              },
+              {
+                "word": "ser",
+                "start": 62.98,
+                "end": 63.219997,
+                "confidence": 0.9716797
+              },
+              {
+                "word": "justo",
+                "start": 63.219997,
+                "end": 63.46,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "lo",
+                "start": 63.46,
+                "end": 63.62,
+                "confidence": 1
+              },
+              {
+                "word": "que",
+                "start": 63.62,
+                "end": 63.859997,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "necesitas",
+                "start": 63.859997,
+                "end": 64.36,
+                "confidence": 0.9995117
+              },
+              {
+                "word": "no",
+                "start": 66.9,
+                "end": 67.299995,
+                "confidence": 0.24969482
+              },
+              {
+                "word": "no",
+                "start": 67.299995,
+                "end": 67.46,
+                "confidence": 0.5136719
+              },
+              {
+                "word": "una",
+                "start": 67.46,
+                "end": 67.78,
+                "confidence": 0.3215332
+              },
+              {
+                "word": "persona",
+                "start": 67.78,
+                "end": 68.02,
+                "confidence": 0.99316406
+              },
+              {
+                "word": "ya",
+                "start": 68.02,
+                "end": 68.295,
+                "confidence": 0.64038086
+              },
+              {
+                "word": "qué",
+                "start": 69.015,
+                "end": 69.174995,
+                "confidence": 0.7558594
+              },
+              {
+                "word": "pena",
+                "start": 69.174995,
+                "end": 69.575,
+                "confidence": 0.8286133
+              },
+              {
+                "word": "sofía",
+                "start": 69.575,
+                "end": 69.895,
+                "confidence": 0.7404785
+              },
+              {
+                "word": "no",
+                "start": 69.895,
+                "end": 70.055,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "te",
+                "start": 70.055,
+                "end": 70.134995,
+                "confidence": 0.9863281
+              },
+              {
+                "word": "escuché",
+                "start": 70.134995,
+                "end": 70.375,
+                "confidence": 0.8095703
+              },
+              {
+                "word": "lo",
+                "start": 70.375,
+                "end": 70.534996,
+                "confidence": 0.9941406
+              },
+              {
+                "word": "que",
+                "start": 70.534996,
+                "end": 70.615,
+                "confidence": 0.9941406
+              },
+              {
+                "word": "pasa",
+                "start": 70.615,
+                "end": 70.775,
+                "confidence": 0.99121094
+              },
+              {
+                "word": "es",
+                "start": 70.775,
+                "end": 70.854996,
+                "confidence": 0.9589844
+              },
+              {
+                "word": "que",
+                "start": 70.854996,
+                "end": 70.935,
+                "confidence": 0.9838867
+              },
+              {
+                "word": "estaba",
+                "start": 70.935,
+                "end": 71.095,
+                "confidence": 0.984375
+              },
+              {
+                "word": "en",
+                "start": 71.095,
+                "end": 71.174995,
+                "confidence": 0.97998047
+              },
+              {
+                "word": "una",
+                "start": 71.174995,
+                "end": 71.255,
+                "confidence": 0.9941406
+              },
+              {
+                "word": "reunión",
+                "start": 71.255,
+                "end": 71.494995,
+                "confidence": 0.65844727
+              },
+              {
+                "word": "me",
+                "start": 71.494995,
+                "end": 71.735,
+                "confidence": 0.9951172
+              },
+              {
+                "word": "puedes",
+                "start": 71.735,
+                "end": 72.055,
+                "confidence": 0.6899414
+              },
+              {
+                "word": "repetir",
+                "start": 72.055,
+                "end": 72.555,
+                "confidence": 1
+              },
+              {
+                "word": "claro",
+                "start": 74.455,
+                "end": 74.775,
+                "confidence": 0.9177246
+              },
+              {
+                "word": "jorge",
+                "start": 74.775,
+                "end": 75.275,
+                "confidence": 0.89990234
+              },
+              {
+                "word": "no",
+                "start": 75.575,
+                "end": 75.735,
+                "confidence": 0.99609375
+              },
+              {
+                "word": "te",
+                "start": 75.735,
+                "end": 75.975,
+                "confidence": 1
+              },
+              {
+                "word": "preocupes",
+                "start": 75.975,
+                "end": 76.455,
+                "confidence": 0.9675293
+              },
+              {
+                "word": "entiendo",
+                "start": 76.455,
+                "end": 76.854996,
+                "confidence": 1
+              },
+              {
+                "word": "que",
+                "start": 76.854996,
+                "end": 77.095,
+                "confidence": 1
+              },
+              {
+                "word": "estabas",
+                "start": 77.095,
+                "end": 77.494995,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "ocupado",
+                "start": 77.494995,
+                "end": 77.994995,
+                "confidence": 0.9885254
+              },
+              {
+                "word": "te",
+                "start": 78.375,
+                "end": 78.615,
+                "confidence": 0.9941406
+              },
+              {
+                "word": "cuento",
+                "start": 78.615,
+                "end": 79.115,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "nuevamente",
+                "start": 79.335,
+                "end": 79.655,
+                "confidence": 0.9550781
+              },
+              {
+                "word": "ahora",
+                "start": 79.655,
+                "end": 79.975,
+                "confidence": 1
+              },
+              {
+                "word": "mismo",
+                "start": 79.975,
+                "end": 80.375,
+                "confidence": 1
+              },
+              {
+                "word": "tienes",
+                "start": 80.375,
+                "end": 80.695,
+                "confidence": 0.99316406
+              },
+              {
+                "word": "un",
+                "start": 80.695,
+                "end": 80.854996,
+                "confidence": 1
+              },
+              {
+                "word": "plan",
+                "start": 80.854996,
+                "end": 81.095,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 81.095,
+                "end": 81.255,
+                "confidence": 1
+              },
+              {
+                "word": "recarga",
+                "start": 81.255,
+                "end": 81.735,
+                "confidence": 0.8989258
+              },
+              {
+                "word": "semanal",
+                "start": 81.735,
+                "end": 82.215,
+                "confidence": 0.9875488
+              },
+              {
+                "word": "cierto",
+                "start": 82.215,
+                "end": 82.715,
+                "confidence": 0.99934894
+              },
+              {
+                "word": "eso",
+                "start": 83.23,
+                "end": 83.47,
+                "confidence": 0.87841797
+              },
+              {
+                "word": "normalmente",
+                "start": 83.47,
+                "end": 83.95,
+                "confidence": 0.97265625
+              },
+              {
+                "word": "suma",
+                "start": 83.95,
+                "end": 84.43,
+                "confidence": 0.9135742
+              },
+              {
+                "word": "unos",
+                "start": 84.43,
+                "end": 84.59,
+                "confidence": 0.9970703
+              },
+              {
+                "word": "treinta",
+                "start": 84.59,
+                "end": 84.909996,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "mil",
+                "start": 84.909996,
+                "end": 85.07,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "pesos",
+                "start": 85.07,
+                "end": 85.39,
+                "confidence": 1
+              },
+              {
+                "word": "al",
+                "start": 85.39,
+                "end": 85.55,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "mes",
+                "start": 85.55,
+                "end": 86.03,
+                "confidence": 1
+              },
+              {
+                "word": "si",
+                "start": 86.03,
+                "end": 86.27,
+                "confidence": 0.4970703
+              },
+              {
+                "word": "recargas",
+                "start": 86.27,
+                "end": 86.77,
+                "confidence": 0.9995117
+              },
+              {
+                "word": "semanalmente",
+                "start": 86.83,
+                "end": 87.33,
+                "confidence": 0.99316406
+              },
+              {
+                "word": "siete",
+                "start": 87.71,
+                "end": 87.87,
+                "confidence": 0.9921875
+              },
+              {
+                "word": "mil",
+                "start": 87.87,
+                "end": 88.11,
+                "confidence": 1
+              },
+              {
+                "word": "quinientos",
+                "start": 88.11,
+                "end": 88.59,
+                "confidence": 1
+              },
+              {
+                "word": "pesos",
+                "start": 88.59,
+                "end": 89.09,
+                "confidence": 0.9995117
+              },
+              {
+                "word": "te",
+                "start": 89.31,
+                "end": 89.63,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "estoy",
+                "start": 89.63,
+                "end": 90.13,
+                "confidence": 1
+              },
+              {
+                "word": "proponiendo",
+                "start": 90.43,
+                "end": 90.59,
+                "confidence": 1
+              },
+              {
+                "word": "cambiar",
+                "start": 90.59,
+                "end": 90.99,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "a",
+                "start": 90.99,
+                "end": 91.15,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "un",
+                "start": 91.15,
+                "end": 91.31,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "plan",
+                "start": 91.31,
+                "end": 91.63,
+                "confidence": 1
+              },
+              {
+                "word": "pospago",
+                "start": 91.63,
+                "end": 92.13,
+                "confidence": 0.8288574
+              },
+              {
+                "word": "por",
+                "start": 92.35,
+                "end": 92.51,
+                "confidence": 0.9970703
+              },
+              {
+                "word": "un",
+                "start": 92.51,
+                "end": 92.67,
+                "confidence": 1
+              },
+              {
+                "word": "valor",
+                "start": 92.67,
+                "end": 92.99,
+                "confidence": 1
+              },
+              {
+                "word": "muy",
+                "start": 92.99,
+                "end": 93.229996,
+                "confidence": 1
+              },
+              {
+                "word": "similar",
+                "start": 93.229996,
+                "end": 93.729996,
+                "confidence": 0.8898926
+              },
+              {
+                "word": "pero",
+                "start": 93.87,
+                "end": 94.11,
+                "confidence": 1
+              },
+              {
+                "word": "con",
+                "start": 94.11,
+                "end": 94.27,
+                "confidence": 1
+              },
+              {
+                "word": "más",
+                "start": 94.27,
+                "end": 94.51,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "beneficios",
+                "start": 94.51,
+                "end": 95.01,
+                "confidence": 0.85668945
+              },
+              {
+                "word": "conexión",
+                "start": 96.03,
+                "end": 96.53,
+                "confidence": 0.6953125
+              },
+              {
+                "word": "estable",
+                "start": 96.59,
+                "end": 97.07,
+                "confidence": 0.9970703
+              },
+              {
+                "word": "sin",
+                "start": 97.07,
+                "end": 97.47,
+                "confidence": 0.9526367
+              },
+              {
+                "word": "interrupciones",
+                "start": 97.47,
+                "end": 97.97,
+                "confidence": 1
+              },
+              {
+                "word": "llamadas",
+                "start": 98.975,
+                "end": 99.475,
+                "confidence": 1
+              },
+              {
+                "word": "ilimitadas",
+                "start": 99.854996,
+                "end": 100.354996,
+                "confidence": 0.9995117
+              },
+              {
+                "word": "y",
+                "start": 100.735,
+                "end": 101.055,
+                "confidence": 0.9350586
+              },
+              {
+                "word": "más",
+                "start": 101.055,
+                "end": 101.295,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "datos",
+                "start": 101.295,
+                "end": 101.775,
+                "confidence": 0.9194336
+              },
+              {
+                "word": "todo",
+                "start": 101.775,
+                "end": 102.015,
+                "confidence": 0.99121094
+              },
+              {
+                "word": "sin",
+                "start": 102.015,
+                "end": 102.335,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "preocuparte",
+                "start": 102.335,
+                "end": 102.835,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "por",
+                "start": 102.975,
+                "end": 103.295,
+                "confidence": 1
+              },
+              {
+                "word": "recargas",
+                "start": 103.295,
+                "end": 103.795,
+                "confidence": 0.9503581
+              },
+              {
+                "word": "qué",
+                "start": 104.174995,
+                "end": 104.494995,
+                "confidence": 0.99853516
+              },
+              {
+                "word": "te",
+                "start": 104.494995,
+                "end": 104.655,
+                "confidence": 1
+              },
+              {
+                "word": "parece",
+                "start": 104.655,
+                "end": 105.155,
+                "confidence": 1
+              },
+              {
+                "word": "sí",
+                "start": 107.134995,
+                "end": 107.534996,
+                "confidence": 0.9770508
+              },
+              {
+                "word": "pero",
+                "start": 107.534996,
+                "end": 107.615,
+                "confidence": 0.92333984
+              },
+              {
+                "word": "te",
+                "start": 107.615,
+                "end": 108.015,
+                "confidence": 0.96533203
+              },
+              {
+                "word": "voy",
+                "start": 108.015,
+                "end": 108.415,
+                "confidence": 0.6665039
+              },
+              {
+                "word": "a",
+                "start": 108.415,
+                "end": 108.575,
+                "confidence": 0.99609375
+              },
+              {
+                "word": "preguntar",
+                "start": 108.575,
+                "end": 108.895,
+                "confidence": 0.6176758
+              },
+              {
+                "word": "una",
+                "start": 108.895,
+                "end": 109.055,
+                "confidence": 0.99316406
+              },
+              {
+                "word": "cosa",
+                "start": 109.055,
+                "end": 109.295,
+                "confidence": 0.82910156
+              },
+              {
+                "word": "lo",
+                "start": 109.295,
+                "end": 109.455,
+                "confidence": 1
+              },
+              {
+                "word": "que",
+                "start": 109.455,
+                "end": 109.534996,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "pasa",
+                "start": 109.534996,
+                "end": 109.775,
+                "confidence": 0.9951172
+              },
+              {
+                "word": "es",
+                "start": 109.775,
+                "end": 109.935,
+                "confidence": 0.96875
+              },
+              {
+                "word": "que",
+                "start": 109.935,
+                "end": 110.015,
+                "confidence": 0.99609375
+              },
+              {
+                "word": "ahorita",
+                "start": 110.015,
+                "end": 110.255,
+                "confidence": 0.9560547
+              },
+              {
+                "word": "estoy",
+                "start": 110.255,
+                "end": 110.415,
+                "confidence": 0.9970703
+              },
+              {
+                "word": "en",
+                "start": 110.415,
+                "end": 110.575,
+                "confidence": 0.9404297
+              },
+              {
+                "word": "una",
+                "start": 110.575,
+                "end": 110.735,
+                "confidence": 0.99316406
+              },
+              {
+                "word": "reunión",
+                "start": 110.735,
+                "end": 111.134995,
+                "confidence": 0.8269043
+              },
+              {
+                "word": "no",
+                "start": 111.134995,
+                "end": 111.295,
+                "confidence": 0.99121094
+              },
+              {
+                "word": "te",
+                "start": 111.295,
+                "end": 111.455,
+                "confidence": 0.9921875
+              },
+              {
+                "word": "puedo",
+                "start": 111.455,
+                "end": 111.695,
+                "confidence": 1
+              },
+              {
+                "word": "atender",
+                "start": 111.695,
+                "end": 112.195,
+                "confidence": 0.88061523
+              },
+              {
+                "word": "me",
+                "start": 112.69,
+                "end": 112.85,
+                "confidence": 0.8989258
+              },
+              {
+                "word": "podrías",
+                "start": 112.85,
+                "end": 113.17,
+                "confidence": 0.71972656
+              },
+              {
+                "word": "llamar",
+                "start": 113.17,
+                "end": 113.49,
+                "confidence": 1
+              },
+              {
+                "word": "después",
+                "start": 113.49,
+                "end": 113.99,
+                "confidence": 0.9995117
+              },
+              {
+                "word": "entendido",
+                "start": 115.65,
+                "end": 116.15,
+                "confidence": 0.8925781
+              },
+              {
+                "word": "jorge",
+                "start": 116.21,
+                "end": 116.71,
+                "confidence": 0.79248047
+              },
+              {
+                "word": "no",
+                "start": 116.93,
+                "end": 117.17,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "quiero",
+                "start": 117.17,
+                "end": 117.49,
+                "confidence": 1
+              },
+              {
+                "word": "interrumpir",
+                "start": 117.49,
+                "end": 117.99,
+                "confidence": 0.9758301
+              },
+              {
+                "word": "te",
+                "start": 118.05,
+                "end": 118.45,
+                "confidence": 0.96850586
+              },
+              {
+                "word": "parece",
+                "start": 118.45,
+                "end": 118.69,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "si",
+                "start": 118.69,
+                "end": 118.93,
+                "confidence": 0.9902344
+              },
+              {
+                "word": "te",
+                "start": 118.93,
+                "end": 119.17,
+                "confidence": 1
+              },
+              {
+                "word": "contacto",
+                "start": 119.17,
+                "end": 119.57,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "más",
+                "start": 119.57,
+                "end": 119.81,
+                "confidence": 0.9970703
+              },
+              {
+                "word": "tarde",
+                "start": 119.81,
+                "end": 120.31,
+                "confidence": 0.9951172
+              },
+              {
+                "word": "solo",
+                "start": 120.53,
+                "end": 120.85,
+                "confidence": 0.9604492
+              },
+              {
+                "word": "dime",
+                "start": 120.85,
+                "end": 121.17,
+                "confidence": 1
+              },
+              {
+                "word": "rápidamente",
+                "start": 121.17,
+                "end": 121.67,
+                "confidence": 0.9550781
+              },
+              {
+                "word": "a",
+                "start": 121.89,
+                "end": 122.130005,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "qué",
+                "start": 122.130005,
+                "end": 122.29,
+                "confidence": 0.99121094
+              },
+              {
+                "word": "hora",
+                "start": 122.29,
+                "end": 122.45,
+                "confidence": 0.9951172
+              },
+              {
+                "word": "te",
+                "start": 122.45,
+                "end": 122.69,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "vendría",
+                "start": 122.69,
+                "end": 123.01,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "mejor",
+                "start": 123.01,
+                "end": 123.25,
+                "confidence": 1
+              },
+              {
+                "word": "que",
+                "start": 123.25,
+                "end": 123.41,
+                "confidence": 1
+              },
+              {
+                "word": "te",
+                "start": 123.41,
+                "end": 123.57,
+                "confidence": 0.9951172
+              },
+              {
+                "word": "llame",
+                "start": 123.57,
+                "end": 123.97,
+                "confidence": 0.86572266
+              },
+              {
+                "word": "nuevamente",
+                "start": 123.97,
+                "end": 124.47,
+                "confidence": 0.9633789
+              },
+              {
+                "word": "así",
+                "start": 124.935,
+                "end": 125.175,
+                "confidence": 0.9560547
+              },
+              {
+                "word": "te",
+                "start": 125.175,
+                "end": 125.255,
+                "confidence": 0.9951172
+              },
+              {
+                "word": "doy",
+                "start": 125.255,
+                "end": 125.575,
+                "confidence": 1
+              },
+              {
+                "word": "la",
+                "start": 125.575,
+                "end": 125.815,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "información",
+                "start": 125.815,
+                "end": 126.295,
+                "confidence": 1
+              },
+              {
+                "word": "en",
+                "start": 126.295,
+                "end": 126.455,
+                "confidence": 0.8051758
+              },
+              {
+                "word": "el",
+                "start": 126.455,
+                "end": 126.615,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "momento",
+                "start": 126.615,
+                "end": 126.935,
+                "confidence": 1
+              },
+              {
+                "word": "ideal",
+                "start": 126.935,
+                "end": 127.255,
+                "confidence": 0.9921875
+              },
+              {
+                "word": "para",
+                "start": 127.255,
+                "end": 127.415,
+                "confidence": 0.9667969
+              },
+              {
+                "word": "ti",
+                "start": 127.415,
+                "end": 127.735,
+                "confidence": 0.9855957
+              },
+              {
+                "word": "cinco",
+                "start": 127.815,
+                "end": 127.895,
+                "confidence": 0.47070312
+              },
+              {
+                "word": "de",
+                "start": 127.895,
+                "end": 128.135,
+                "confidence": 0.9970703
+              },
+              {
+                "word": "la",
+                "start": 128.135,
+                "end": 128.215,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "tarde",
+                "start": 128.215,
+                "end": 128.715,
+                "confidence": 0.9951172
+              },
+              {
+                "word": "cinco",
+                "start": 129.815,
+                "end": 130.135,
+                "confidence": 0.93603516
+              },
+              {
+                "word": "de",
+                "start": 130.135,
+                "end": 130.215,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "la",
+                "start": 130.215,
+                "end": 130.375,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "tarde",
+                "start": 130.375,
+                "end": 130.695,
+                "confidence": 1
+              },
+              {
+                "word": "puedo",
+                "start": 130.695,
+                "end": 131.195,
+                "confidence": 0.96972656
+              },
+              {
+                "word": "perfecto",
+                "start": 133.255,
+                "end": 133.575,
+                "confidence": 0.9748535
+              },
+              {
+                "word": "jorge",
+                "start": 133.575,
+                "end": 134.075,
+                "confidence": 0.9536133
+              },
+              {
+                "word": "te",
+                "start": 134.615,
+                "end": 134.935,
+                "confidence": 1
+              },
+              {
+                "word": "estaré",
+                "start": 134.935,
+                "end": 135.255,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "llamando",
+                "start": 135.255,
+                "end": 135.655,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "a",
+                "start": 135.655,
+                "end": 135.735,
+                "confidence": 1
+              },
+              {
+                "word": "las",
+                "start": 135.735,
+                "end": 135.975,
+                "confidence": 0.99609375
+              },
+              {
+                "word": "cinco",
+                "start": 135.975,
+                "end": 136.295,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 136.295,
+                "end": 136.455,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "la",
+                "start": 136.455,
+                "end": 136.535,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "tarde",
+                "start": 136.535,
+                "end": 136.935,
+                "confidence": 1
+              },
+              {
+                "word": "para",
+                "start": 136.935,
+                "end": 137.095,
+                "confidence": 0.9951172
+              },
+              {
+                "word": "retomar",
+                "start": 137.095,
+                "end": 137.595,
+                "confidence": 1
+              },
+              {
+                "word": "esta",
+                "start": 137.735,
+                "end": 137.975,
+                "confidence": 1
+              },
+              {
+                "word": "conversación",
+                "start": 137.975,
+                "end": 138.475,
+                "confidence": 0.9926758
+              },
+              {
+                "word": "espero",
+                "start": 139.12,
+                "end": 139.36,
+                "confidence": 1
+              },
+              {
+                "word": "que",
+                "start": 139.36,
+                "end": 139.6,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "tengas",
+                "start": 139.6,
+                "end": 139.92,
+                "confidence": 1
+              },
+              {
+                "word": "una",
+                "start": 139.92,
+                "end": 140.16,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "excelente",
+                "start": 140.16,
+                "end": 140.56,
+                "confidence": 1
+              },
+              {
+                "word": "reunión",
+                "start": 140.56,
+                "end": 141.06,
+                "confidence": 1
+              },
+              {
+                "word": "y",
+                "start": 141.12,
+                "end": 141.28,
+                "confidence": 0.90283203
+              },
+              {
+                "word": "nos",
+                "start": 141.28,
+                "end": 141.44,
+                "confidence": 1
+              },
+              {
+                "word": "hablamos",
+                "start": 141.44,
+                "end": 141.92,
+                "confidence": 1
+              },
+              {
+                "word": "más",
+                "start": 141.92,
+                "end": 142.16,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "tarde",
+                "start": 142.16,
+                "end": 142.66,
+                "confidence": 0.99194336
+              },
+              {
+                "word": "hasta",
+                "start": 142.96,
+                "end": 143.2,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "pronto",
+                "start": 143.2,
+                "end": 143.7,
+                "confidence": 0.99853516
+              },
+              {
+                "word": "muchísimas",
+                "start": 144,
+                "end": 144.4,
+                "confidence": 0.98291016
+              },
+              {
+                "word": "gracias",
+                "start": 144.4,
+                "end": 144.9,
+                "confidence": 0.7910156
+              },
+              {
+                "word": "buenos",
+                "start": 147.76,
+                "end": 148,
+                "confidence": 0.4338379
+              },
+              {
+                "word": "días",
+                "start": 148,
+                "end": 148.5,
+                "confidence": 0.9057617
+              },
+              {
+                "word": "gracias",
+                "start": 157.705,
+                "end": 158.025,
+                "confidence": 0.44140625
+              },
+              {
+                "word": "por",
+                "start": 158.025,
+                "end": 158.185,
+                "confidence": 0.9902344
+              },
+              {
+                "word": "tu",
+                "start": 158.185,
+                "end": 158.345,
+                "confidence": 0.99609375
+              },
+              {
+                "word": "tiempo",
+                "start": 158.345,
+                "end": 158.665,
+                "confidence": 0.9802246
+              },
+              {
+                "word": "jorge",
+                "start": 158.665,
+                "end": 159.165,
+                "confidence": 0.99365234
+              },
+              {
+                "word": "te",
+                "start": 159.22499,
+                "end": 159.545,
+                "confidence": 0.9580078
+              },
+              {
+                "word": "estaré",
+                "start": 159.545,
+                "end": 159.785,
+                "confidence": 0.9970703
+              },
+              {
+                "word": "contactando",
+                "start": 159.785,
+                "end": 160.285,
+                "confidence": 1
+              },
+              {
+                "word": "a",
+                "start": 160.345,
+                "end": 160.425,
+                "confidence": 0.96533203
+              },
+              {
+                "word": "las",
+                "start": 160.425,
+                "end": 160.745,
+                "confidence": 0.99316406
+              },
+              {
+                "word": "cinco",
+                "start": 160.745,
+                "end": 160.985,
+                "confidence": 1
+              },
+              {
+                "word": "de",
+                "start": 160.985,
+                "end": 161.14499,
+                "confidence": 1
+              },
+              {
+                "word": "la",
+                "start": 161.14499,
+                "end": 161.22499,
+                "confidence": 0.99902344
+              },
+              {
+                "word": "tarde",
+                "start": 161.22499,
+                "end": 161.545,
+                "confidence": 1
+              },
+              {
+                "word": "como",
+                "start": 161.545,
+                "end": 161.785,
+                "confidence": 0.59375
+              },
+              {
+                "word": "acordamos",
+                "start": 161.785,
+                "end": 162.285,
+                "confidence": 0.9538574
+              },
+              {
+                "word": "que",
+                "start": 162.825,
+                "end": 163.065,
+                "confidence": 0.99316406
+              },
+              {
+                "word": "tengas",
+                "start": 163.065,
+                "end": 163.385,
+                "confidence": 1
+              },
+              {
+                "word": "un",
+                "start": 163.385,
+                "end": 163.545,
+                "confidence": 0.9980469
+              },
+              {
+                "word": "excelente",
+                "start": 163.545,
+                "end": 164.025,
+                "confidence": 1
+              },
+              {
+                "word": "día",
+                "start": 164.025,
+                "end": 164.525,
+                "confidence": 0.9995117
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
