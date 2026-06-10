@@ -203,6 +203,35 @@ tailwind.config = {
   .growx .gbarx{transform:scaleX(0);transform-origin:left}
   .scene.active .growx .gbarx{animation:barGrowX 1s cubic-bezier(.22,1,.36,1) forwards;animation-delay:var(--d,0s)}
   @keyframes barGrowX{to{transform:scaleX(1)}}
+
+  /* ============ pantallas grandes: escala todo proporcionalmente ============ */
+  @media (min-width:1600px){ body{zoom:1.18} }
+  @media (min-width:2000px){ body{zoom:1.4} }
+  @media (min-width:2560px){ body{zoom:1.7} }
+
+  /* ============ móviles (≤1023px) · no afecta escritorio ============ */
+  @media (max-width:1023px){
+    .scene{display:block!important;overflow-y:auto!important;overflow-x:hidden!important}
+    .scene>div.relative{min-height:100%;padding-top:86px!important;padding-bottom:120px!important}
+    #sceneTag{display:none!important}
+    #subwrap{bottom:84px}
+    #sub{font-size:14px;padding:10px 14px}
+    .phone{width:min(330px,88vw)!important;height:min(34rem,68vh)!important}
+    #sectors{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:.7rem!important}
+    #kanban{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+    .domgrid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:.7rem!important;margin-top:1.2rem}
+    .domgrid .card360{padding:.9rem!important}
+    .hubwrap{display:flex!important;justify-content:center;zoom:.58;margin-top:1rem}
+    .dashwrap{display:block!important;zoom:.5;margin-top:1rem}
+    .arrowj{display:none!important}
+    .scene .w-52{width:10.5rem!important}
+    .scene .w-44{width:10rem!important}
+    .pcard{width:47%!important}
+    #s2 svg.w-full{display:none}
+    #s2 .absolute.inset-0.flex{position:static!important;flex-wrap:wrap;gap:1rem;justify-content:center!important;margin-top:.5rem}
+    #si img{width:min(24rem,78vw)!important}
+    .glowwrap{display:none}
+  }
 </style>
 </head>
 <body class="font-sans text-ink">
@@ -211,7 +240,7 @@ tailwind.config = {
 
 <!-- brand overlay -->
 <div class="fixed top-5 left-7 z-[65] select-none bg-white border border-[#e2e8f0] shadow-lg shadow-navy/10 px-3.5 py-1.5 rounded-2xl">
-  <img src="LOGO-ASERTIS.webp" alt="Asertis BPS" class="h-11 w-auto" draggable="false">
+  <img src="LOGO-ASERTIS.webp" alt="Asertis BPS" class="h-[3.6rem] w-auto" draggable="false">
 </div>
 <div id="sceneTag" class="fixed top-5 right-7 z-[65] chip glass px-4 py-1.5 text-[11px] tracking-widest uppercase text-ink/70"></div>
 
@@ -287,7 +316,7 @@ tailwind.config = {
       <div class="reveal d3 mt-9 chip px-5 py-2.5 text-sm text-white" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18)"><i data-lucide="bot" data-fb="🤖" class="w-4 h-4 text-brand2"></i> Caso de uso real · Ventas con Agente IA</div>
       <div class="reveal d5 mt-10 flex gap-9 flex-wrap">
         <div class="stat transition-all duration-500" data-s="0"><div class="text-brand text-[17px]"><i data-lucide="award" data-fb="★" class="w-5 h-5"></i></div><div class="text-white font-extrabold text-2xl" style="letter-spacing:-1px">25+</div><div class="text-[11px] text-white/55 uppercase tracking-wider font-semibold">Años en BPO</div></div>
-        <div class="stat transition-all duration-500" data-s="1"><div class="text-grn text-[17px]"><i data-lucide="layers" data-fb="◎" class="w-5 h-5"></i></div><div class="text-white font-extrabold text-2xl" style="letter-spacing:-1px">360°</div><div class="text-[11px] text-white/55 uppercase tracking-wider font-semibold">Soluciones CX</div></div>
+        <div class="stat transition-all duration-500" data-s="1"><div class="text-grn text-[17px]"><i data-lucide="layers" data-fb="◎" class="w-5 h-5"></i></div><div class="text-white font-extrabold text-2xl" style="letter-spacing:-1px">Asertis 360°</div><div class="text-[11px] text-white/55 uppercase tracking-wider font-semibold">Soluciones CX</div></div>
         <div class="stat transition-all duration-500" data-s="2"><div class="text-brand text-[17px]"><i data-lucide="zap" data-fb="⚡" class="w-5 h-5"></i></div><div class="text-white font-extrabold text-2xl" style="letter-spacing:-1px">≥40%</div><div class="text-[11px] text-white/55 uppercase tracking-wider font-semibold">Autogestión</div></div>
         <div class="stat transition-all duration-500" data-s="3"><div class="text-grn text-[17px]"><i data-lucide="shield-check" data-fb="✓" class="w-5 h-5"></i></div><div class="text-white font-extrabold text-2xl" style="letter-spacing:-1px">100%</div><div class="text-[11px] text-white/55 uppercase tracking-wider font-semibold">Trazabilidad</div></div>
       </div>
@@ -331,7 +360,7 @@ tailwind.config = {
         <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-navy"></span>Respaldo Fenalco Valle</span>
       </div>
     </div>
-    <div class="hidden lg:grid grid-cols-2 gap-5">
+    <div class="domgrid hidden lg:grid grid-cols-2 gap-5">
       <div class="reveal d2 card360 dom transition-all duration-500 p-6" data-d="0">
         <div class="flex items-start justify-between">
           <div class="icon360 text-brand" style="background:rgba(255,107,53,.12)"><i data-lucide="users" data-fb="👥" class="w-6 h-6"></i></div>
@@ -487,7 +516,7 @@ tailwind.config = {
           </div>
         </div>
       </div>
-      <svg width="30" height="12" viewBox="0 0 34 12" class="mx-1.5 text-brand2 flex-none"><path d="M0 6h28M22 1l8 5-8 5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      <svg width="30" height="12" viewBox="0 0 34 12" class="arrowj mx-1.5 text-brand2 flex-none"><path d="M0 6h28M22 1l8 5-8 5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
       <div class="reveal d4 w-52">
         <div class="kb relative h-32 shadow-2xl ring-1 ring-white/15">
           <img src="https://images.unsplash.com/photo-1737644467636-6b0053476bb2?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover" alt="Oferta con Agente IA" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1B3A5C,#0D253F)'">
@@ -499,7 +528,7 @@ tailwind.config = {
           </div>
         </div>
       </div>
-      <svg width="30" height="12" viewBox="0 0 34 12" class="mx-1.5 text-brand2 flex-none"><path d="M0 6h28M22 1l8 5-8 5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      <svg width="30" height="12" viewBox="0 0 34 12" class="arrowj mx-1.5 text-brand2 flex-none"><path d="M0 6h28M22 1l8 5-8 5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
       <div class="reveal d5 w-52">
         <div class="kb relative h-32 shadow-2xl ring-1 ring-white/15">
           <img src="https://images.unsplash.com/photo-1713947504429-45d1f50fc449?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover" alt="Cierre con asesor humano" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1B3A5C,#0D253F)'">
@@ -511,7 +540,7 @@ tailwind.config = {
           </div>
         </div>
       </div>
-      <svg width="30" height="12" viewBox="0 0 34 12" class="mx-1.5 text-brand2 flex-none"><path d="M0 6h28M22 1l8 5-8 5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      <svg width="30" height="12" viewBox="0 0 34 12" class="arrowj mx-1.5 text-brand2 flex-none"><path d="M0 6h28M22 1l8 5-8 5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
       <div class="reveal d6 w-52">
         <div class="kb relative h-32 shadow-2xl ring-1 ring-white/15">
           <img src="https://images.unsplash.com/photo-1537511446984-935f663eb1f4?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover" alt="Fidelización y recompra" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1B3A5C,#0D253F)'">
@@ -535,17 +564,17 @@ tailwind.config = {
     <div>
       <div class="reveal chip text-grn px-4 py-1.5 text-xs uppercase tracking-wider mb-5" style="background:rgba(0,191,166,.18)">Asertis 360° · Omnicanalidad real</div>
       <h2 class="reveal d1 tunder font-extrabold leading-tight text-white" style="font-size:clamp(28px,3.2vw,44px);letter-spacing:-.5px">Todos los canales,<br><span class="grad-text">una sola conversación</span></h2>
-      <p class="reveal d2 mt-5 text-white/70 text-lg max-w-lg font-medium leading-relaxed">IVR, WhatsApp, chat web, correo, SMS y voz convergen en un solo portal. El cliente nunca repite su historia.</p>
+      <p class="reveal d2 mt-5 text-white/70 text-lg max-w-lg font-medium leading-relaxed">Flujo conversacional, WhatsApp, chat web, correo, SMS y voz convergen en un solo portal. El cliente nunca repite su historia.</p>
       <div class="reveal d3 mt-6 chip px-5 py-2.5 text-sm text-white" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15)"><i data-lucide="zap" data-fb="⚡" class="w-4 h-4 text-brand"></i> Resolución en autogestión <b class="text-grn ml-1">≥ 40%</b></div>
       <div class="reveal d4 mt-7 flex gap-4">
-        <div class="card360 overflow-hidden w-[12.5rem] !bg-white/[.06] !border-white/15">
+        <div class="pcard card360 overflow-hidden w-[12.5rem] !bg-white/[.06] !border-white/15">
           <img src="adigital.webp" alt="aDigital" class="w-full h-32 object-cover object-bottom">
           <div class="px-3.5 py-2.5">
             <div class="font-extrabold text-[13px] text-white">Comunicación omnicanal</div>
             <div class="text-[11px] text-white/55 font-semibold">Ventas &amp; fidelización integradas</div>
           </div>
         </div>
-        <div class="card360 overflow-hidden w-[12.5rem] !bg-white/[.06] !border-white/15">
+        <div class="pcard card360 overflow-hidden w-[12.5rem] !bg-white/[.06] !border-white/15">
           <img src="asolucion.webp" alt="aSolution" class="w-full h-32 object-cover object-bottom">
           <div class="px-3.5 py-2.5">
             <div class="font-extrabold text-[13px] text-white">Indicadores &amp; productividad</div>
@@ -554,7 +583,7 @@ tailwind.config = {
         </div>
       </div>
     </div>
-    <div class="hidden lg:flex justify-center">
+    <div class="hubwrap hidden lg:flex justify-center">
       <div class="hub reveal d2">
         <div class="hub-ring hub-ring--1"></div>
         <div class="hub-ring hub-ring--2"></div>
@@ -570,7 +599,7 @@ tailwind.config = {
           <i data-lucide="orbit" data-fb="◎" class="w-8 h-8"></i>
           <span class="text-[12px] font-bold mt-1">Asertis 360°</span>
         </div>
-        <div class="spoke" style="top:55px;left:240px"><div class="icon360"><i data-lucide="phone-call" data-fb="📞" class="w-5 h-5"></i></div><strong class="text-[13px] text-white">IVR</strong><small class="text-[11px] text-white/60">autogestión 24/7</small></div>
+        <div class="spoke" style="top:55px;left:240px"><div class="icon360"><i data-lucide="phone-call" data-fb="📞" class="w-5 h-5"></i></div><strong class="text-[13px] text-white">Flujo conversacional</strong><small class="text-[11px] text-white/60">autogestión 24/7</small></div>
         <div class="spoke" style="top:148px;left:400px"><div class="icon360"><i data-lucide="message-circle" data-fb="💬" class="w-5 h-5"></i></div><strong class="text-[13px] text-white">WhatsApp</strong><small class="text-[11px] text-white/60">bot + asesor</small></div>
         <div class="spoke" style="top:332px;left:400px"><div class="icon360"><i data-lucide="globe" data-fb="🌐" class="w-5 h-5"></i></div><strong class="text-[13px] text-white">Chat web</strong><small class="text-[11px] text-white/60">en tu sitio</small></div>
         <div class="spoke" style="top:425px;left:240px"><div class="icon360"><i data-lucide="mail" data-fb="📩" class="w-5 h-5"></i></div><strong class="text-[13px] text-white">Email</strong><small class="text-[11px] text-white/60">trazable</small></div>
@@ -787,7 +816,7 @@ tailwind.config = {
         <div class="chip bg-white/10 border border-white/15 px-4 py-2"><i data-lucide="bell-ring" data-fb="🚨" class="w-4 h-4 text-brand2"></i> Alertas antes del problema</div>
       </div>
     </div>
-    <div class="hidden lg:block reveal d2 w-full">
+    <div class="dashwrap hidden lg:block reveal d2 w-full">
       <div class="glass rounded-xl overflow-hidden shadow-2xl text-ink w-full max-w-[640px] ml-auto">
         <div class="flex items-center gap-3 px-4 py-2.5 bg-ink text-white">
           <div class="flex gap-1.5"><i class="w-3 h-3 rounded-full bg-[#FF5F57] block"></i><i class="w-3 h-3 rounded-full bg-[#FEBC2E] block"></i><i class="w-3 h-3 rounded-full bg-[#28C840] block"></i></div>
@@ -1092,7 +1121,7 @@ function resetCall(){
   $$('#feed2 .ev').forEach(e=>e.classList.remove('on'));
   $('#callBtn').innerHTML='▶ Reproducir llamada real';
 }
-function startCall(){ setSub(''); music.pause(); call.play().then(()=>{callStarted=true;}).catch(()=>{}); }
+function startCall(){ setSub(''); callPhase=1; music.pause(); call.volume=1; call.playbackRate=1; call.play().then(()=>{callStarted=true;}).catch(()=>{}); }
 function finishCall(){ call.pause(); callEnded=true; updateCallUI(); if(playing) music.play().catch(()=>{}); }
 $('#callBtn').addEventListener('click',()=>{ if(call.paused){startCall();}else{call.pause();} updateCallUI(); });
 $('#skipBtn').addEventListener('click',()=>{ finishCall(); if(callPhase===1){ callPhase=2; callDone=true; if(playing){ voz.play().catch(()=>{}); music.play().catch(()=>{}); } } });
@@ -1147,7 +1176,7 @@ const DEF=[
 /* S0 portada */ {tag:'Bienvenida', dur:17, setup:()=>hlStat(-1), cues:[
   {t:0,   sub:'Somos un ecosistema que acompaña tu operación: talento humano especializado, tecnología y procesos.', a:()=>hlStat(-1)},
   {t:4.5, sub:'Con más de 25 años de experiencia en BPO…', a:()=>hlStat(0)},
-  {t:7.5, sub:'…un ecosistema digital 360 de soluciones de experiencia…', a:()=>hlStat(1)},
+  {t:7.5, sub:'…Asertis 360: nuestro ecosistema digital de soluciones de experiencia…', a:()=>hlStat(1)},
   {t:10.5,sub:'…más del 40% de resolución en autogestión…', a:()=>hlStat(2)},
   {t:13.5,sub:'…y trazabilidad del cien por ciento en cada interacción.', a:()=>hlStat(3)}]},
 /* S1 transformación digital */ {tag:'Transformación digital', dur:18, setup:()=>hlDom(-1), cues:[
@@ -1171,7 +1200,7 @@ const DEF=[
   {t:0,sub:'Hoy queremos mostrárselo en acción, con un caso de uso real: ventas.'},
   {t:5,sub:'Recorreremos el journey comercial completo: del primer interés al cierre de la venta, combinando agentes IA y talento humano.'}]},
 /* S5 omnicanal */ {tag:'Omnicanalidad', dur:12, cues:[
-  {t:0,sub:'IVR, WhatsApp, chat web, correo, SMS y voz: todos los canales convergen en un solo portal.'},
+  {t:0,sub:'Flujo conversacional, WhatsApp, chat web, correo, SMS y voz: todos los canales convergen en un solo portal.'},
   {t:6.5,sub:'La conversación nunca pierde el hilo, sin importar por dónde llegue el cliente.'}]},
 /* S6 whatsapp */ {tag:'Atención por WhatsApp', dur:31,
   setup:()=>{ resetChat(chat1(),'<div class="self-center text-[10px] bg-[#FFF3C7] text-ink/70 rounded-md px-3 py-1 shadow-sm">🔒 Los mensajes están cifrados de extremo a extremo</div><div class="self-center text-[10px] bg-white/90 text-ink/50 rounded-md px-3 py-1 shadow-sm font-semibold">HOY</div>'); $$('#feed1 .ev').forEach(e=>e.classList.remove('on')); },
@@ -1193,16 +1222,15 @@ const DEF=[
   {t:0,sub:'Cada gestión vive en nuestro pipeline comercial: el cliente avanza de estado en estado.'},
   {t:3.5,a:()=>{flipMove(heroCard,$$('#kanban .kcol')[1]); kCounts();}},
   {t:7,sub:'Jorge ya es una oportunidad calificada… y todo el equipo ve su avance en tiempo real.'}]},
-/* S8 llamada IA */ {tag:'Agente IA · Llamada', dur:Infinity, setup:resetCall, cues:[
+/* S8 llamada IA */ {tag:'Agente IA · Llamada', dur:46, setup:resetCall, cues:[
   {t:0,  sub:'Horas después, la campaña comercial entra en acción: llamamos al cliente para ofrecerle el plan.'},
   {t:4.5,sub:'Pero quien llama no es una persona… es nuestro agente de inteligencia artificial.'},
-  {t:9.5,sub:'Escuchemos el inicio de la llamada real 🎧'},
-  {t:12.5,sub:'Les voy a explicar lo que está pasando en esta llamada.'},
-  {t:18, sub:'Valida al titular y consulta su perfil: sabe que Jorge usa recargas semanales.'},
-  {t:24, sub:'Calcula el ahorro y arma la oferta: un plan pospago por lo mismo que gasta hoy.'},
-  {t:30, sub:'Presenta los beneficios, resuelve las dudas… y detecta el interés del cliente.'},
-  {t:36, sub:'Registra todo y crea una tarea para que un asesor humano especializado cierre la venta.'},
-  {t:42, sub:'Todo esto ocurre en una sola llamada, sin intervención humana.'}]},
+  {t:9.5,sub:'Les voy a explicar lo que está pasando en esta llamada.'},
+  {t:15.5,sub:'Valida al titular y consulta su perfil: sabe que Jorge usa recargas semanales.'},
+  {t:21.5,sub:'Calcula el ahorro y arma la oferta: un plan pospago por lo mismo que gasta hoy.'},
+  {t:27.5,sub:'Presenta los beneficios, resuelve las dudas… y detecta el interés del cliente.'},
+  {t:33.5,sub:'Registra todo y crea una tarea para que un asesor humano especializado cierre la venta.'},
+  {t:39.5,sub:'Todo esto ocurre en una sola llamada, sin intervención humana.'}]},
 /* S9 cierre humano */ {tag:'Cierre de venta · Humano', dur:27,
   setup:()=>{ resetChat(chat2(),'<div class="self-center text-[10px] bg-white/90 text-ink/50 rounded-md px-3 py-1 shadow-sm font-semibold">HOY</div>'); setupKanban2(); const s=$('#smsToast'); s.classList.add('hidden'); s.classList.remove('sms-in'); },
   cues:[
@@ -1227,33 +1255,33 @@ const DEF=[
 /* SF final */ {tag:'Gracias', dur:60, cues:[]}
 ];
 
-/* ================= sincronización con la voz (audio_presentacion.mp3) ================= */
+/* ================= sincronización con la voz (audio_presentacion_v2) ================= */
 const AT=[
   [],
-  [0.05,4.56],
-  [11.20,17.05,19.20,22.32,25.05],
-  [26.24,32.37,33.60,35.20,37.90,43.50],
-  [44.30,48.78],
-  [53.78,58.82,64.18,69.72,75.41,80.97],
-  [85.61,90.25],
-  [99.00,106.69],
-  [110.59,111.41,112.64,113.87,114.35,116.75,119.63,120.49,121.36,122.51,124.36,125.42,126.45],
-  [131.25,133.41,135.57],
-  [139.52,144.32,148.64,150.48,153.29,158.25,162.74,167.23,171.71],
-  [176.03,177.29,178.55,179.18,180.00,181.64,183.01,184.93,186.85,189.25],
-  [193.19,196.95,203.19],
-  [206.87,214.76,223.00],
+  [0.08,4.72],
+  [12.40,18.27,21.23,25.23,27.88],
+  [29.23,34.65,36.01,37.53,39.69,45.67],
+  [46.67,51.16],
+  [56.20,62.35,68.03,74.30,80.14,85.33],
+  [89.22,93.62],
+  [102.26,108.78],
+  [112.22,113.18,114.62,116.06,116.62,118.65,121.08,121.80,122.52,123.48,125.06,125.96,127.00],
+  [131.64,134.07,136.51],
+  [140.75,145.80,150.08,152.80,157.28,161.64,166.12,169.88],
+  [173.64,174.92,176.21,176.85,177.72,179.47,180.93,182.89,184.85,187.33],
+  [191.32,195.16,200.84],
+  [204.28,210.92,217.88],
   []
 ];
 DEF.forEach((D,i)=>D.cues.forEach((c,j)=>c.at=AT[i][j]));
 const SCENE_START=AT.map(a=>a.length?a[0]:0);
 const CALL_SCENE=10, FINAL_SCENE=14;
-const CALL_PAUSE_T=150.42;  // fin de "…la llamada real": entra la llamada con volumen
+const CALL_PAUSE_T=149.67;  // fin de "…inteligencia artificial": entra la llamada con volumen
 const CALL_LOUD=10;         // segundos de llamada con volumen
 let CALL_CUT=59.6;          // fin (ya en silencio) de la llamada
 let callDone=false, callPhase=0; // 0=pendiente · 1=sonando · 2=en silencio
 
-const voz=new Audio('audio_presentacion.mp3');
+const voz=new Audio('audio_presentacion_v2.mpeg');
 const music=new Audio('musica_fondo.mp3');
 music.loop=true; music.volume=0.16;
 music.addEventListener('ended',()=>{ music.currentTime=0; if(playing && callPhase!==1) music.play().catch(()=>{}); });
@@ -1286,7 +1314,7 @@ function go(i, seek=true){
     return;
   }
   if(i===FINAL_SCENE){
-    if(seek){ voz.pause(); voz.currentTime=Math.max(0,(voz.duration||224)-0.05); resetFiredFrom(1e9); armFinal(); }
+    if(seek){ voz.pause(); voz.currentTime=Math.max(0,(voz.duration||219)-0.05); resetFiredFrom(1e9); armFinal(); }
     return;
   }
   if(seek){
@@ -1330,7 +1358,7 @@ function tick(ts){
     if(!callDone && T>=CALL_PAUSE_T){
       voz.pause(); voz.currentTime=CALL_PAUSE_T; music.pause();
       if(idx!==CALL_SCENE) go(CALL_SCENE,false);
-      callPhase=1; startCall(); updateCallUI();
+      startCall(); updateCallUI();
     } else {
       const s=sceneAt(T);
       if(s!==idx && idx!==FINAL_SCENE) go(s,false);
@@ -1340,14 +1368,14 @@ function tick(ts){
   if(idx===CALL_SCENE){
     if(callPhase===1 && inCall() && call.currentTime>=CALL_LOUD){
       callPhase=2; callDone=true;
-      call.playbackRate=1.95; // muda: avanza más rápido para que los eventos acompañen a la narración
+      call.playbackRate=1.95; // muda: avanza más rápido para acompañar la explicación
       if(playing){ voz.play().catch(()=>{}); music.play().catch(()=>{}); }
     }
     if(callPhase===2 && call.volume>0) call.volume=Math.max(0,call.volume-0.04);
     if(inCall() && call.currentTime>=CALL_CUT) finishCall();
     updateCallUI();
   }
-  const dur=voz.duration||224;
+  const dur=voz.duration||219;
   $('#prog').style.width=(Math.min(T/dur,1)*100)+'%';
 }
 requestAnimationFrame(tick);
