@@ -240,7 +240,7 @@ tailwind.config = {
 
 <!-- brand overlay -->
 <div class="fixed top-5 left-7 z-[65] select-none bg-white border border-[#e2e8f0] shadow-lg shadow-navy/10 px-3.5 py-1.5 rounded-2xl">
-  <img src="LOGO-ASERTIS.webp" alt="Asertis BPS" class="h-[3.6rem] w-auto" draggable="false">
+  <img src="LOGO-ASERTIS.webp" alt="Asertis BPS" class="h-[4.7rem] w-auto" draggable="false">
 </div>
 <div id="sceneTag" class="fixed top-5 right-7 z-[65] chip glass px-4 py-1.5 text-[11px] tracking-widest uppercase text-ink/70"></div>
 
@@ -982,7 +982,7 @@ tailwind.config = {
   <div class="blob bg-grn" style="width:420px;height:420px;top:-150px;right:-100px;opacity:.06"></div>
   <div class="blob bg-brand" style="width:340px;height:340px;bottom:-120px;left:-80px;opacity:.05;animation-direction:reverse"></div>
   <div class="relative flex-1 flex items-center justify-center p-[4vw]">
-    <img src="ultima_diapositiva.png" alt="Asertis BPS" class="reveal max-w-full max-h-full object-contain rounded-xl shadow-2xl" draggable="false">
+    <img src="ultima_diapositiva.png" alt="Asertis BPS" class="reveal object-contain rounded-xl shadow-2xl" style="max-width:min(100%,90vw);max-height:76vh" draggable="false">
   </div>
 </section>
 </div>
@@ -1283,7 +1283,7 @@ let callDone=false, callPhase=0; // 0=pendiente · 1=sonando · 2=en silencio
 
 const voz=new Audio('audio_presentacion_v2.mpeg');
 const music=new Audio('musica_fondo.mp3');
-music.loop=true; music.volume=0.16;
+music.loop=true; music.volume=0.21;
 music.addEventListener('ended',()=>{ music.currentTime=0; if(playing && callPhase!==1) music.play().catch(()=>{}); });
 
 /* ================= engine ================= */
